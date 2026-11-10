@@ -44,6 +44,13 @@
         .crown-gold { color: #FFD700; text-shadow: 0 0 8px #FFD700; font-size: 1.3em; }
         .crown-silver { color: #C0C0C0; text-shadow: 0 0 8px #C0C0C0; font-size: 1.1em; }
         .crown-bronze { color: #CD7F32; text-shadow: 0 0 8px #CD7F32; font-size: 1em; }
+        .my-row { background-color: rgba(205, 127, 50, 0.15) !important; border-left: 4px solid var(--bronze); }
+
+        .social-links a { color: var(--bronze); text-decoration: none; font-size: 1.2rem; margin-right: 10px; transition: 0.2s; }
+        .social-links a:hover { color: var(--bronze-light); text-shadow: 0 0 10px var(--bronze); }
+        .comment-box { background-color: #0a0908; border: 1px solid var(--border-color); padding: 10px; margin-bottom: 10px; border-radius: 4px; }
+        .comment-author { color: var(--bronze); font-weight: bold; font-size: 0.95em; }
+        .comment-time { color: #5a4b41; font-size: 0.8em; float: right; }
     </style>
 </head>
 <body>
@@ -127,28 +134,75 @@
     <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Регистрация</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><input type="text" class="form-control mb-3" id="regNickname" placeholder="Ник из STALZONE"><input type="password" class="form-control mb-3" id="regPassword" placeholder="Пароль"><div id="regError" class="text-danger" style="font-size: 0.9em;"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="doRegister()">Зарегистрироваться</button></div></div></div>
     </div>
-    <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="profile-banner" id="viewBanner"></div><div class="profile-avatar" id="viewAvatar"></div><div class="modal-header border-0 pt-2"><h5 class="modal-title" id="profileName" style="color: var(--bronze); font-family: 'Ruslan Display', serif;">Профиль</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body pt-0"><p class="fst-italic text-muted mb-3" id="viewBio">Био отсутствует</p><p>Рейтинг: <span id="profileRating" class="rating"></span></p><p>Статистика: <span id="profileWins" class="text-win"></span> побед / <span id="profileLosses" class="text-lose"></span> поражений (<span id="profileWinrate"></span>% побед)</p><hr style="border-color: var(--border-color);"><h6 style="color: var(--bronze-light);">Последние 5 битв:</h6><ul id="profileMatches" class="list-unstyled mt-2" style="font-size: 0.95em;"></ul></div></div></div>
-    </div>
-    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Настройки профиля</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body">
-            <label class="form-label text-light">Ссылка на баннер (URL):</label><input type="text" class="form-control mb-3" id="editBanner" placeholder="https://example.com/banner.jpg">
-            <label class="form-label text-light">Ссылка на аватарку (URL):</label><input type="text" class="form-control mb-3" id="editAvatar" placeholder="https://example.com/avatar.png">
-            
-            <label class="form-label text-light">Категория цитат:</label>
-            <select class="form-control mb-3" id="editQuoteCategory" onchange="updateQuoteList()">
-                <option value="spartan">Спартанские</option>
-                <option value="great">Великие люди</option>
-            </select>
-            
-            <label class="form-label text-light">Выберите цитату:</label>
-            <select class="form-control mb-3" id="editQuote">
-                <option value="">-- Без цитаты (случайная) --</option>
-            </select>
 
-            <label class="form-label text-light">Статус (Био):</label><textarea class="form-control mb-3" id="editBio" rows="3" placeholder="Кратко о себе..."></textarea>
-        </div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="saveProfile()">Сохранить</button></div></div></div>
+    <!-- ПРОСМОТР ПРОФИЛЯ -->
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="profile-banner" id="viewBanner"></div>
+                <div class="profile-avatar" id="viewAvatar"></div>
+                <div class="modal-header border-0 pt-2">
+                    <h5 class="modal-title" id="profileName" style="color: var(--bronze); font-family: 'Ruslan Display', serif;">Профиль</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body pt-0 row">
+                    <div class="col-md-6 border-end" style="border-color: var(--border-color) !important;">
+                        <div class="social-links mb-3" id="profileSocials"></div>
+                        <p class="fst-italic text-muted mb-3" id="viewBio">Био отсутствует</p>
+                        <p>Рейтинг: <span id="profileRating" class="rating"></span></p>
+                        <p>Статистика: <span id="profileWins" class="text-win"></span> побед / <span id="profileLosses" class="text-lose"></span> поражений (<span id="profileWinrate"></span>% побед)</p>
+                        <hr style="border-color: var(--border-color);">
+                        <h6 style="color: var(--bronze-light);">Последние 5 битв:</h6>
+                        <ul id="profileMatches" class="list-unstyled mt-2" style="font-size: 0.95em;"></ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 style="color: var(--bronze-light);">Стена славы (Комментарии):</h6>
+                        <div id="commentsSection" class="mt-2" style="max-height: 250px; overflow-y: auto;">
+                        </div>
+                        <div class="mt-3" id="commentInputBlock" style="display:none;">
+                            <textarea id="newCommentText" class="form-control mb-2" rows="2" placeholder="Оставь свой след в истории..."></textarea>
+                            <button class="btn btn-custom btn-sm w-100" onclick="postComment()">Отправить</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- НАСТРОЙКИ ПРОФИЛЯ -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Настройки профиля</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body row">
+                    <div class="col-md-6">
+                        <label class="form-label text-light">Ссылка на баннер:</label><input type="text" class="form-control mb-3" id="editBanner" placeholder="URL картинки">
+                        <label class="form-label text-light">Ссылка на аватарку:</label><input type="text" class="form-control mb-3" id="editAvatar" placeholder="URL картинки">
+                        <label class="form-label text-light">Статус (Био):</label><textarea class="form-control mb-3" id="editBio" rows="2" placeholder="Кратко о себе..."></textarea>
+                        
+                        <label class="form-label text-light">Категория цитат:</label>
+                        <select class="form-control mb-3" id="editQuoteCategory" onchange="updateQuoteList()">
+                            <option value="spartan">Спартанские</option>
+                            <option value="great">Великие люди</option>
+                        </select>
+                        <label class="form-label text-light">Выберите цитату:</label>
+                        <select class="form-control mb-3" id="editQuote"><option value="">-- Без цитаты --</option></select>
+                    </div>
+                    <div class="col-md-6 border-start" style="border-color: var(--border-color) !important;">
+                        <h6 style="color: var(--bronze-light);">Интеграции (ссылки):</h6>
+                        <label class="form-label text-light">Discord:</label><input type="text" class="form-control mb-2" id="editDiscord" placeholder="https://discord.gg/...">
+                        <label class="form-label text-light">Telegram:</label><input type="text" class="form-control mb-2" id="editTelegram" placeholder="https://t.me/...">
+                        <label class="form-label text-light">Twitch:</label><input type="text" class="form-control mb-2" id="editTwitch" placeholder="https://twitch.tv/...">
+                        <label class="form-label text-light">YouTube:</label><input type="text" class="form-control mb-2" id="editYoutube" placeholder="https://youtube.com/...">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-custom w-100" onclick="saveProfile()">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header" style="background: linear-gradient(to right, transparent, rgba(138,3,3,0.3), transparent);"><h5 class="modal-title" style="color: #ff5555; font-family: 'Ruslan Display', serif;">Подтверждение</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Воитель, проверь свои трофеи!</p><p class="mb-0">Убедись, что ники, счет и карта указаны верно. Отправить результат?</p></div><div class="modal-footer"><button type="button" class="btn btn-outline-light" style="border-radius: 0;" data-bs-dismiss="modal">Отмена</button><button type="button" class="btn btn-custom" id="confirmSubmitBtn">Да, отправить</button></div></div></div>
     </div>
@@ -158,6 +212,7 @@
         let token = localStorage.getItem('token');
         let currentUser = localStorage.getItem('nickname');
         let confirmModalInstance = null;
+        let currentProfileNickname = ""; 
 
         const spartanQuotes = [
             "Со щитом или на щите!", "Это Спарта!", "Спартанцы не спрашивают, сколько врагов, они спрашивают, где они.",
@@ -262,13 +317,14 @@
                 document.getElementById('editBanner').value = data.banner_url || '';
                 document.getElementById('editAvatar').value = data.avatar_url || '';
                 document.getElementById('editBio').value = data.bio || '';
+                document.getElementById('editDiscord').value = data.discord || '';
+                document.getElementById('editTelegram').value = data.telegram || '';
+                document.getElementById('editTwitch').value = data.twitch || '';
+                document.getElementById('editYoutube').value = data.youtube || '';
                 
                 if (data.quote) {
-                    if (spartanQuotes.includes(data.quote)) {
-                        document.getElementById('editQuoteCategory').value = 'spartan';
-                    } else if (greatQuotes.includes(data.quote)) {
-                        document.getElementById('editQuoteCategory').value = 'great';
-                    }
+                    if (spartanQuotes.includes(data.quote)) document.getElementById('editQuoteCategory').value = 'spartan';
+                    else if (greatQuotes.includes(data.quote)) document.getElementById('editQuoteCategory').value = 'great';
                 }
                 updateQuoteList(); 
                 document.getElementById('editQuote').value = data.quote || ''; 
@@ -282,7 +338,11 @@
                 banner_url: document.getElementById('editBanner').value.trim() || null, 
                 avatar_url: document.getElementById('editAvatar').value.trim() || null, 
                 bio: document.getElementById('editBio').value.trim() || null,
-                quote: document.getElementById('editQuote').value || null
+                quote: document.getElementById('editQuote').value || null,
+                discord: document.getElementById('editDiscord').value.trim() || null,
+                telegram: document.getElementById('editTelegram').value.trim() || null,
+                twitch: document.getElementById('editTwitch').value.trim() || null,
+                youtube: document.getElementById('editYoutube').value.trim() || null
             };
             try {
                 const res = await fetch('/player/me/update', { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify(data) });
@@ -292,6 +352,7 @@
         }
 
         async function showProfile(nickname, rank) {
+            currentProfileNickname = nickname;
             try {
                 const res = await fetch(`/player/${nickname}`); if (!res.ok) throw new Error("Профиль не найден"); const data = await res.json();
                 
@@ -301,20 +362,24 @@
                 else if (rank === 3) crownHtml = ' <span class="crown-bronze">👑</span>';
 
                 document.getElementById('profileName').innerHTML = data.nickname + crownHtml;
+                document.getElementById('profileRating').innerText = data.rating; 
+                document.getElementById('profileWins').innerText = data.wins; 
+                document.getElementById('profileLosses').innerText = data.losses; 
+                document.getElementById('profileWinrate').innerText = data.winrate;
                 
-                document.getElementById('profileRating').innerText = data.rating; document.getElementById('profileWins').innerText = data.wins; document.getElementById('profileLosses').innerText = data.losses; document.getElementById('profileWinrate').innerText = data.winrate;
-                
+                const socialsDiv = document.getElementById('profileSocials');
+                socialsDiv.innerHTML = '';
+                if (data.discord) socialsDiv.innerHTML += `<a href="${data.discord}" target="_blank" title="Discord">🎮</a>`;
+                if (data.telegram) socialsDiv.innerHTML += `<a href="${data.telegram}" target="_blank" title="Telegram">✈️</a>`;
+                if (data.twitch) socialsDiv.innerHTML += `<a href="${data.twitch}" target="_blank" title="Twitch">📺</a>`;
+                if (data.youtube) socialsDiv.innerHTML += `<a href="${data.youtube}" target="_blank" title="YouTube">▶️</a>`;
+
                 const bannerEl = document.getElementById('viewBanner'); const avatarEl = document.getElementById('viewAvatar');
                 if (data.banner_url) bannerEl.style.backgroundImage = `url('${data.banner_url}')`; else bannerEl.style.backgroundImage = 'none';
                 if (data.avatar_url) avatarEl.style.backgroundImage = `url('${data.avatar_url}')`; else avatarEl.style.backgroundImage = 'none';
                 
-                let finalQuote = data.quote;
-                if (!finalQuote) {
-                    finalQuote = spartanQuotes[Math.floor(Math.random() * spartanQuotes.length)];
-                }
-                
+                let finalQuote = data.quote || spartanQuotes[Math.floor(Math.random() * spartanQuotes.length)];
                 let bioText = data.bio || 'Этот воин предпочитает хранить молчание.';
-                
                 document.getElementById('viewBio').innerHTML = `<span class="fst-italic text-muted">${bioText}</span><br><br><strong class="text-warning">"${finalQuote}"</strong>`;
                 
                 const matchList = document.getElementById('profileMatches'); matchList.innerHTML = '';
@@ -325,8 +390,52 @@
                         matchList.innerHTML += `<li class="mb-2"><span class="${resColor}">${resText}</span> против ${opponent}<br><span class="text-gray">Счет: ${m.score} (${m.time})</span></li>`;
                     });
                 }
+
+                loadComments(nickname);
+                if (token) document.getElementById('commentInputBlock').style.display = 'block';
+                else document.getElementById('commentInputBlock').style.display = 'none';
+
                 showModal('profileModal');
             } catch (e) { console.error(e); }
+        }
+
+        async function loadComments(nickname) {
+            const commentsDiv = document.getElementById('commentsSection');
+            commentsDiv.innerHTML = '<div class="text-muted small">Загрузка летописи...</div>';
+            try {
+                const res = await fetch(`/player/${nickname}/comments`);
+                const comments = await res.json();
+                commentsDiv.innerHTML = '';
+                if (comments.length === 0) {
+                    commentsDiv.innerHTML = '<div class="text-muted small mb-2">Пока тишина...</div>';
+                } else {
+                    comments.forEach(c => {
+                        commentsDiv.innerHTML += `
+                        <div class="comment-box">
+                            <span class="comment-author">${c.author}</span>
+                            <span class="comment-time">${c.time}</span>
+                            <div class="text-light mt-1" style="font-size: 0.9em; word-wrap: break-word;">${c.text}</div>
+                        </div>`;
+                    });
+                }
+            } catch(e) { commentsDiv.innerHTML = '<div class="text-danger small">Ошибка загрузки</div>'; }
+        }
+
+        async function postComment() {
+            const text = document.getElementById('newCommentText').value.trim();
+            if (!text) return;
+            try {
+                const res = await fetch(`/player/${currentProfileNickname}/comments`, {
+                    method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
+                    body: JSON.stringify({ text: text })
+                });
+                if (res.ok) {
+                    document.getElementById('newCommentText').value = '';
+                    loadComments(currentProfileNickname);
+                } else if (res.status === 401) {
+                    alert("Нужно войти в аккаунт!"); logout();
+                }
+            } catch(e) { console.error(e); }
         }
 
         function checkForm() {
@@ -353,8 +462,11 @@
                         medalsHtml = p.medals.map(m => `<span title="Турнирная награда" style="font-size:1.1em; margin-left: 3px; filter: drop-shadow(0 0 3px gold);">${m}</span>`).join('');
                     }
 
+                    const isMe = currentUser && p.nickname.toLowerCase() === currentUser.toLowerCase();
+                    const rowClass = isMe ? 'my-row' : '';
+
                     tbodyL.innerHTML += `
-                    <tr>
+                    <tr class="${rowClass}">
                         <td><strong>${i + 1}</strong></td>
                         <td><span class="${crownClass}">${crown}</span></td>
                         <td><img src="${avatarSrc}" class="table-avatar" alt="avatar"></td>

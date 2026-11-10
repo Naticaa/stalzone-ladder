@@ -1,7 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException, File, UploadFile, status
 from fastapi.responses import FileResponse, HTMLResponse
 from fastapi.security import OAuth2PasswordBearer
-from sqlalchemy import create_engine, Column, Integer, String, DateTime, ForeignKey, Float, or_
+from sqlalchemy import create_engine, Column, Integer, String, DateTime, ForeignKey, Float, or_, func
 from sqlalchemy.orm import declarative_base, sessionmaker, Session, aliased
 from pydantic import BaseModel, Field
 from datetime import datetime, timedelta
@@ -42,12 +42,25 @@ class Player(Base):
     banner_url = Column(String, nullable=True)
     bio = Column(String, nullable=True)
     quote = Column(String, nullable=True) 
+    # Новые поля для интеграций
+    discord = Column(String, nullable=True)
+    telegram = Column(String, nullable=True)
+    twitch = Column(String, nullable=True)
+    youtube = Column(String, nullable=True)
 
 class Medal(Base):
     __tablename__ = "medals"
     id = Column(Integer, primary_key=True, index=True)
     player_id = Column(Integer, ForeignKey("players.id"))
     icon = Column(String) 
+
+class Comment(Base):
+    __tablename__ = "comments"
+    id = Column(Integer, primary_key=True, index=True)
+    profile_id = Column(Integer, ForeignKey("players.id"))
+    author_id = Column(Integer, ForeignKey("players.id"))
+    text = Column(String)
+    created_at = Column(DateTime, default=datetime.utcnow)
 
 class Duel(Base):
     __tablename__ = "duels"
@@ -77,11 +90,24 @@ class ProfileUpdate(BaseModel):
     banner_url: str | None = None
     bio: str | None = None
     quote: str | None = None
+    discord: str | None = None
+    telegram: str | None = None
+    twitch: str | None = None
+    youtube: str | None = None
 
 class DuelCreate(BaseModel):
     loser_nickname: str = Field(..., min_length=2, max_length=20)
     score: str = Field(..., min_length=1, max_length=10)
     map_name: str | None = None
+
+class CommentCreate(BaseModel):
+    text: str = Field(..., min_length=1, max_length=500)
+
+class CommentResponse(BaseModel):
+    id: int
+    author: str
+    text: str
+    time: str
 
 class PlayerRating(BaseModel):
     nickname: str
@@ -112,6 +138,10 @@ class PlayerProfile(BaseModel):
     banner_url: str | None = None
     bio: str | None = None
     quote: str | None = None 
+    discord: str | None = None
+    telegram: str | None = None
+    twitch: str | None = None
+    youtube: str | None = None
     recent_matches: list[MatchHistory]
 
 app = FastAPI(title="STALZONE Ladder API")
@@ -136,13 +166,13 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
         nickname: str = payload.get("sub")
         if nickname is None: raise credentials_exception
     except JWTError: raise credentials_exception
-    user = db.query(Player).filter(Player.nickname == nickname).first()
+    user = db.query(Player).filter(func.lower(Player.nickname) == nickname.lower()).first()
     if user is None: raise credentials_exception
     return user
 
 @app.post("/register", response_model=Token)
 def register(user: UserAuth, db: Session = Depends(get_db)):
-    db_user = db.query(Player).filter(Player.nickname == user.nickname).first()
+    db_user = db.query(Player).filter(func.lower(Player.nickname) == user.nickname.lower()).first()
     if db_user: raise HTTPException(status_code=400, detail="Этот ник уже занят")
     hashed_password = pwd_context.hash(user.password)
     new_user = Player(nickname=user.nickname, password_hash=hashed_password)
@@ -152,7 +182,7 @@ def register(user: UserAuth, db: Session = Depends(get_db)):
 
 @app.post("/login", response_model=Token)
 def login(user: UserAuth, db: Session = Depends(get_db)):
-    db_user = db.query(Player).filter(Player.nickname == user.nickname).first()
+    db_user = db.query(Player).filter(func.lower(Player.nickname) == user.nickname.lower()).first()
     if not db_user or not db_user.password_hash: raise HTTPException(status_code=400, detail="Неверный ник или пароль")
     if not pwd_context.verify(user.password, db_user.password_hash): raise HTTPException(status_code=400, detail="Неверный ник или пароль")
     access_token = create_access_token(data={"sub": db_user.nickname})
@@ -164,6 +194,10 @@ def update_profile(data: ProfileUpdate, current_user: Player = Depends(get_curre
     current_user.banner_url = data.banner_url
     current_user.bio = data.bio
     current_user.quote = data.quote 
+    current_user.discord = data.discord
+    current_user.telegram = data.telegram
+    current_user.twitch = data.twitch
+    current_user.youtube = data.youtube
     db.commit()
     return {"status": "ok"}
 
@@ -193,7 +227,7 @@ def create_duel(duel: DuelCreate, current_user: Player = Depends(get_current_use
     if current_user.nickname.lower() == duel.loser_nickname.lower():
         raise HTTPException(status_code=400, detail="Вы не можете сражаться сами с собой")
 
-    loser = db.query(Player).filter(Player.nickname == duel.loser_nickname).first()
+    loser = db.query(Player).filter(func.lower(Player.nickname) == duel.loser_nickname.lower()).first()
     if not loser:
         loser = Player(nickname=duel.loser_nickname)
         db.add(loser); db.commit(); db.refresh(loser)
@@ -208,11 +242,8 @@ def get_leaderboard(db: Session = Depends(get_db)):
     for p in players:
         medals = db.query(Medal).filter(Medal.player_id == p.id).all()
         result.append(PlayerRating(
-            nickname=p.nickname, 
-            rating=round(p.rating, 2), 
-            rd=round(p.rd, 2), 
-            avatar_url=p.avatar_url,
-            medals=[m.icon for m in medals]
+            nickname=p.nickname, rating=round(p.rating, 2), rd=round(p.rd, 2), 
+            avatar_url=p.avatar_url, medals=[m.icon for m in medals]
         ))
     return result
 
@@ -230,7 +261,7 @@ def get_history(db: Session = Depends(get_db)):
 
 @app.get("/player/{nickname}", response_model=PlayerProfile)
 def get_player_profile(nickname: str, db: Session = Depends(get_db)):
-    player = db.query(Player).filter(Player.nickname == nickname).first()
+    player = db.query(Player).filter(func.lower(Player.nickname) == nickname.lower()).first()
     if not player: raise HTTPException(status_code=404, detail="Игрок не найден")
     W = aliased(Player); L = aliased(Player)
     all_duels = db.query(Duel, W.nickname.label('w_name'), L.nickname.label('l_name')) \
@@ -248,7 +279,38 @@ def get_player_profile(nickname: str, db: Session = Depends(get_db)):
             status=d.Duel.status, is_win=(d.Duel.winner_id == player.id),
             rating_change_winner=d.Duel.rating_change_winner, rating_change_loser=d.Duel.rating_change_loser
         ))
-    return PlayerProfile(nickname=player.nickname, rating=round(player.rating, 2), wins=wins, losses=losses, winrate=round(winrate, 1), avatar_url=player.avatar_url, banner_url=player.banner_url, bio=player.bio, quote=player.quote, recent_matches=recent)
+    return PlayerProfile(
+        nickname=player.nickname, rating=round(player.rating, 2), wins=wins, losses=losses, 
+        winrate=round(winrate, 1), avatar_url=player.avatar_url, banner_url=player.banner_url, 
+        bio=player.bio, quote=player.quote, discord=player.discord, telegram=player.telegram, 
+        twitch=player.twitch, youtube=player.youtube, recent_matches=recent
+    )
+
+# --- ЭНДПОИНТЫ ДЛЯ КОММЕНТАРИЕВ ---
+@app.get("/player/{nickname}/comments", response_model=list[CommentResponse])
+def get_comments(nickname: str, db: Session = Depends(get_db)):
+    player = db.query(Player).filter(func.lower(Player.nickname) == nickname.lower()).first()
+    if not player: raise HTTPException(status_code=404, detail="Игрок не найден")
+    
+    author = aliased(Player)
+    comments = db.query(Comment, author.nickname.label('author_name')) \
+        .join(author, Comment.author_id == author.id) \
+        .filter(Comment.profile_id == player.id) \
+        .order_by(Comment.created_at.desc()).limit(20).all()
+        
+    return [CommentResponse(
+        id=c.Comment.id, author=c.author_name, text=c.Comment.text, 
+        time=c.Comment.created_at.strftime("%d.%m %H:%M")
+    ) for c in comments]
+
+@app.post("/player/{nickname}/comments")
+def post_comment(nickname: str, data: CommentCreate, current_user: Player = Depends(get_current_user), db: Session = Depends(get_db)):
+    player = db.query(Player).filter(func.lower(Player.nickname) == nickname.lower()).first()
+    if not player: raise HTTPException(status_code=404, detail="Игрок не найден")
+    
+    new_comment = Comment(profile_id=player.id, author_id=current_user.id, text=data.text)
+    db.add(new_comment); db.commit()
+    return {"status": "ok"}
 
 @app.get("/confirm/{duel_id}", response_class=HTMLResponse)
 def confirm_page(duel_id: int, db: Session = Depends(get_db)):
