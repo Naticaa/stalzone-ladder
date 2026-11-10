@@ -1,5 +1,4 @@
-import os
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends, HTTPException, File, UploadFile
 from fastapi.responses import FileResponse, HTMLResponse
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, ForeignKey, Float, or_
 from sqlalchemy.orm import declarative_base, sessionmaker, Session, aliased
@@ -7,6 +6,15 @@ from pydantic import BaseModel
 from datetime import datetime
 from glicko2 import RatingEngine, MatchResult, RatingPeriod
 from glicko2.math.conversions import mu_to_rating, phi_to_rd, rating_to_mu, rd_to_phi
+import os
+import io
+import platform
+import pytesseract
+from PIL import Image, ImageOps
+
+# --- Настройка Tesseract (для Windows) ---
+if platform.system() == "Windows":
+    pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 # --- Настройка базы данных ---
 SQLALCHEMY_DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///./stalzone.db")
@@ -29,7 +37,7 @@ class Duel(Base):
     loser_id = Column(Integer, ForeignKey("players.id"))
     score = Column(String)
     map_name = Column(String, nullable=True)
-    status = Column(String, default="pending") # pending или confirmed
+    status = Column(String, default="pending")
     created_at = Column(DateTime, default=datetime.utcnow)
 
 Base.metadata.create_all(bind=engine)
@@ -74,7 +82,6 @@ def get_db():
         db.close()
 
 def update_glicko_rating(winner: Player, loser: Player, duel_id: int):
-    """Вспомогательная функция для пересчета рейтинга"""
     local_engine = RatingEngine()
     w_player = local_engine.pool.get_or_create(winner.nickname)
     w_player.mu = rating_to_mu(winner.rating)
@@ -108,16 +115,13 @@ def create_duel(duel: DuelCreate, db: Session = Depends(get_db)):
         loser = Player(nickname=duel.loser_nickname)
         db.add(loser); db.commit(); db.refresh(loser)
 
-    # Создаем матч со статусом PENDING (ожидает)
     new_duel = Duel(winner_id=winner.id, loser_id=loser.id, score=duel.score, map_name=duel.map_name, status="pending")
     db.add(new_duel); db.commit(); db.refresh(new_duel)
 
-    # Возвращаем ID для генерации ссылки на подтверждение
     return {"status": "pending", "duel_id": new_duel.id}
 
 @app.get("/leaderboard/", response_model=list[PlayerRating])
 def get_leaderboard(db: Session = Depends(get_db)):
-    # Показываем только подтвержденных (или всех, рейтинг не меняется до подтверждения)
     players = db.query(Player).order_by(Player.rating.desc()).all()
     return [PlayerRating(nickname=p.nickname, rating=round(p.rating, 2), rd=round(p.rd, 2)) for p in players]
 
@@ -143,7 +147,6 @@ def get_player_profile(nickname: str, db: Session = Depends(get_db)):
     if not player: raise HTTPException(status_code=404, detail="Игрок не найден")
 
     W = aliased(Player); L = aliased(Player)
-    # Берем только подтвержденные матчи для статистики
     all_duels = db.query(Duel, W.nickname.label('w_name'), L.nickname.label('l_name')) \
         .join(W, Duel.winner_id == W.id).join(L, Duel.loser_id == L.id) \
         .filter(or_(Duel.winner_id == player.id, Duel.loser_id == player.id)) \
@@ -167,7 +170,6 @@ def get_player_profile(nickname: str, db: Session = Depends(get_db)):
         wins=wins, losses=losses, winrate=round(winrate, 1), recent_matches=recent
     )
 
-# --- СТРАНИЦА ПОДТВЕРЖДЕНИЯ (Открывается по ссылке у соперника) ---
 @app.get("/confirm/{duel_id}", response_class=HTMLResponse)
 def confirm_page(duel_id: int, db: Session = Depends(get_db)):
     duel = db.query(Duel).filter(Duel.id == duel_id).first()
@@ -179,7 +181,6 @@ def confirm_page(duel_id: int, db: Session = Depends(get_db)):
     if duel.status == "confirmed":
         return f"<h1 style='color: green; text-align:center; margin-top:50px;'>Этот матч уже подтвержден!</h1><p style='text-align:center;'><a href='/'>Вернуться на сайт</a></p>"
 
-    # Красивая HTML страничка для подтверждения
     html = f"""
     <html><head><meta charset="utf-8"><title>Подтверждение матча</title></head>
     <body style="background: #1a1a1a; color: #fff; font-family: sans-serif; text-align: center; padding-top: 100px;">
@@ -203,12 +204,43 @@ def confirm_duel(duel_id: int, db: Session = Depends(get_db)):
     winner = db.query(Player).filter(Player.id == duel.winner_id).first()
     loser = db.query(Player).filter(Player.id == duel.loser_id).first()
 
-    # Меняем статус и пересчитываем рейтинг
     duel.status = "confirmed"
     update_glicko_rating(winner, loser, duel.id)
     db.commit()
 
-    return HTMLResponse(f"<h1 style='color: #00ff88; text-align:center; margin-top:50px;'>Матч успешно подтвержден! Рейтинг обновлен.</h1><p style='text-align:center;'><a href='/'>Вернуться на сайт</a></p>")
+    return HTMLResponse("<h1 style='color: #00ff88; text-align:center; margin-top:50px;'>Матч успешно подтвержден! Рейтинг обновлен.</h1><p style='text-align:center;'><a href='/'>Вернуться на сайт</a></p>")
+
+# --- ИСПРАВЛЕННЫЙ OCR (берем правую половину экрана целиком) ---
+@app.post("/ocr/")
+async def process_screenshot(file: UploadFile = File(...)):
+    if not file.content_type.startswith("image/"):
+        raise HTTPException(status_code=400, detail="Файл должен быть изображением")
+
+    try:
+        contents = await file.read()
+        image = Image.open(io.BytesIO(contents))
+        width, height = image.size
+        
+        # Берем ровно правую половину (от 50% до 100% ширины)
+        left_crop = int(width * 0.5)
+        # Берем по высоте от самого верха до 80% вниз (чтобы захватить таблицу)
+        bottom_crop = int(height * 0.8)
+        
+        cropped_image = image.crop((left_crop, 0, width, bottom_crop))
+        
+        # Делаем ч/б и повышаем контраст
+        gray_image = ImageOps.grayscale(cropped_image)
+        gray_image = ImageOps.autocontrast(gray_image)
+        
+        # Увеличиваем в 3 раза для лучшего распознавания
+        new_size = (gray_image.width * 3, gray_image.height * 3)
+        resized_image = gray_image.resize(new_size, Image.Resampling.LANCZOS)
+        
+        full_text = pytesseract.image_to_string(resized_image, lang='rus+eng')
+        
+        return {"recognized_text": full_text}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Ошибка: {str(e)}")
 
 @app.get("/")
 def read_root():
