@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.responses import FileResponse, HTMLResponse
 from sqlalchemy import create_engine, Column, Integer, String, DateTime, ForeignKey, Float, or_
@@ -8,7 +9,7 @@ from glicko2 import RatingEngine, MatchResult, RatingPeriod
 from glicko2.math.conversions import mu_to_rating, phi_to_rd, rating_to_mu, rd_to_phi
 
 # --- Настройка базы данных ---
-SQLALCHEMY_DATABASE_URL = "sqlite:///./stalzone.db"
+SQLALCHEMY_DATABASE_URL = os.environ.get("DATABASE_URL", "sqlite:///./stalzone.db")
 engine = create_engine(SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False})
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
