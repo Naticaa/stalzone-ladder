@@ -14,7 +14,7 @@ import io
 import platform
 import pytesseract
 from PIL import Image, ImageOps
-import random # ДЛЯ РАНДОМА КАРТ
+import random
 
 SECRET_KEY = "stalzone_super_secret_key_12345"
 ALGORITHM = "HS256"
@@ -47,6 +47,9 @@ class Player(Base):
     telegram = Column(String, nullable=True)
     twitch = Column(String, nullable=True)
     youtube = Column(String, nullable=True)
+    # Поля для реального поиска
+    is_searching = Column(Boolean, default=False)
+    last_search_time = Column(DateTime, nullable=True)
 
 class Medal(Base):
     __tablename__ = "medals"
@@ -80,7 +83,7 @@ class Duel(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
     rating_change_winner = Column(Float, nullable=True)
     rating_change_loser = Column(Float, nullable=True)
-    is_ranked = Column(Boolean, default=True) # НОВОЕ ПОЛЕ
+    is_ranked = Column(Boolean, default=True)
 
 Base.metadata.create_all(bind=engine)
 
@@ -107,7 +110,7 @@ class DuelCreate(BaseModel):
     loser_nickname: str = Field(..., min_length=2, max_length=20)
     score: str = Field(..., min_length=1, max_length=10)
     map_name: str | None = None
-    is_ranked: bool = True # НОВОЕ ПОЛЕ
+    is_ranked: bool = True
 
 class CommentCreate(BaseModel):
     text: str = Field(..., min_length=1, max_length=500)
@@ -152,7 +155,7 @@ class MatchHistory(BaseModel):
     is_win: bool | None = None
     rating_change_winner: float | None = None
     rating_change_loser: float | None = None
-    is_ranked: bool = True # НОВОЕ ПОЛЕ
+    is_ranked: bool = True
 
 class PlayerProfile(BaseModel):
     nickname: str
@@ -258,7 +261,6 @@ def create_duel(duel: DuelCreate, current_user: Player = Depends(get_current_use
         loser = Player(nickname=duel.loser_nickname)
         db.add(loser); db.commit(); db.refresh(loser)
 
-    # Если игра рейтинговая, карта выбирается рандомно
     final_map = duel.map_name
     if duel.is_ranked:
         final_map = random.choice(["Склад", "Спуск"])
@@ -272,6 +274,12 @@ def create_duel(duel: DuelCreate, current_user: Player = Depends(get_current_use
         is_ranked=duel.is_ranked
     )
     db.add(new_duel); db.commit(); db.refresh(new_duel)
+
+    # Выключаем поиск у обоих игроков, раз матч найден
+    current_user.is_searching = False
+    loser.is_searching = False
+    db.commit()
+
     return {"status": "pending", "duel_id": new_duel.id}
 
 @app.get("/leaderboard/", response_model=list[PlayerRating])
@@ -309,7 +317,6 @@ def get_player_profile(nickname: str, db: Session = Depends(get_db)):
         .filter(or_(Duel.winner_id == player.id, Duel.loser_id == player.id)) \
         .filter(Duel.status == "confirmed").order_by(Duel.created_at.desc()).all()
     
-    # Считаем статистику только для рейтинговых игр
     ranked_duels = [d for d in all_duels if d.Duel.is_ranked]
     wins = sum(1 for d in ranked_duels if d.Duel.winner_id == player.id)
     losses = len(ranked_duels) - wins
@@ -351,7 +358,6 @@ def get_comments(nickname: str, db: Session = Depends(get_db)):
 def post_comment(nickname: str, data: CommentCreate, current_user: Player = Depends(get_current_user), db: Session = Depends(get_db)):
     player = db.query(Player).filter(func.lower(Player.nickname) == nickname.lower()).first()
     if not player: raise HTTPException(status_code=404, detail="Игрок не найден")
-    
     new_comment = Comment(profile_id=player.id, author_id=current_user.id, text=data.text)
     db.add(new_comment); db.commit()
     return {"status": "ok"}
@@ -361,15 +367,11 @@ def get_chat(db: Session = Depends(get_db)):
     messages = db.query(ChatMessage, Player.nickname.label('author_name'), Player.rating.label('author_rating')) \
         .join(Player, ChatMessage.player_id == Player.id) \
         .order_by(ChatMessage.created_at.desc()).limit(50).all()
-    
     result = []
     for m in reversed(messages):
         result.append(ChatMessageResponse(
-            id=m.ChatMessage.id,
-            author=m.author_name,
-            rating=int(m.author_rating),
-            text=m.ChatMessage.text,
-            time=m.ChatMessage.created_at.strftime("%H:%M")
+            id=m.ChatMessage.id, author=m.author_name, rating=int(m.author_rating),
+            text=m.ChatMessage.text, time=m.ChatMessage.created_at.strftime("%H:%M")
         ))
     return result
 
@@ -379,21 +381,42 @@ def post_chat_message(data: ChatMessageCreate, current_user: Player = Depends(ge
     db.add(new_msg); db.commit()
     return {"status": "ok"}
 
-@app.get("/matchmaking/{nickname}", response_model=list[MatchmakingPlayer])
-def find_match(nickname: str, db: Session = Depends(get_db)):
+# --- РЕАЛЬНАЯ ОЧЕРЕДЬ ПОИСКА ---
+@app.post("/matchmaking/toggle")
+def toggle_matchmaking(current_user: Player = Depends(get_current_user), db: Session = Depends(get_db)):
+    current_user.is_searching = not current_user.is_searching
+    if current_user.is_searching:
+        current_user.last_search_time = datetime.utcnow()
+    db.commit()
+    return {"is_searching": current_user.is_searching}
+
+@app.get("/matchmaking/status/{nickname}")
+def get_search_status(nickname: str, db: Session = Depends(get_db)):
     player = db.query(Player).filter(func.lower(Player.nickname) == nickname.lower()).first()
     if not player: raise HTTPException(status_code=404, detail="Игрок не найден")
-
-    others = db.query(Player).filter(Player.id != player.id).all()
-    sorted_others = sorted(others, key=lambda p: abs(p.rating - player.rating))
-    top_5 = sorted_others[:5]
-
-    return [MatchmakingPlayer(
-        nickname=p.nickname,
-        rating=round(p.rating, 2),
-        avatar_url=p.avatar_url,
-        diff=round(abs(p.rating - player.rating), 1)
-    ) for p in top_5]
+    
+    if player.is_searching:
+        player.last_search_time = datetime.utcnow()
+        db.commit()
+        
+        time_threshold = datetime.utcnow() - timedelta(seconds=30)
+        others = db.query(Player).filter(
+            Player.id != player.id,
+            Player.is_searching == True,
+            Player.last_search_time >= time_threshold
+        ).all()
+        
+        sorted_others = sorted(others, key=lambda p: abs(p.rating - player.rating))
+        top_5 = sorted_others[:5]
+        
+        return {
+            "is_searching": True,
+            "matches": [MatchmakingPlayer(
+                nickname=p.nickname, rating=round(p.rating, 2), avatar_url=p.avatar_url, diff=round(abs(p.rating - player.rating), 1)
+            ) for p in top_5]
+        }
+    else:
+        return {"is_searching": False, "matches": []}
 
 @app.get("/confirm/{duel_id}", response_class=HTMLResponse)
 def confirm_page(duel_id: int, db: Session = Depends(get_db)):
@@ -430,8 +453,7 @@ def confirm_duel(duel_id: int, db: Session = Depends(get_db)):
     loser = db.query(Player).filter(Player.id == duel.loser_id).first()
     
     duel.status = "confirmed"
-    if duel.is_ranked: # Считаем рейтинг только если игра рейтинговая
-        update_glicko_rating(winner, loser, duel)
+    if duel.is_ranked: update_glicko_rating(winner, loser, duel)
     db.commit()
     
     return HTMLResponse("<html><body style='background:#0a0908;color:#cd7f32;text-align:center;padding-top:100px;'><h1>МАТЧ ПОДТВЕРЖДЕН!</h1><a href='/' style='color:#cd7f32;'>Вернуться в Ладдер</a></body></html>")

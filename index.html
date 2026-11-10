@@ -100,7 +100,7 @@
                         <div class="chat-box" id="chatMessages"></div>
                         <div class="mt-3" id="chatInputBlock" style="display:none;">
                             <div class="input-group">
-                                <input type="text" id="chatInput" class="form-control" placeholder="Написать в чат..." maxlength="200" onkeypress="handleChatEnter(event)">
+                                <input type="text" id="chatInput" name="chat_message" class="form-control" placeholder="Написать в чат..." maxlength="200" onkeypress="handleChatEnter(event)" autocomplete="new-password" aria-autocomplete="none">
                                 <button class="btn btn-custom" onclick="sendChatMessage()">▶</button>
                             </div>
                         </div>
@@ -204,10 +204,10 @@
 
     <!-- Модалки -->
     <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Вход</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><input type="text" class="form-control mb-3" id="loginNickname" placeholder="Ник из STALZONE"><input type="password" class="form-control mb-3" id="loginPassword" placeholder="Пароль"><div id="loginError" class="text-danger" style="font-size: 0.9em;"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="doLogin()">Войти</button></div></div></div>
+        <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Вход</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><input type="text" class="form-control mb-3" id="loginNickname" placeholder="Ник из STALZONE" autocomplete="username"><input type="password" class="form-control mb-3" id="loginPassword" placeholder="Пароль" autocomplete="current-password"><div id="loginError" class="text-danger" style="font-size: 0.9em;"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="doLogin()">Войти</button></div></div></div>
     </div>
     <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Регистрация</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><input type="text" class="form-control mb-3" id="regNickname" placeholder="Ник из STALZONE"><input type="password" class="form-control mb-3" id="regPassword" placeholder="Пароль"><div id="regError" class="text-danger" style="font-size: 0.9em;"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="doRegister()">Зарегистрироваться</button></div></div></div>
+        <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Регистрация</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><input type="text" class="form-control mb-3" id="regNickname" placeholder="Ник из STALZONE" autocomplete="off"><input type="password" class="form-control mb-3" id="regPassword" placeholder="Пароль" autocomplete="new-password"><div id="regError" class="text-danger" style="font-size: 0.9em;"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="doRegister()">Зарегистрироваться</button></div></div></div>
     </div>
 
     <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
@@ -233,7 +233,7 @@
                         <h6 style="color: var(--bronze-light);">Стена славы (Комментарии):</h6>
                         <div id="commentsSection" class="mt-2" style="max-height: 250px; overflow-y: auto;"></div>
                         <div class="mt-3" id="commentInputBlock" style="display:none;">
-                            <textarea id="newCommentText" class="form-control mb-2" rows="2" placeholder="Оставь свой след в истории..."></textarea>
+                            <textarea id="newCommentText" class="form-control mb-2" rows="2" placeholder="Оставь свой след в истории..." autocomplete="off"></textarea>
                             <button class="btn btn-custom btn-sm w-100" onclick="postComment()">Отправить</button>
                         </div>
                     </div>
@@ -248,9 +248,9 @@
                 <div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Настройки профиля</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
                 <div class="modal-body row">
                     <div class="col-md-6">
-                        <label class="form-label text-light">Ссылка на баннер:</label><input type="text" class="form-control mb-3" id="editBanner" placeholder="URL картинки">
-                        <label class="form-label text-light">Ссылка на аватарку:</label><input type="text" class="form-control mb-3" id="editAvatar" placeholder="URL картинки">
-                        <label class="form-label text-light">Статус (Био):</label><textarea class="form-control mb-3" id="editBio" rows="2" placeholder="Кратко о себе..."></textarea>
+                        <label class="form-label text-light">Ссылка на баннер:</label><input type="text" class="form-control mb-3" id="editBanner" placeholder="URL картинки" autocomplete="off">
+                        <label class="form-label text-light">Ссылка на аватарку:</label><input type="text" class="form-control mb-3" id="editAvatar" placeholder="URL картинки" autocomplete="off">
+                        <label class="form-label text-light">Статус (Био):</label><textarea class="form-control mb-3" id="editBio" rows="2" placeholder="Кратко о себе..." autocomplete="off"></textarea>
                         
                         <label class="form-label text-light">Категория цитат:</label>
                         <select class="form-control mb-3" id="editQuoteCategory" onchange="updateQuoteList()">
@@ -262,10 +262,10 @@
                     </div>
                     <div class="col-md-6 border-start" style="border-color: var(--border-color) !important;">
                         <h6 style="color: var(--bronze-light);">Интеграции (ссылки):</h6>
-                        <label class="form-label text-light">Discord:</label><input type="text" class="form-control mb-2" id="editDiscord" placeholder="https://discord.gg/...">
-                        <label class="form-label text-light">Telegram:</label><input type="text" class="form-control mb-2" id="editTelegram" placeholder="https://t.me/...">
-                        <label class="form-label text-light">Twitch:</label><input type="text" class="form-control mb-2" id="editTwitch" placeholder="https://twitch.tv/...">
-                        <label class="form-label text-light">YouTube:</label><input type="text" class="form-control mb-2" id="editYoutube" placeholder="https://youtube.com/...">
+                        <label class="form-label text-light">Discord:</label><input type="text" class="form-control mb-2" id="editDiscord" placeholder="https://discord.gg/..." autocomplete="off">
+                        <label class="form-label text-light">Telegram:</label><input type="text" class="form-control mb-2" id="editTelegram" placeholder="https://t.me/..." autocomplete="off">
+                        <label class="form-label text-light">Twitch:</label><input type="text" class="form-control mb-2" id="editTwitch" placeholder="https://twitch.tv/..." autocomplete="off">
+                        <label class="form-label text-light">YouTube:</label><input type="text" class="form-control mb-2" id="editYoutube" placeholder="https://youtube.com/..." autocomplete="off">
                     </div>
                 </div>
                 <div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="saveProfile()">Сохранить</button></div>
@@ -285,6 +285,7 @@
         let currentProfileNickname = ""; 
         let chatInterval = null;
         let isRankedMode = true;
+        let matchmakingInterval = null;
 
         const spartanQuotes = [
             "Со щитом или на щите!", "Это Спарта!", "Спартанцы не спрашивают, сколько врагов, они спрашивают, где они.",
@@ -533,48 +534,88 @@
 
         async function findMatch() {
             if (!currentUser) return;
+            
             const btn = document.getElementById('findMatchBtn');
             const resDiv = document.getElementById('matchmakingResult');
             const list = document.getElementById('matchmakingList');
             
-            btn.innerText = "⏳ Ищем...";
-            btn.disabled = true;
+            // Если уже ищем - останавливаем
+            if (matchmakingInterval) {
+                clearInterval(matchmakingInterval);
+                matchmakingInterval = null;
+                btn.innerText = "🔍 Найти соперника";
+                btn.classList.remove('btn-danger');
+                btn.classList.add('btn-outline-warning');
+                resDiv.style.display = 'none';
+                await fetch('/matchmaking/toggle', { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
+                return;
+            }
+
+            // Начинаем поиск
+            btn.innerText = "⏹ Отменить поиск";
+            btn.classList.remove('btn-outline-warning');
+            btn.classList.add('btn-danger');
+            resDiv.style.display = 'block';
+            list.innerHTML = '<li class="list-group-item bg-transparent text-warning" style="border-color: var(--border-color);">⏳ Ищем соперников в очереди...</li>';
             
-            try {
-                const res = await fetch(`/matchmaking/${currentUser}`);
-                const data = await res.json();
-                
-                list.innerHTML = '';
-                if (data.length === 0) {
-                    list.innerHTML = '<li class="list-group-item bg-transparent text-muted" style="border-color: var(--border-color);">Пока нет других воинов для сравнения.</li>';
-                } else {
-                    data.forEach(p => {
-                        const avatarSrc = p.avatar_url ? p.avatar_url : `https://ui-avatars.com/api/?name=${p.nickname}&background=151312&color=cd7f32&rounded=true`;
-                        list.innerHTML += `
-                        <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center" style="border-color: var(--border-color); color: var(--parchment);">
-                            <div class="d-flex align-items-center">
-                                <img src="${avatarSrc}" style="width:30px; height:30px; border-radius:50%; border:1px solid var(--bronze); margin-right:10px;">
-                                <div>
-                                    <div class="fw-bold" style="color: var(--bronze-light);">${p.nickname}</div>
-                                    <div class="small text-gray">Рейтинг: ${p.rating} (Разница: ${p.diff})</div>
+            // Включаем статус поиска на сервере
+            await fetch('/matchmaking/toggle', { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
+
+            // Запускаем цикл опроса каждые 3 секунды
+            matchmakingInterval = setInterval(async () => {
+                try {
+                    const res = await fetch(`/matchmaking/status/${currentUser}`);
+                    const data = await res.json();
+                    
+                    if (!data.is_searching) {
+                        clearInterval(matchmakingInterval);
+                        matchmakingInterval = null;
+                        btn.innerText = "🔍 Найти соперника";
+                        btn.classList.remove('btn-danger');
+                        btn.classList.add('btn-outline-warning');
+                        resDiv.style.display = 'none';
+                        return;
+                    }
+
+                    list.innerHTML = '';
+                    if (data.matches.length === 0) {
+                        list.innerHTML = '<li class="list-group-item bg-transparent text-muted" style="border-color: var(--border-color);">В очереди пока никого нет. Ждем...</li>';
+                    } else {
+                        data.matches.forEach(p => {
+                            const avatarSrc = p.avatar_url ? p.avatar_url : `https://ui-avatars.com/api/?name=${p.nickname}&background=151312&color=cd7f32&rounded=true`;
+                            list.innerHTML += `
+                            <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center" style="border-color: var(--border-color); color: var(--parchment);">
+                                <div class="d-flex align-items-center">
+                                    <img src="${avatarSrc}" style="width:30px; height:30px; border-radius:50%; border:1px solid var(--bronze); margin-right:10px;">
+                                    <div>
+                                        <div class="fw-bold" style="color: var(--bronze-light);">${p.nickname}</div>
+                                        <div class="small text-gray">Рейтинг: ${p.rating} (Разница: ${p.diff})</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <button class="btn btn-sm btn-outline-warning" style="border-radius:0;" onclick="selectOpponent('${p.nickname}')">Выбрать</button>
-                        </li>`;
-                    });
-                }
-                resDiv.style.display = 'block';
-            } catch(e) { console.error(e); }
-            
-            btn.innerText = "🔍 Найти соперника";
-            btn.disabled = false;
+                                <button class="btn btn-sm btn-outline-warning" style="border-radius:0;" onclick="selectOpponent('${p.nickname}')">Выбрать</button>
+                            </li>`;
+                        });
+                    }
+                } catch(e) { console.error(e); }
+            }, 3000);
         }
 
-        function selectOpponent(nickname) {
+        async function selectOpponent(nickname) {
             document.getElementById('loser').value = nickname;
             checkForm();
             document.getElementById('matchmakingResult').style.display = 'none';
             document.getElementById('duelForm').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Останавливаем поиск при выборе
+            if (matchmakingInterval) {
+                clearInterval(matchmakingInterval);
+                matchmakingInterval = null;
+                const btn = document.getElementById('findMatchBtn');
+                btn.innerText = "🔍 Найти соперника";
+                btn.classList.remove('btn-danger');
+                btn.classList.add('btn-outline-warning');
+                await fetch('/matchmaking/toggle', { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
+            }
         }
 
         function checkForm() {
@@ -652,6 +693,16 @@
                     const result = await response.json(); const confirmUrl = `${window.location.origin}/confirm/${result.duel_id}`;
                     document.getElementById('message').innerHTML = `<div class="alert py-2" style="border-radius:0; border: 1px solid var(--bronze); background-color: rgba(138,3,3,0.2); color: var(--bronze-light);"><strong>Заявка создана!</strong> Ссылка для соперника:<br><input type="text" class="form-control mt-2" value="${confirmUrl}" readonly onclick="this.select()"></div>`;
                     document.getElementById('duelForm').reset(); updateAuthUI(); document.getElementById('imagePreview').style.display = 'none'; loadData();
+                    
+                    // Если поиск был активен, выключаем его после отправки
+                    if (matchmakingInterval) {
+                        clearInterval(matchmakingInterval);
+                        matchmakingInterval = null;
+                        document.getElementById('findMatchBtn').innerText = "🔍 Найти соперника";
+                        document.getElementById('findMatchBtn').classList.remove('btn-danger');
+                        document.getElementById('findMatchBtn').classList.add('btn-outline-warning');
+                        document.getElementById('matchmakingResult').style.display = 'none';
+                    }
                 }
             } catch (error) { console.error(error); }
         });
@@ -679,7 +730,6 @@
                 if (possibleNames.length >= 2) {
                     const p1 = possibleNames[possibleNames.length - 2]; const p2 = possibleNames[possibleNames.length - 1];
                     
-                    // Если это обычная игра, просто вписываем найденную карту в текстовое поле
                     if (!isRankedMode) {
                         let mapName = ""; for (let name of possibleNames) if (name !== p1 && name !== p2) { mapName = name; break; }
                         if (mapName) document.getElementById('mapUnranked').value = mapName;
