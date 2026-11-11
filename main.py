@@ -83,9 +83,7 @@ class Duel(Base):
 
 Base.metadata.create_all(bind=engine)
 
-# --- НОВАЯ ПРОВЕРКА НИКОВ ---
 class UserAuth(BaseModel):
-    # pattern гарантирует, что в нике только буквы (рус/англ) и _
     nickname: str = Field(..., min_length=2, max_length=20, pattern=r"^[a-zA-Zа-яА-Я_]+$")
     password: str = Field(..., min_length=3)
 
@@ -106,7 +104,6 @@ class ProfileUpdate(BaseModel):
     youtube: str | None = None
 
 class DuelCreate(BaseModel):
-    # Такая же защита для вызова по нику
     opponent_nickname: str = Field(..., min_length=2, max_length=20, pattern=r"^[a-zA-Zа-яА-Я_]+$")
     is_ranked: bool
     map_name: str | None = None
@@ -227,6 +224,13 @@ def resolve_dispute(duel_id: int, data: AdminResolve, admin: Player = Depends(ge
         
     db.commit()
     return {"status": "resolved"}
+
+# НОВЫЙ ЭНДПОИНТ ДЛЯ ОЧИСТКИ ЧАТА АДМИНОМ
+@app.post("/admin/clear_chat")
+def clear_chat(admin: Player = Depends(get_current_admin), db: Session = Depends(get_db)):
+    db.query(ChatMessage).delete()
+    db.commit()
+    return {"status": "ok"}
 
 @app.post("/duels/create")
 def create_duel(data: DuelCreate, current_user: Player = Depends(get_current_user), db: Session = Depends(get_db)):

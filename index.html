@@ -80,7 +80,6 @@
         
         .admin-dispute-card { background: #1f1a17; border: 1px solid var(--blood); padding: 15px; margin-bottom: 15px; }
 
-        /* --- КАСТОМНЫЙ СКРОЛЛБАР --- */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #0a0908; border-left: 1px solid #3a2e26; }
         ::-webkit-scrollbar-thumb { background: #6b3e1b; border-radius: 0; }
@@ -93,7 +92,6 @@
     
     <div class="container main-container">
         <div class="top-bar">
-            <!-- ИСПРАВЛЕНО: убран d-flex, чтобы JS мог скрывать блок -->
             <div id="userInfo" style="display:none; color: var(--bronze-light); font-weight: bold; font-size: 0.9rem;">
                 <div class="d-flex align-items-center">
                     Воитель: <span id="currentUserNickname" class="ms-1"></span>
@@ -216,6 +214,9 @@
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
+                    <!-- Кнопка очистки чата -->
+                    <button class="btn btn-outline-danger w-100 mb-3" onclick="adminClearChat()">🗑️ Очистить чат полностью</button>
+                    
                     <div id="adminDisputesList">
                         Загрузка споров...
                     </div>
@@ -318,7 +319,7 @@
         function updateAuthUI() {
             if (token && currentUser) {
                 document.getElementById('authButtons').style.display = 'none';
-                document.getElementById('userInfo').style.display = 'block'; // ИСПРАВЛЕНО
+                document.getElementById('userInfo').style.display = 'block';
                 document.getElementById('currentUserNickname').innerText = currentUser;
                 document.getElementById('chatInputBlock').style.display = 'block';
                 document.getElementById('chatLoginPrompt').style.display = 'none';
@@ -442,6 +443,16 @@
             } catch (e) { alert(e.message); }
         }
 
+        async function adminClearChat() {
+            if(!confirm("Вы уверены, что хотите полностью очистить чат?")) return;
+            try {
+                const res = await fetch('/admin/clear_chat', { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
+                if(!res.ok) throw new Error("Ошибка");
+                loadChat();
+                alert("Чат очищен!");
+            } catch(e) { alert(e.message); }
+        }
+
         async function checkActiveMatch() {
             if (!token) return;
             try {
@@ -470,7 +481,13 @@
                                 <button class="btn btn-outline-danger flex-fill" onclick="declineDuel(${duel.id})">Отклонить</button>
                             </div>`;
                     } else {
-                        body.innerHTML = `<p>Вы вызвали <b class="text-warning">${duel.opponent}</b> на дуэль.</p><p>Ожидаем подтверждения соперника...</p><div class="spinner-border text-warning mt-3"></div>`;
+                        // ДОБАВЛЕНА КНОПКА ОТМЕНЫ ДЛЯ ТОГО, КТО ВЫЗВАЛ
+                        body.innerHTML = `
+                            <p>Вы вызвали <b class="text-warning">${duel.opponent}</b> на дуэль.</p>
+                            <p>Ожидаем подтверждения соперника...</p>
+                            <div class="text-center my-3"><div class="spinner-border text-warning"></div></div>
+                            <button class="btn btn-outline-danger w-100 mt-2" onclick="declineDuel(${duel.id})">Отменить вызов</button>
+                        `;
                     }
                     matchModalInstance.show();
                 } 
