@@ -16,58 +16,76 @@
         h1 { font-family: 'Ruslan Display', serif; color: var(--bronze-light); text-align: center; text-transform: uppercase; letter-spacing: 4px; text-shadow: 2px 2px 0px #000, 0 0 30px rgba(138, 3, 3, 0.6); margin-bottom: 30px; font-size: 3rem; }
         
         .card { background-color: var(--bg-card); border: 2px solid var(--border-color); border-radius: 0; box-shadow: 0 8px 25px rgba(0,0,0,0.9); margin-bottom: 25px; }
-        .card-header { background-color: #1f1a17; color: var(--bronze-light); font-weight: bold; text-transform: uppercase; border-bottom: 2px solid var(--border-color); font-size: 1.1rem; }
+        .card-header { background-color: #1f1a17; color: var(--bronze-light); font-weight: bold; text-transform: uppercase; border-bottom: 2px solid var(--border-color); font-size: 1rem; padding: 10px 15px;}
         
         .table-dark { --bs-table-bg: transparent; --bs-table-hover-bg: #1f1a17; color: var(--parchment); }
-        .table th { border-color: var(--border-color); color: var(--bronze); text-transform: uppercase; }
+        .table th { border-color: var(--border-color); color: var(--bronze); text-transform: uppercase; font-size: 0.85rem;}
         .table td { border-color: var(--border-color); vertical-align: middle; }
         .rating { font-weight: bold; color: var(--bronze-light); font-size: 1.1em; }
         .text-win { color: var(--bronze-light); font-weight: bold; }
         .text-lose { color: #ff4444; font-weight: bold; }
         .text-gray { color: #8f847b; font-size: 0.85em; }
         
-        .btn-custom { background: linear-gradient(to bottom, var(--bronze) 0%, var(--bronze-dark) 100%); color: #000 !important; font-weight: bold; text-transform: uppercase; border: 2px solid #2b1a0d; border-radius: 0; box-shadow: 0 4px 0 #2b1a0d; transition: all 0.1s; }
+        .btn-custom { background: linear-gradient(to bottom, var(--bronze) 0%, var(--bronze-dark) 100%); color: #000 !important; font-weight: bold; text-transform: uppercase; border: 2px solid #2b1a0d; border-radius: 0; box-shadow: 0 3px 0 #2b1a0d; transition: all 0.1s; font-size: 0.9rem;}
         .btn-custom:hover { background: linear-gradient(to bottom, var(--bronze-light) 0%, var(--bronze) 100%); }
-        .btn-custom:active { transform: translateY(4px); box-shadow: 0 0 0 #2b1a0d; }
-        .btn-custom:disabled { background: #222; color: #555 !important; border-color: #111; box-shadow: 0 4px 0 #111; cursor: not-allowed; }
+        .btn-custom:active { transform: translateY(3px); box-shadow: 0 0 0 #2b1a0d; }
+        .btn-custom:disabled { background: #222; color: #555 !important; border-color: #111; box-shadow: 0 3px 0 #111; cursor: not-allowed; }
         
-        .form-control, .form-select { background-color: #0a0908 !important; border: 2px solid var(--border-color); border-radius: 0; color: var(--bronze-light) !important; }
+        .form-control, .form-select { background-color: #0a0908 !important; border: 2px solid var(--border-color); border-radius: 0; color: var(--bronze-light) !important; font-size: 0.95rem;}
         .form-control::placeholder { color: #5a4b41 !important; }
-        .form-control:focus, .form-select:focus { border-color: var(--bronze); box-shadow: 0 0 15px rgba(138, 3, 3, 0.4); }
-        .form-control[type="file"]::file-selector-button { background: var(--bronze-dark); color: var(--bronze-light); border: 1px solid var(--bronze); font-weight: bold; cursor: pointer; margin-right: 15px; }
+        .form-control:focus, .form-select:focus { border-color: var(--bronze); box-shadow: 0 0 10px rgba(138, 3, 3, 0.3); }
         
         .player-link { color: var(--parchment); text-decoration: none; cursor: pointer; font-weight: bold; }
         .player-link:hover { color: var(--bronze-light); text-shadow: 0 0 10px var(--bronze); }
         
         .modal-content { background-color: var(--bg-card); color: var(--parchment); border: 3px solid var(--blood); border-radius: 0; box-shadow: 0 0 60px rgba(138, 3, 3, 0.4); }
-        .modal-header, .modal-footer { border-color: var(--border-color); }
+        .modal-header, .modal-footer { border-color: var(--border-color); padding: 12px 20px;}
+        .modal-body { padding: 20px; }
         .btn-close-white { filter: invert(1) sepia(1) saturate(5) hue-rotate(330deg); }
         
-        .profile-banner { width: 100%; height: 150px; background-color: #1f1a17; background-size: cover; background-position: center; border-bottom: 2px solid var(--border-color); }
-        .profile-avatar { width: 100px; height: 100px; border-radius: 50%; border: 3px solid var(--bronze); background-color: #0a0908; background-size: cover; background-position: center; margin-top: -50px; margin-left: 20px; position: relative; }
-        .table-avatar { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--bronze); object-fit: cover; background-color: #0a0908; }
+        .profile-banner { width: 100%; height: 120px; background-color: #1f1a17; background-size: cover; background-position: center; border-bottom: 2px solid var(--border-color); }
+        .profile-avatar { width: 90px; height: 90px; border-radius: 50%; border: 3px solid var(--bronze); background-color: #0a0908; background-size: cover; background-position: center; margin-top: -45px; margin-left: 20px; position: relative; }
+        .table-avatar { width: 32px; height: 32px; border-radius: 50%; border: 2px solid var(--bronze); object-fit: cover; background-color: #0a0908; }
         
-        .crown-gold { color: #FFD700; text-shadow: 0 0 8px #FFD700; font-size: 1.3em; }
+        .crown-gold { color: #FFD700; text-shadow: 0 0 8px #FFD700; font-size: 1.2em; }
         .crown-silver { color: #C0C0C0; text-shadow: 0 0 8px #C0C0C0; font-size: 1.1em; }
         .crown-bronze { color: #CD7F32; text-shadow: 0 0 8px #CD7F32; font-size: 1em; }
-        .my-row { background-color: rgba(205, 127, 50, 0.15) !important; border-left: 4px solid var(--bronze); }
+        .my-row { background-color: rgba(205, 127, 50, 0.15) !important; border-left: 3px solid var(--bronze); }
 
         .social-links a { color: var(--bronze); text-decoration: none; font-size: 1.2rem; margin-right: 10px; transition: 0.2s; }
         .social-links a:hover { color: var(--bronze-light); text-shadow: 0 0 10px var(--bronze); }
-        .comment-box { background-color: #0a0908; border: 1px solid var(--border-color); padding: 10px; margin-bottom: 10px; border-radius: 4px; }
-        .comment-author { color: var(--bronze); font-weight: bold; font-size: 0.95em; }
-        .comment-time { color: #5a4b41; font-size: 0.8em; float: right; }
+        .comment-box { background-color: #0a0908; border: 1px solid var(--border-color); padding: 8px 12px; margin-bottom: 8px; border-radius: 4px; }
+        .comment-author { color: var(--bronze); font-weight: bold; font-size: 0.9em; }
+        .comment-time { color: #5a4b41; font-size: 0.75em; float: right; }
 
-        .chat-box { height: 400px; overflow-y: auto; padding: 10px; background-color: #0a0908; border: 1px solid var(--border-color); border-radius: 4px; display: flex; flex-direction: column; }
-        .chat-message { margin-bottom: 8px; font-size: 0.9em; line-height: 1.3; word-wrap: break-word; }
+        .chat-box { height: 350px; overflow-y: auto; padding: 10px; background-color: #0a0908; border: 1px solid var(--border-color); border-radius: 4px; display: flex; flex-direction: column; }
+        .chat-message { margin-bottom: 8px; font-size: 0.85em; line-height: 1.3; word-wrap: break-word; }
         .chat-author { font-weight: bold; color: var(--bronze-light); cursor: pointer; }
         .chat-author:hover { text-decoration: underline; }
-        .chat-rating { color: #FFD700; font-size: 0.8em; margin-left: 3px; font-weight: bold; }
-        .chat-time { color: #5a4b41; font-size: 0.75em; margin-left: 5px; }
+        .chat-rating { color: #FFD700; font-size: 0.75em; margin-left: 2px; font-weight: bold; }
+        .chat-time { color: #5a4b41; font-size: 0.7em; margin-left: 5px; }
         
-        .mode-switch { display: flex; gap: 10px; margin-bottom: 15px; }
-        .mode-btn { flex: 1; padding: 10px; border: 2px solid var(--border-color); background: #0a0908; color: var(--parchment); font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.2s; }
-        .mode-btn.active { border-color: var(--bronze); background: rgba(205, 127, 50, 0.2); color: var(--bronze-light); }
+        .mode-switch { display: flex; gap: 0; margin-bottom: 15px; border: 2px solid var(--border-color); }
+        .mode-btn { flex: 1; padding: 8px 10px; background: #0a0908; color: var(--parchment); font-weight: bold; cursor: pointer; text-transform: uppercase; transition: 0.2s; border: none; border-right: 2px solid var(--border-color); font-size: 0.85rem; }
+        .mode-btn:last-child { border-right: none; }
+        .mode-btn.active { background: rgba(205, 127, 50, 0.15); color: var(--bronze-light); box-shadow: inset 0 0 15px rgba(205,127,50,0.2); }
+        
+        .arena-panel { background: #0a0908; border: 2px solid var(--border-color); padding: 15px; }
+        .search-btn-main { font-size: 1rem; padding: 10px; letter-spacing: 1px; }
+        
+        .matchmaking-box { background: #1f1a17; border: 1px solid var(--bronze-dark); padding: 10px; margin-top: 10px; max-height: 200px; overflow-y: auto; }
+        .matchmaking-list-item { background: transparent !important; border-color: var(--border-color) !important; padding: 6px 10px; }
+        .help-btn { border-radius: 0; border: 1px solid var(--border-color); color: var(--bronze-light); background: transparent; width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; transition: 0.2s;}
+        .help-btn:hover { background: var(--bronze-dark); color: #fff; }
+        
+        .admin-dispute-card { background: #1f1a17; border: 1px solid var(--blood); padding: 15px; margin-bottom: 15px; }
+
+        /* --- КАСТОМНЫЙ СКРОЛЛБАР --- */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0908; border-left: 1px solid #3a2e26; }
+        ::-webkit-scrollbar-thumb { background: #6b3e1b; border-radius: 0; }
+        ::-webkit-scrollbar-thumb:hover { background: #cd7f32; }
+        * { scrollbar-width: thin; scrollbar-color: #6b3e1b #0a0908; }
     </style>
 </head>
 <body>
@@ -75,73 +93,61 @@
     
     <div class="container main-container">
         <div class="top-bar">
-            <div id="userInfo" style="display:none; color: var(--bronze-light); font-weight: bold;">
-                Воитель: <span id="currentUserNickname"></span>
-                <button class="btn btn-sm btn-outline-warning ms-2" style="border-radius: 0;" onclick="openEditProfile()">Мой профиль</button>
-                <button class="btn btn-sm btn-outline-danger ms-1" style="border-radius: 0;" onclick="logout()">Выйти</button>
+            <!-- ИСПРАВЛЕНО: убран d-flex, чтобы JS мог скрывать блок -->
+            <div id="userInfo" style="display:none; color: var(--bronze-light); font-weight: bold; font-size: 0.9rem;">
+                <div class="d-flex align-items-center">
+                    Воитель: <span id="currentUserNickname" class="ms-1"></span>
+                    <button class="btn btn-sm btn-outline-info ms-2" style="border-radius: 0; padding: 2px 10px; display:none;" id="adminPanelBtn" onclick="openAdminPanel()">🛡️ Админ</button>
+                    <button class="btn btn-sm btn-outline-warning ms-2" style="border-radius: 0; padding: 2px 10px;" onclick="openEditProfile()">Профиль</button>
+                    <button class="btn btn-sm btn-outline-danger ms-1" style="border-radius: 0; padding: 2px 10px;" onclick="logout()">Выйти</button>
+                </div>
             </div>
             <div id="authButtons">
-                <button class="btn btn-sm btn-outline-light" style="border-radius: 0;" onclick="showModal('loginModal')">Войти</button>
-                <button class="btn btn-sm btn-custom" onclick="showModal('registerModal')">Регистрация</button>
+                <button class="btn btn-sm btn-outline-light" style="border-radius: 0; padding: 2px 10px;" onclick="showModal('loginModal')">Войти</button>
+                <button class="btn btn-sm btn-custom" style="padding: 4px 10px;" onclick="showModal('registerModal')">Регистрация</button>
             </div>
         </div>
 
         <h1>⚔️ STALZONE PVP LADDER ⚔️</h1>
 
         <div class="row">
-            <!-- ЛЕВАЯ КОЛОНКА: ЧАТ -->
             <div class="col-lg-4 col-md-5 mb-4">
-                <div class="card h-100">
+                <div class="card h-100 mb-0">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span>Общий чат</span>
-                        <span class="badge bg-danger" style="border-radius:0;">Online</span>
+                        <span class="badge bg-danger" style="border-radius:0; font-size:0.6rem;">Online</span>
                     </div>
-                    <div class="card-body d-flex flex-column">
+                    <div class="card-body d-flex flex-column p-2">
                         <div class="chat-box" id="chatMessages"></div>
-                        <div class="mt-3" id="chatInputBlock" style="display:none;">
-                            <div class="input-group">
-                                <input type="text" id="chatInput" name="chat_message" class="form-control" placeholder="Написать в чат..." maxlength="200" onkeypress="handleChatEnter(event)" autocomplete="new-password" aria-autocomplete="none">
+                        <div class="mt-2" id="chatInputBlock" style="display:none;">
+                            <div class="input-group input-group-sm">
+                                <input type="text" id="chatInput" class="form-control" placeholder="Текст..." maxlength="200" onkeypress="handleChatEnter(event)" autocomplete="new-password">
                                 <button class="btn btn-custom" onclick="sendChatMessage()">▶</button>
                             </div>
                         </div>
-                        <div id="chatLoginPrompt" class="mt-3 text-center text-muted small">Войдите в аккаунт, чтобы писать в чат.</div>
+                        <div id="chatLoginPrompt" class="mt-2 text-center text-muted small">Войдите, чтобы писать.</div>
                     </div>
                 </div>
             </div>
 
-            <!-- ПРАВАЯ КОЛОНКА: ОСНОВНОЙ КОНТЕНТ -->
             <div class="col-lg-8 col-md-7">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <span>Внести результат дуэли</span>
-                        <button class="btn btn-sm btn-outline-warning" style="border-radius: 0; display:none;" id="findMatchBtn" onclick="findMatch()">🔍 Найти соперника</button>
+                        <div class="d-flex align-items-center gap-2">
+                            <span>Арена</span>
+                            <button class="help-btn" data-bs-toggle="modal" data-bs-target="#helpModal" title="Как играть?">?</button>
+                        </div>
+                        <button class="btn btn-sm btn-outline-light" style="border-radius: 0; font-size: 0.75rem; padding: 2px 8px;" data-bs-toggle="modal" data-bs-target="#directChallengeModal">Вызвать по нику</button>
                     </div>
-                    <div class="card-body">
-                        <!-- Блок с результатами поиска -->
-                        <div id="matchmakingResult" class="mb-3" style="display:none;">
-                            <h6 style="color: var(--bronze-light);">Равные тебе воины:</h6>
-                            <ul id="matchmakingList" class="list-group mb-3"></ul>
-                        </div>
-
-                        <!-- Переключатель режимов -->
-                        <div class="mode-switch">
-                            <div class="mode-btn active" id="btnRanked" onclick="setMode(true)">Рейтинговая дуэль</div>
-                            <div class="mode-btn" id="btnUnranked" onclick="setMode(false)">Без рейтинга</div>
-                        </div>
-
-                        <form id="duelForm" class="row g-3">
-                            <div class="col-md-3"><input type="text" class="form-control" id="winner" placeholder="Победитель" readonly style="cursor: not-allowed; opacity: 0.8;"></div>
-                            <div class="col-md-3"><input type="text" class="form-control" id="loser" placeholder="Проигравший" required oninput="checkForm()"></div>
-                            <div class="col-md-2"><input type="text" class="form-control" id="score" placeholder="Счет" required oninput="checkForm()"></div>
-                            
-                            <!-- Поле карты для рейтинга (нередактируемое) -->
-                            <div class="col-md-2" id="mapRankedContainer">
-                                <input type="text" class="form-control" id="mapRanked" placeholder="Рандом" readonly style="cursor: not-allowed; opacity: 0.8;" value="Склад/Спуск">
+                    <div class="card-body p-0">
+                        <div class="arena-panel">
+                            <div class="mode-switch">
+                                <button class="mode-btn active" id="btnRanked" onclick="setMode(true)">🏆 Рейтинг</button>
+                                <button class="mode-btn" id="btnUnranked" onclick="setMode(false)">🎮 Без рейтинга</button>
                             </div>
 
-                            <!-- ТЕКСТОВОЕ ПОЛЕ ДЛЯ КАРТЫ (обычная игра) -->
-                            <div class="col-md-2" id="mapUnrankedContainer" style="display:none;">
-                                <input type="text" class="form-control" id="mapUnranked" placeholder="Карта..." list="mapSuggestions" required oninput="checkForm()">
+                            <div id="mapUnrankedContainer" style="display:none;" class="mb-3">
+                                <input type="text" class="form-control form-control-sm text-center" id="mapUnranked" placeholder="Название карты" list="mapSuggestions" autocomplete="off">
                                 <datalist id="mapSuggestions">
                                     <option value="Склад"></option>
                                     <option value="Спуск"></option>
@@ -151,33 +157,32 @@
                                 </datalist>
                             </div>
 
-                            <div class="col-md-2"><button type="submit" class="btn btn-custom w-100" id="submitBtn" disabled>Внести</button></div>
-                        </form>
-                        <div class="mt-4 border-top border-secondary pt-3" style="border-color: var(--border-color) !important;">
-                            <label for="screenshotUpload" class="form-label text-light" style="color: var(--bronze-light) !important;">Или загрузите скриншот:</label>
-                            <input class="form-control" type="file" id="screenshotUpload" accept="image/*">
-                            <img id="imagePreview" src="" alt="Превью">
-                            <div id="ocrStatus" class="form-text mt-2" style="color: var(--bronze);"></div>
+                            <button class="btn btn-custom w-100 search-btn-main" id="searchBtn" onclick="toggleSearch()">🔍 НАЧАТЬ ПОИСК</button>
+
+                            <div id="matchmakingResult" class="matchmaking-box" style="display:none;">
+                                <ul id="matchmakingList" class="list-group list-group-flush mb-0"></ul>
+                            </div>
+
+                            <div id="message" class="mt-2 text-center" style="font-size:0.85em;"></div>
                         </div>
-                        <div id="message" class="mt-3"></div>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-xl-6">
-                        <div class="card">
+                        <div class="card mb-0">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <span>Зал Славы</span>
-                                <button class="btn btn-sm btn-outline-warning" style="border-radius: 0;" onclick="loadData()">Обновить</button>
+                                <button class="btn btn-sm btn-outline-warning" style="border-radius: 0; font-size:0.7rem; padding: 1px 6px;" onclick="loadData()">↻</button>
                             </div>
-                            <div class="card-body p-0">
+                            <div class="card-body p-0" style="max-height: 300px; overflow-y: auto;">
                                 <table class="table table-dark table-hover text-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th width="8%">#</th>
-                                            <th width="7%"></th>
+                                            <th width="10%">#</th>
+                                            <th width="10%"></th>
                                             <th width="15%">Аватар</th>
-                                            <th width="45%">Воин</th>
+                                            <th width="40%">Воин</th>
                                             <th width="25%">Рейтинг</th>
                                         </tr>
                                     </thead>
@@ -187,9 +192,9 @@
                         </div>
                     </div>
                     <div class="col-xl-6">
-                        <div class="card">
+                        <div class="card mb-0">
                             <div class="card-header">Хроники битв</div>
-                            <div class="card-body p-0">
+                            <div class="card-body p-0" style="max-height: 300px; overflow-y: auto;">
                                 <table class="table table-dark table-hover text-center mb-0">
                                     <thead><tr><th width="25%">Время</th><th width="75%">Сражение</th></tr></thead>
                                     <tbody id="historyBody"><tr><td colspan="2">Загрузка...</td></tr></tbody>
@@ -202,549 +207,518 @@
         </div>
     </div>
 
-    <!-- Модалки -->
-    <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Вход</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><input type="text" class="form-control mb-3" id="loginNickname" placeholder="Ник из STALZONE" autocomplete="username"><input type="password" class="form-control mb-3" id="loginPassword" placeholder="Пароль" autocomplete="current-password"><div id="loginError" class="text-danger" style="font-size: 0.9em;"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="doLogin()">Войти</button></div></div></div>
-    </div>
-    <div class="modal fade" id="registerModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Регистрация</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><input type="text" class="form-control mb-3" id="regNickname" placeholder="Ник из STALZONE" autocomplete="off"><input type="password" class="form-control mb-3" id="regPassword" placeholder="Пароль" autocomplete="new-password"><div id="regError" class="text-danger" style="font-size: 0.9em;"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="doRegister()">Зарегистрироваться</button></div></div></div>
-    </div>
-
-    <div class="modal fade" id="profileModal" tabindex="-1" aria-hidden="true">
+    <!-- МОДАЛКА АДМИНА -->
+    <div class="modal fade" id="adminModal" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <div class="modal-content">
-                <div class="profile-banner" id="viewBanner"></div>
-                <div class="profile-avatar" id="viewAvatar"></div>
-                <div class="modal-header border-0 pt-2">
-                    <h5 class="modal-title" id="profileName" style="color: var(--bronze); font-family: 'Ruslan Display', serif;">Профиль</h5>
+                <div class="modal-header" style="border-bottom: 2px solid var(--blood);">
+                    <h5 class="modal-title" style="color: var(--blood);">🛡️ Админ-панель: Споры</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-body pt-0 row">
-                    <div class="col-md-6 border-end" style="border-color: var(--border-color) !important;">
-                        <div class="social-links mb-3" id="profileSocials"></div>
-                        <p class="fst-italic text-muted mb-3" id="viewBio">Био отсутствует</p>
-                        <p>Рейтинг: <span id="profileRating" class="rating"></span></p>
-                        <p>Статистика: <span id="profileWins" class="text-win"></span> побед / <span id="profileLosses" class="text-lose"></span> поражений (<span id="profileWinrate"></span>% побед)</p>
-                        <hr style="border-color: var(--border-color);">
-                        <h6 style="color: var(--bronze-light);">Последние 5 битв:</h6>
-                        <ul id="profileMatches" class="list-unstyled mt-2" style="font-size: 0.95em;"></ul>
-                    </div>
-                    <div class="col-md-6">
-                        <h6 style="color: var(--bronze-light);">Стена славы (Комментарии):</h6>
-                        <div id="commentsSection" class="mt-2" style="max-height: 250px; overflow-y: auto;"></div>
-                        <div class="mt-3" id="commentInputBlock" style="display:none;">
-                            <textarea id="newCommentText" class="form-control mb-2" rows="2" placeholder="Оставь свой след в истории..." autocomplete="off"></textarea>
-                            <button class="btn btn-custom btn-sm w-100" onclick="postComment()">Отправить</button>
-                        </div>
+                <div class="modal-body">
+                    <div id="adminDisputesList">
+                        Загрузка споров...
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="editProfileModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+    <!-- МОДАЛКА ПОМОЩИ -->
+    <div class="modal fade" id="helpModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
-                <div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Настройки профиля</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
-                <div class="modal-body row">
-                    <div class="col-md-6">
-                        <label class="form-label text-light">Ссылка на баннер:</label><input type="text" class="form-control mb-3" id="editBanner" placeholder="URL картинки" autocomplete="off">
-                        <label class="form-label text-light">Ссылка на аватарку:</label><input type="text" class="form-control mb-3" id="editAvatar" placeholder="URL картинки" autocomplete="off">
-                        <label class="form-label text-light">Статус (Био):</label><textarea class="form-control mb-3" id="editBio" rows="2" placeholder="Кратко о себе..." autocomplete="off"></textarea>
-                        
-                        <label class="form-label text-light">Категория цитат:</label>
-                        <select class="form-control mb-3" id="editQuoteCategory" onchange="updateQuoteList()">
-                            <option value="spartan">Спартанские</option>
-                            <option value="great">Великие люди</option>
-                        </select>
-                        <label class="form-label text-light">Выберите цитату:</label>
-                        <select class="form-control mb-3" id="editQuote"><option value="">-- Без цитаты --</option></select>
-                    </div>
-                    <div class="col-md-6 border-start" style="border-color: var(--border-color) !important;">
-                        <h6 style="color: var(--bronze-light);">Интеграции (ссылки):</h6>
-                        <label class="form-label text-light">Discord:</label><input type="text" class="form-control mb-2" id="editDiscord" placeholder="https://discord.gg/..." autocomplete="off">
-                        <label class="form-label text-light">Telegram:</label><input type="text" class="form-control mb-2" id="editTelegram" placeholder="https://t.me/..." autocomplete="off">
-                        <label class="form-label text-light">Twitch:</label><input type="text" class="form-control mb-2" id="editTwitch" placeholder="https://twitch.tv/..." autocomplete="off">
-                        <label class="form-label text-light">YouTube:</label><input type="text" class="form-control mb-2" id="editYoutube" placeholder="https://youtube.com/..." autocomplete="off">
-                    </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" style="color: var(--bronze);">Как играть?</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
-                <div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="saveProfile()">Сохранить</button></div>
+                <div class="modal-body" style="font-size: 0.95rem;">
+                    <ol class="ps-3 mb-0" style="line-height: 1.6;">
+                        <li class="mb-2">Выберите режим: <b>Рейтинг</b> (карта рандом) или <b>Без рейтинга</b> (выберите карту).</li>
+                        <li class="mb-2">Нажмите <b>«НАЧАТЬ ПОИСК»</b>. Появится список игроков в очереди.</li>
+                        <li class="mb-2">Нажмите <b>«Вызвать»</b> напротив нужного игрока.</li>
+                        <li class="mb-2">Дождитесь, пока он <b>примет</b> вызов (у него выскочит окно).</li>
+                        <li class="mb-2">Запустите игру в STALZONE и сразитесь.</li>
+                        <li class="mb-2">После боя введите счет (например, <b>3:1</b>). Если выиграли — 3:1, проиграли — 1:3.</li>
+                        <li class="mb-2">Когда оба введут счет, матч подтвердится (если счета зеркальны), и рейтинг изменится.</li>
+                        <li class="mb-0">Если соперник ввел неверный счет или завис, нажмите <b>«Оспорить»</b>. Матч отправится на проверку админу.</li>
+                    </ol>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-custom w-100" data-bs-dismiss="modal">Понятно</button>
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="confirmModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header" style="background: linear-gradient(to right, transparent, rgba(138,3,3,0.3), transparent);"><h5 class="modal-title" style="color: #ff5555; font-family: 'Ruslan Display', serif;">Подтверждение</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Воитель, проверь свои трофеи!</p><p class="mb-0">Убедись, что ники, счет и карта указаны верно. Отправить результат?</p></div><div class="modal-footer"><button type="button" class="btn btn-outline-light" style="border-radius: 0;" data-bs-dismiss="modal">Отмена</button><button type="button" class="btn btn-custom" id="confirmSubmitBtn">Да, отправить</button></div></div></div>
+    <!-- МОДАЛКА ПРЯМОГО ВЫЗОВА -->
+    <div class="modal fade" id="directChallengeModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Вызов по нику</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
+                <div class="modal-body">
+                    <label class="form-label text-light">Ник соперника:</label>
+                    <input type="text" class="form-control mb-3" id="directOpponent" placeholder="Впиши ник..." autocomplete="off" pattern="^[a-zA-Zа-яА-Я_]+$" title="Только буквы и _">
+                    <button class="btn btn-custom w-100" onclick="createDirectDuel()">Отправить вызов</button>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- МОДАЛКА АКТИВНОГО МАТЧА -->
+    <div class="modal fade" id="matchModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header"><h5 class="modal-title" style="color: var(--bronze); font-family: 'Ruslan Display', serif;" id="matchModalTitle">Матч</h5></div>
+                <div class="modal-body" id="matchModalBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ОСТАЛЬНЫЕ МОДАЛКИ -->
+    <div class="modal fade" id="loginModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Вход</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><input type="text" class="form-control mb-3" id="loginNickname" placeholder="Ник из STALZONE" autocomplete="username" pattern="^[a-zA-Zа-яА-Я_]+$"><input type="password" class="form-control mb-3" id="loginPassword" placeholder="Пароль" autocomplete="current-password"><div id="loginError" class="text-danger" style="font-size: 0.9em;"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="doLogin()">Войти</button></div></div></div></div>
+    
+    <div class="modal fade" id="registerModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Регистрация</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body">
+        <input type="text" class="form-control mb-3" id="regNickname" placeholder="Ник из STALZONE (только буквы и _)" autocomplete="off" pattern="^[a-zA-Zа-яА-Я_]+$" title="Только русские/английские буквы и нижнее подчеркивание">
+        <input type="password" class="form-control mb-3" id="regPassword" placeholder="Пароль" autocomplete="new-password">
+        <div id="regError" class="text-danger" style="font-size: 0.9em;"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="doRegister()">Зарегистрироваться</button></div></div></div></div>
+    
+    <div class="modal fade" id="profileModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="profile-banner" id="viewBanner"></div><div class="profile-avatar" id="viewAvatar"></div><div class="modal-header border-0 pt-2"><h5 class="modal-title" id="profileName" style="color: var(--bronze); font-family: 'Ruslan Display', serif;">Профиль</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body pt-0 row"><div class="col-md-6 border-end" style="border-color: var(--border-color) !important;"><div class="social-links mb-3" id="profileSocials"></div><p class="fst-italic text-muted mb-3" id="viewBio">Био отсутствует</p><p>Рейтинг: <span id="profileRating" class="rating"></span></p><p>Статистика: <span id="profileWins" class="text-win"></span> побед / <span id="profileLosses" class="text-lose"></span> поражений (<span id="profileWinrate"></span>% побед)</p><hr style="border-color: var(--border-color);"><h6 style="color: var(--bronze-light);">Последние 5 битв:</h6><ul id="profileMatches" class="list-unstyled mt-2" style="font-size: 0.9em;"></ul></div><div class="col-md-6"><h6 style="color: var(--bronze-light);">Стена славы:</h6><div id="commentsSection" class="mt-2" style="max-height: 250px; overflow-y: auto;"></div><div class="mt-3" id="commentInputBlock" style="display:none;"><textarea id="newCommentText" class="form-control mb-2" rows="2" placeholder="Оставь след..." autocomplete="off"></textarea><button class="btn btn-custom btn-sm w-100" onclick="postComment()">Отправить</button></div></div></div></div></div></div>
+    
+    <div class="modal fade" id="editProfileModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Настройки профиля</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body row"><div class="col-md-6"><label class="form-label text-light">Баннер (URL):</label><input type="text" class="form-control mb-3" id="editBanner" autocomplete="off"><label class="form-label text-light">Аватар (URL):</label><input type="text" class="form-control mb-3" id="editAvatar" autocomplete="off"><label class="form-label text-light">Био:</label><textarea class="form-control mb-3" id="editBio" rows="2" autocomplete="off"></textarea><label class="form-label text-light">Цитата:</label><select class="form-control mb-3" id="editQuoteCategory" onchange="updateQuoteList()"><option value="spartan">Спартанские</option><option value="great">Великие люди</option></select><select class="form-control mb-3" id="editQuote"><option value="">-- Без цитаты --</option></select></div><div class="col-md-6 border-start" style="border-color: var(--border-color) !important;"><h6 style="color: var(--bronze-light);">Интеграции:</h6><label class="form-label text-light">Discord:</label><input type="text" class="form-control mb-2" id="editDiscord" autocomplete="off"><label class="form-label text-light">Telegram:</label><input type="text" class="form-control mb-2" id="editTelegram" autocomplete="off"><label class="form-label text-light">Twitch:</label><input type="text" class="form-control mb-2" id="editTwitch" autocomplete="off"><label class="form-label text-light">YouTube:</label><input type="text" class="form-control mb-2" id="editYoutube" autocomplete="off"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="saveProfile()">Сохранить</button></div></div></div></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         let token = localStorage.getItem('token');
         let currentUser = localStorage.getItem('nickname');
-        let confirmModalInstance = null;
-        let currentProfileNickname = ""; 
+        let isAdmin = localStorage.getItem('is_admin') === 'true';
         let chatInterval = null;
-        let isRankedMode = true;
         let matchmakingInterval = null;
+        let matchPollInterval = null;
+        let matchModalInstance = null;
+        let isRankedMode = true;
 
-        const spartanQuotes = [
-            "Со щитом или на щите!", "Это Спарта!", "Спартанцы не спрашивают, сколько врагов, они спрашивают, где они.",
-            "Наши стрелы закроют солнце. — Тем лучше, будем сражаться в тени.", "Молчание — признак согласия.",
-            "Спарта не будет разрушена, пока у нее есть такие воины.", "Лучше умереть стоя, чем жить на коленях.",
-            "Сражайся за то, что любишь, и пусть боги решают исход.", "Смерть на поле боя — высшая честь для воина.",
-            "Закон превыше всего.", "Сила не в числе, а в доблести.", "Мы сражаемся не потому, что ненавидим то, что перед нами, а потому что любим то, что позади нас.",
-            "Лучший способ защитить свою землю — сражаться на чужой.", "Честь дороже жизни.", "Победа или смерть.",
-            "Один спартанец стоит многих.", "Мы не отступим.", "Даже в аду спартанцы будут воевать.",
-            "Женщины Спарты, рожайте воинов!", "Принесите свои щиты, или вернитесь на них.", "Нет ничего страшнее гнева спартанца.",
-            "Спартанцы — это стена, которую не сломить.", "Смерть не страшна, страшна бесчестная жизнь.", "Воин не должен бежать от страха, он должен идти ему навстречу.",
-            "Спарта не сдается.", "Страх — это оружие трусов.", "Кровь и честь.", "Мужество — это привычка.", "Каждый спартанец — это армия.",
-            "Только мертвые видели конец войны.", "Если мы умрем, то умрем с честью.", "Победа — единственная цель.", "Боги благоволят смелым.",
-            "Не отступать и не сдаваться.", "Спартанская сталь не гнется.", "Мы не будем рабами.", "Доблесть — это не отсутствие страха, а преодоление его.",
-            "Нет большего подвига, чем умереть за Спарту.", "Спартанцы смеются в лицо смерти.", "Гнев спартанца ужасен, но его месть — неизбежна.",
-            "Тот, кто боится смерти, уже мертв.", "Мы — Спарта.", "Война — это отец всего.", "Я предпочитаю сражаться с львом, чем с овцой.",
-            "Спартанец никогда не отступает.", "Моя жизнь — это моя честь.", "Щит воина — это его дом.",
-            "Спартанцы не плачут, они мстят.", "Мы не считаем врагов, мы их уничтожаем.", "Пусть боги боятся нас."
-        ];
-
-        const greatQuotes = [
-            "Veni, vidi, vici. (Пришел, увидел, победил) — Юлий Цезарь", "Знание — сила. — Фрэнсис Бэкон", "Я мыслю, следовательно, существую. — Рене Декарт",
-            "Цель оправдывает средства. — Никколо Макиавелли", "Человек — это то, что он делает из себя. — Жан-Поль Сартр",
-            "Война — это продолжение политики другими средствами. — Карл фон Клаузевиц", "Кто не рискует, тот не пьет шампанского. — Поговорка",
-            "Нет ничего постоянного, кроме перемен. — Гераклит", "Все течет, все меняется. — Гераклит", "Познай самого себя. — Сократ",
-            "Я знаю, что ничего не знаю. — Сократ", "Государство — это я. — Людовик XIV", "Победителей не судят. — Екатерина II",
-            "Око за око, зуб за зуб. — Библия", "Кто с мечом к нам придет, от меча и погибнет. — Александр Невский",
-            "Тяжело в учении — легко в бою. — Александр Суворов", "Смелость города берет. — Александр Суворов", "Дисциплина — мать победы. — Александр Суворов",
-            "Мы русские, с нами Бог! — Александр Суворов", "В бою побеждает тот, кто сильнее духом. — Наполеон Бонапарт",
-            "Невозможное — это слово из словаря глупцов. — Наполеон Бонапарт", "Главное — ввязаться в бой, а там посмотрим. — Наполеон Бонапарт",
-            "Искусство войны — это искусство обмана. — Сунь Цзы", "Знай врага и знай себя, и ты сможешь выиграть сотню сражений. — Сунь Цзы",
-            "Война любит кровь. — Сунь Цзы", "Лучшая победа — это победа без боя. — Сунь Цзы",
-            "Смерть одного человека — трагедия, смерть миллионов — статистика. — Иосиф Сталин", "Кадры решают все. — Иосиф Сталин",
-            "Есть такая профессия — Родину защищать. — Из фильма", "Ни шагу назад! — Приказ № 227", "Бороться и искать, найти и не сдаваться. — Вениамин Каверин",
-            "Лучше быть одному, чем с кем попало. — Омар Хайям", "Не делай другому того, чего себе не желаешь. — Конфуций", "Время — деньги. — Бенджамин Франклин",
-            "Хочешь мира — готовься к войне. — Вегеций", "Страх убивает разум. — Дюна", "Я не боюсь армии львов, которой управляет овца. Я боюсь армии овец, которой управляет лев. — Александр Македонский",
-            "Нет ничего невозможного для того, кто пытается. — Александр Македонский", "Служить, а не прислуживаться. — Александр Грибоедов",
-            "Умей владеть собой. — Пифагор", "Терпение и труд все перетрут. — Пословица", "И один в поле воин. — Пословица",
-            "Победа любит подготовку. — Пословица", "Мы в ответе за тех, кого приручили. — Антуан де Сент-Экзюпери",
-            "Кто владеет информацией, тот владеет миром. — Натан Ротшильд", "Разделяй и властвуй. — Филипп II Македонский",
-            "Жребий брошен. — Юлий Цезарь", "Перейти Рубикон. — Юлий Цезарь", "Карфаген должен быть разрушен. — Катон Старший",
-            "Нельзя дважды войти в одну и ту же реку. — Гераклит", "Свобода — это осознанная необходимость. — Гегель"
-        ];
+        const spartanQuotes = ["Со щитом или на щите!", "Это Спарта!", "Спартанцы не спрашивают, сколько врагов, они спрашивают, где они.", "Наши стрелы закроют солнце. — Тем лучше, будем сражаться в тени.", "Молчание — признак согласия.", "Спарта не будет разрушена, пока у нее есть такие воины.", "Лучше умереть стоя, чем жить на коленях.", "Сражайся за то, что любишь, и пусть боги решают исход.", "Смерть на поле боя — высшая честь для воина.", "Закон превыше всего."];
+        const greatQuotes = ["Veni, vidi, vici. — Юлий Цезарь", "Знание — сила. — Фрэнсис Бэкон", "Я мыслю, следовательно, существую. — Рене Декарт", "Цель оправдывает средства. — Никколо Макиавелли", "Война — это продолжение политики другими средствами. — Карл фон Клаузевиц", "Нет ничего постоянного, кроме перемен. — Гераклит", "Познай самого себя. — Сократ", "Государство — это я. — Людовик XIV", "Победителей не судят. — Екатерина II", "Тяжело в учении — легко в бою. — Александр Суворов"];
 
         function updateQuoteList() {
-            const category = document.getElementById('editQuoteCategory').value;
-            const list = category === 'spartan' ? spartanQuotes : greatQuotes;
-            const select = document.getElementById('editQuote');
-            select.innerHTML = '<option value="">-- Без цитаты (случайная) --</option>';
+            const list = document.getElementById('editQuoteCategory').value === 'spartan' ? spartanQuotes : greatQuotes;
+            const select = document.getElementById('editQuote'); select.innerHTML = '<option value="">-- Без цитаты (случайная) --</option>';
             list.forEach(q => { const opt = document.createElement('option'); opt.value = q; opt.textContent = q; select.appendChild(opt); });
         }
 
         function setMode(ranked) {
             isRankedMode = ranked;
-            const btnR = document.getElementById('btnRanked');
-            const btnU = document.getElementById('btnUnranked');
-            const mapR = document.getElementById('mapRankedContainer');
-            const mapU = document.getElementById('mapUnrankedContainer');
-            const mapInput = document.getElementById('mapUnranked');
-
-            if (ranked) {
-                btnR.classList.add('active'); btnU.classList.remove('active');
-                mapR.style.display = 'block'; mapU.style.display = 'none';
-                mapInput.required = false; mapInput.value = '';
-            } else {
-                btnU.classList.add('active'); btnR.classList.remove('active');
-                mapR.style.display = 'none'; mapU.style.display = 'block';
-                mapInput.required = true;
-            }
-            checkForm();
+            document.getElementById('btnRanked').classList.toggle('active', ranked);
+            document.getElementById('btnUnranked').classList.toggle('active', !ranked);
+            document.getElementById('mapUnrankedContainer').style.display = ranked ? 'none' : 'block';
+            if (matchmakingInterval) { toggleSearch(); setTimeout(toggleSearch, 300); }
         }
 
         function updateAuthUI() {
             if (token && currentUser) {
                 document.getElementById('authButtons').style.display = 'none';
-                document.getElementById('userInfo').style.display = 'block';
+                document.getElementById('userInfo').style.display = 'block'; // ИСПРАВЛЕНО
                 document.getElementById('currentUserNickname').innerText = currentUser;
-                document.getElementById('winner').value = currentUser;
                 document.getElementById('chatInputBlock').style.display = 'block';
                 document.getElementById('chatLoginPrompt').style.display = 'none';
-                document.getElementById('findMatchBtn').style.display = 'block';
+                if (!matchPollInterval) matchPollInterval = setInterval(checkActiveMatch, 3000);
+                
+                if (isAdmin) document.getElementById('adminPanelBtn').style.display = 'inline-block';
+                else document.getElementById('adminPanelBtn').style.display = 'none';
+                
             } else {
                 document.getElementById('authButtons').style.display = 'block';
                 document.getElementById('userInfo').style.display = 'none';
-                document.getElementById('winner').value = '';
                 document.getElementById('chatInputBlock').style.display = 'none';
                 document.getElementById('chatLoginPrompt').style.display = 'block';
-                document.getElementById('findMatchBtn').style.display = 'none';
+                if (matchPollInterval) { clearInterval(matchPollInterval); matchPollInterval = null; }
+                document.getElementById('adminPanelBtn').style.display = 'none';
             }
-            checkForm();
         }
 
         function showModal(id) { const modal = new bootstrap.Modal(document.getElementById(id)); modal.show(); }
 
         async function doLogin() {
-            const nick = document.getElementById('loginNickname').value.trim(); const pass = document.getElementById('loginPassword').value;
+            const nick = document.getElementById('loginNickname').value.trim();
+            const pass = document.getElementById('loginPassword').value;
             document.getElementById('loginError').innerText = '';
+            
+            if (!/^[a-zA-Zа-яА-Я_]+$/.test(nick)) {
+                document.getElementById('loginError').innerText = "Ник может содержать только буквы и _";
+                return;
+            }
+
             try {
                 const res = await fetch('/login', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nickname: nick, password: pass}) });
-                const data = await res.json(); if (!res.ok) throw new Error(data.detail || 'Ошибка входа');
-                localStorage.setItem('token', data.access_token); localStorage.setItem('nickname', data.nickname); token = data.access_token; currentUser = data.nickname;
+                const data = await res.json(); if (!res.ok) throw new Error(data.detail);
+                localStorage.setItem('token', data.access_token); localStorage.setItem('nickname', data.nickname); localStorage.setItem('is_admin', data.is_admin);
+                token = data.access_token; currentUser = data.nickname; isAdmin = data.is_admin;
                 updateAuthUI(); bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+                loadData(); loadChat();
             } catch (e) { document.getElementById('loginError').innerText = e.message; }
         }
 
         async function doRegister() {
-            const nick = document.getElementById('regNickname').value.trim(); const pass = document.getElementById('regPassword').value;
+            const nick = document.getElementById('regNickname').value.trim();
+            const pass = document.getElementById('regPassword').value;
             document.getElementById('regError').innerText = '';
+
+            if (!/^[a-zA-Zа-яА-Я_]+$/.test(nick)) {
+                document.getElementById('regError').innerText = "Ник может содержать только буквы (рус/англ) и нижнее подчеркивание (_)";
+                return;
+            }
+
             try {
                 const res = await fetch('/register', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nickname: nick, password: pass}) });
-                const data = await res.json(); if (!res.ok) throw new Error(data.detail || 'Ошибка регистрации');
-                localStorage.setItem('token', data.access_token); localStorage.setItem('nickname', data.nickname); token = data.access_token; currentUser = data.nickname;
+                const data = await res.json(); if (!res.ok) throw new Error(data.detail);
+                localStorage.setItem('token', data.access_token); localStorage.setItem('nickname', data.nickname); localStorage.setItem('is_admin', data.is_admin);
+                token = data.access_token; currentUser = data.nickname; isAdmin = data.is_admin;
                 updateAuthUI(); bootstrap.Modal.getInstance(document.getElementById('registerModal')).hide();
+                loadData(); loadChat();
             } catch (e) { document.getElementById('regError').innerText = e.message; }
         }
 
         function logout() { 
-            localStorage.removeItem('token'); localStorage.removeItem('nickname'); token = null; currentUser = null; document.getElementById('winner').value = ''; updateAuthUI(); 
+            localStorage.removeItem('token'); localStorage.removeItem('nickname'); localStorage.removeItem('is_admin'); 
+            token = null; currentUser = null; isAdmin = false;
+            if (matchPollInterval) { clearInterval(matchPollInterval); matchPollInterval = null; }
+            if (matchmakingInterval) { clearInterval(matchmakingInterval); matchmakingInterval = null; }
+            updateAuthUI(); loadData(); 
         }
 
-        async function openEditProfile() {
+        async function openAdminPanel() {
+            showModal('adminModal');
+            const list = document.getElementById('adminDisputesList');
+            list.innerHTML = '<div class="text-center text-warning">Загрузка...</div>';
             try {
-                const res = await fetch(`/player/${currentUser}`); const data = await res.json();
-                document.getElementById('editBanner').value = data.banner_url || ''; document.getElementById('editAvatar').value = data.avatar_url || ''; document.getElementById('editBio').value = data.bio || '';
-                document.getElementById('editDiscord').value = data.discord || ''; document.getElementById('editTelegram').value = data.telegram || ''; document.getElementById('editTwitch').value = data.twitch || ''; document.getElementById('editYoutube').value = data.youtube || '';
-                if (data.quote) {
-                    if (spartanQuotes.includes(data.quote)) document.getElementById('editQuoteCategory').value = 'spartan';
-                    else if (greatQuotes.includes(data.quote)) document.getElementById('editQuoteCategory').value = 'great';
+                const res = await fetch('/admin/disputes', { headers: {'Authorization': `Bearer ${token}`} });
+                if (!res.ok) throw new Error("Ошибка доступа");
+                const disputes = await res.json();
+                
+                if (disputes.length === 0) {
+                    list.innerHTML = '<div class="text-center text-muted">Нет активных споров. Все спокойно!</div>';
+                    return;
                 }
-                updateQuoteList(); document.getElementById('editQuote').value = data.quote || ''; 
-                showModal('editProfileModal');
-            } catch(e) { alert("Ошибка загрузки профиля"); }
+                
+                list.innerHTML = '';
+                disputes.forEach(d => {
+                    list.innerHTML += `
+                    <div class="admin-dispute-card">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span class="text-gray" style="font-size:0.8em;">${d.time}</span>
+                            <span class="text-gray" style="font-size:0.8em;">${d.is_ranked ? '🏆 Рейтинг' : '🎮 Без рейтинга'} • Карта: ${d.map_name || 'Не указана'}</span>
+                        </div>
+                        <div class="row text-center mb-3">
+                            <div class="col-6 border-end" style="border-color: var(--border-color) !important;">
+                                <div class="fw-bold text-warning">${d.challenger}</div>
+                                <div class="fs-5 text-light">${d.score_challenger || '—'}</div>
+                            </div>
+                            <div class="col-6">
+                                <div class="fw-bold text-warning">${d.opponent}</div>
+                                <div class="fs-5 text-light">${d.score_opponent || '—'}</div>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-success flex-fill" onclick="resolveDispute(${d.id}, 'win_challenger')">Победа ${d.challenger}</button>
+                            <button class="btn btn-sm btn-outline-success flex-fill" onclick="resolveDispute(${d.id}, 'win_opponent')">Победа ${d.opponent}</button>
+                            <button class="btn btn-sm btn-outline-danger" onclick="resolveDispute(${d.id}, 'cancel')">Отмена</button>
+                        </div>
+                    </div>`;
+                });
+            } catch (e) { list.innerHTML = `<div class="text-danger">${e.message}</div>`; }
         }
 
-        async function saveProfile() {
-            const data = { 
-                banner_url: document.getElementById('editBanner').value.trim() || null, avatar_url: document.getElementById('editAvatar').value.trim() || null, 
-                bio: document.getElementById('editBio').value.trim() || null, quote: document.getElementById('editQuote').value || null,
-                discord: document.getElementById('editDiscord').value.trim() || null, telegram: document.getElementById('editTelegram').value.trim() || null,
-                twitch: document.getElementById('editTwitch').value.trim() || null, youtube: document.getElementById('editYoutube').value.trim() || null
-            };
+        async function resolveDispute(duelId, action) {
+            if (!confirm("Вы уверены? Это действие изменит рейтинги (если матч рейтинговый) и закроет спор.")) return;
             try {
-                const res = await fetch('/player/me/update', { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify(data) });
-                if (res.ok) { bootstrap.Modal.getInstance(document.getElementById('editProfileModal')).hide(); alert("Профиль обновлен!"); loadData(); } 
-                else if (res.status === 401) { alert("Сессия истекла."); logout(); }
-            } catch(e) { console.error(e); }
+                const res = await fetch(`/admin/resolve/${duelId}`, {
+                    method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
+                    body: JSON.stringify({ action: action })
+                });
+                if (!res.ok) throw new Error("Ошибка");
+                openAdminPanel();
+                loadData();
+            } catch (e) { alert(e.message); }
         }
 
-        async function showProfile(nickname, rank) {
-            currentProfileNickname = nickname;
+        async function checkActiveMatch() {
+            if (!token) return;
             try {
-                const res = await fetch(`/player/${nickname}`); if (!res.ok) throw new Error("Профиль не найден"); const data = await res.json();
-                let crownHtml = "";
-                if (rank === 1) crownHtml = ' <span class="crown-gold">👑</span>'; else if (rank === 2) crownHtml = ' <span class="crown-silver">👑</span>'; else if (rank === 3) crownHtml = ' <span class="crown-bronze">👑</span>';
-                document.getElementById('profileName').innerHTML = data.nickname + crownHtml;
-                document.getElementById('profileRating').innerText = data.rating; document.getElementById('profileWins').innerText = data.wins; document.getElementById('profileLosses').innerText = data.losses; document.getElementById('profileWinrate').innerText = data.winrate;
+                const res = await fetch('/duels/active', { headers: {'Authorization': `Bearer ${token}`} });
+                if (res.status === 401) { logout(); return; }
+                const duel = await res.json();
                 
-                const socialsDiv = document.getElementById('profileSocials'); socialsDiv.innerHTML = '';
-                if (data.discord) socialsDiv.innerHTML += `<a href="${data.discord}" target="_blank" title="Discord">🎮</a>`;
-                if (data.telegram) socialsDiv.innerHTML += `<a href="${data.telegram}" target="_blank" title="Telegram">✈️</a>`;
-                if (data.twitch) socialsDiv.innerHTML += `<a href="${data.twitch}" target="_blank" title="Twitch">📺</a>`;
-                if (data.youtube) socialsDiv.innerHTML += `<a href="${data.youtube}" target="_blank" title="YouTube">▶️</a>`;
+                if (!duel) {
+                    if (matchModalInstance) { matchModalInstance.hide(); matchModalInstance = null; }
+                    return;
+                }
 
-                const bannerEl = document.getElementById('viewBanner'); const avatarEl = document.getElementById('viewAvatar');
-                if (data.banner_url) bannerEl.style.backgroundImage = `url('${data.banner_url}')`; else bannerEl.style.backgroundImage = 'none';
-                if (data.avatar_url) avatarEl.style.backgroundImage = `url('${data.avatar_url}')`; else avatarEl.style.backgroundImage = 'none';
-                
-                let finalQuote = data.quote || spartanQuotes[Math.floor(Math.random() * spartanQuotes.length)];
-                let bioText = data.bio || 'Этот воин предпочитает хранить молчание.';
-                document.getElementById('viewBio').innerHTML = `<span class="fst-italic text-muted">${bioText}</span><br><br><strong class="text-warning">"${finalQuote}"</strong>`;
-                
-                const matchList = document.getElementById('profileMatches'); matchList.innerHTML = '';
-                if (data.recent_matches.length === 0) matchList.innerHTML = '<li>Еще не сражался</li>';
-                else { data.recent_matches.forEach(m => { 
-                    const resColor = m.is_win ? 'text-win' : 'text-lose'; const resText = m.is_win ? 'Победа' : 'Поражение'; const opponent = m.is_win ? m.loser : m.winner; 
-                    const modeText = m.is_ranked ? '' : ' <span class="text-muted" style="font-size:0.8em;">(Без рейтинга)</span>';
-                    matchList.innerHTML += `<li class="mb-2"><span class="${resColor}">${resText}</span> против ${opponent}${modeText}<br><span class="text-gray">Счет: ${m.score} (${m.time})</span></li>`; 
-                }); }
+                if (!matchModalInstance) matchModalInstance = new bootstrap.Modal(document.getElementById('matchModal'), { backdrop: 'static', keyboard: false });
 
-                loadComments(nickname);
-                if (token) document.getElementById('commentInputBlock').style.display = 'block'; else document.getElementById('commentInputBlock').style.display = 'none';
-                showModal('profileModal');
+                const title = document.getElementById('matchModalTitle');
+                const body = document.getElementById('matchModalBody');
+
+                if (duel.status === 'pending_accept') {
+                    title.innerText = "Вызов на дуэль";
+                    if (duel.my_role === 'opponent') {
+                        body.innerHTML = `
+                            <p>Игрок <b class="text-warning">${duel.challenger}</b> вызывает вас на дуэль!</p>
+                            <p>Режим: ${duel.is_ranked ? '🏆 Рейтинг' : '🎮 Без рейтинга'}</p>
+                            <div class="d-flex gap-2 mt-4">
+                                <button class="btn btn-custom flex-fill" onclick="acceptDuel(${duel.id})">Принять</button>
+                                <button class="btn btn-outline-danger flex-fill" onclick="declineDuel(${duel.id})">Отклонить</button>
+                            </div>`;
+                    } else {
+                        body.innerHTML = `<p>Вы вызвали <b class="text-warning">${duel.opponent}</b> на дуэль.</p><p>Ожидаем подтверждения соперника...</p><div class="spinner-border text-warning mt-3"></div>`;
+                    }
+                    matchModalInstance.show();
+                } 
+                else if (duel.status === 'accepted') {
+                    title.innerText = "Матч начался!";
+                    body.innerHTML = `
+                        <p>Соперник: <b class="text-warning">${duel.my_role === 'challenger' ? duel.opponent : duel.challenger}</b></p>
+                        <p>Карта: <b class="text-warning" style="font-size:1.2em;">${duel.map_name}</b></p>
+                        <hr>
+                        <p>После окончания игры введите счет (например, 3:1, где первая цифра - ваши раунды).</p>
+                        <input type="text" class="form-control mb-3" id="myScoreInput" placeholder="Ваш счет (3:1)">
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-custom flex-fill" onclick="submitScore(${duel.id})">Завершить игру</button>
+                            <button class="btn btn-outline-danger" onclick="disputeDuel(${duel.id})">Оспорить</button>
+                        </div>
+                    `;
+                    matchModalInstance.show();
+                }
+                else if (duel.status === 'waiting_results') {
+                    title.innerText = "Ожидание счета";
+                    const myScore = duel.my_role === 'challenger' ? duel.score_challenger : duel.score_opponent;
+                    if (myScore) {
+                        body.innerHTML = `<p>Вы ввели счет: <b class="text-warning">${myScore}</b></p><p>Ожидаем подтверждения от соперника...</p><div class="spinner-border text-warning mt-3"></div><button class="btn btn-outline-danger w-100 mt-4" onclick="disputeDuel(${duel.id})">Оспорить</button>`;
+                    } else {
+                        body.innerHTML = `
+                            <p>Соперник уже ввел свой счет. Введите ваш результат:</p>
+                            <input type="text" class="form-control mb-3" id="myScoreInput" placeholder="Ваш счет (например, 1:3)">
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-custom flex-fill" onclick="submitScore(${duel.id})">Подтвердить</button>
+                                <button class="btn btn-outline-danger" onclick="disputeDuel(${duel.id})">Оспорить</button>
+                            </div>`;
+                    }
+                    matchModalInstance.show();
+                }
+                else if (duel.status === 'disputed') {
+                    title.innerText = "Матч оспорен!";
+                    body.innerHTML = `<p class="text-danger">Один из игроков оспорил результат. Ожидайте решения администратора.</p><button class="btn btn-custom w-100 mt-3" onclick="closeMatch()">Закрыть</button>`;
+                    matchModalInstance.show();
+                }
             } catch (e) { console.error(e); }
         }
 
-        async function loadComments(nickname) {
-            const commentsDiv = document.getElementById('commentsSection'); commentsDiv.innerHTML = '<div class="text-muted small">Загрузка...</div>';
-            try {
-                const res = await fetch(`/player/${nickname}/comments`); const comments = await res.json(); commentsDiv.innerHTML = '';
-                if (comments.length === 0) commentsDiv.innerHTML = '<div class="text-muted small mb-2">Пока тишина...</div>';
-                else { comments.forEach(c => { commentsDiv.innerHTML += `<div class="comment-box"><span class="comment-author">${c.author}</span><span class="comment-time">${c.time}</span><div class="text-light mt-1" style="font-size: 0.9em; word-wrap: break-word;">${c.text}</div></div>`; }); }
-            } catch(e) { commentsDiv.innerHTML = '<div class="text-danger small">Ошибка загрузки</div>'; }
-        }
-
-        async function postComment() {
-            const text = document.getElementById('newCommentText').value.trim(); if (!text) return;
-            try {
-                const res = await fetch(`/player/${currentProfileNickname}/comments`, { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify({ text: text }) });
-                if (res.ok) { document.getElementById('newCommentText').value = ''; loadComments(currentProfileNickname); } 
-                else if (res.status === 401) { alert("Нужно войти в аккаунт!"); logout(); }
-            } catch(e) { console.error(e); }
-        }
-
-        async function loadChat() {
-            try {
-                const res = await fetch('/chat/');
-                const messages = await res.json();
-                const chatBox = document.getElementById('chatMessages');
-                const isScrolledToBottom = chatBox.scrollHeight - chatBox.clientHeight <= chatBox.scrollTop + 50;
-                
-                chatBox.innerHTML = '';
-                if (messages.length === 0) {
-                    chatBox.innerHTML = '<div class="text-center text-muted small mt-3">Тишина в эфире...</div>';
-                } else {
-                    messages.forEach(m => {
-                        const isMe = currentUser && m.author.toLowerCase() === currentUser.toLowerCase();
-                        const authorStyle = isMe ? 'color: #00ff88;' : '';
-                        chatBox.innerHTML += `
-                        <div class="chat-message">
-                            <span class="chat-author" style="${authorStyle}" onclick="showProfile('${m.author}', null)">${m.author}</span>
-                            <span class="chat-rating">[${m.rating}]</span>
-                            <span class="chat-time">${m.time}</span>
-                            <div class="text-light mt-1">${m.text}</div>
-                        </div>`;
-                    });
-                }
-                if (isScrolledToBottom) chatBox.scrollTop = chatBox.scrollHeight;
-            } catch(e) { console.error("Ошибка чата", e); }
-        }
-
-        async function sendChatMessage() {
-            const input = document.getElementById('chatInput');
-            const text = input.value.trim();
-            if (!text || !token) return;
-            try {
-                const res = await fetch('/chat/', {
-                    method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
-                    body: JSON.stringify({ text: text })
-                });
-                if (res.ok) { input.value = ''; loadChat(); } 
-                else if (res.status === 401) { alert("Сессия истекла."); logout(); }
-            } catch(e) { console.error(e); }
-        }
-
-        function handleChatEnter(e) { if (e.key === 'Enter') sendChatMessage(); }
-
-        async function findMatch() {
-            if (!currentUser) return;
+        async function createDirectDuel() {
+            const opponent = document.getElementById('directOpponent').value.trim();
+            const mapName = isRankedMode ? null : (document.getElementById('mapUnranked').value.trim() || "Склад");
             
-            const btn = document.getElementById('findMatchBtn');
+            if (!/^[a-zA-Zа-яА-Я_]+$/.test(opponent)) {
+                return alert("Ник может содержать только буквы и _");
+            }
+
+            try {
+                const res = await fetch('/duels/create', {
+                    method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
+                    body: JSON.stringify({ opponent_nickname: opponent, is_ranked: isRankedMode, map_name: mapName })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.detail || "Ошибка");
+                
+                bootstrap.Modal.getInstance(document.getElementById('directChallengeModal')).hide();
+                checkActiveMatch();
+            } catch (e) { alert(e.message); }
+        }
+
+        async function acceptDuel(id) {
+            await fetch(`/duels/${id}/accept`, { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
+            checkActiveMatch();
+        }
+
+        async function declineDuel(id) {
+            await fetch(`/duels/${id}/decline`, { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
+            closeMatch();
+        }
+
+        async function submitScore(id) {
+            const score = document.getElementById('myScoreInput').value.trim();
+            if (!score) return alert("Введите счет!");
+            await fetch(`/duels/${id}/submit`, {
+                method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
+                body: JSON.stringify({ score: score })
+            });
+            checkActiveMatch();
+        }
+
+        async function disputeDuel(id) {
+            if (confirm("Вы уверены, что хотите оспорить матч? Рейтинг не будет начислен до решения админа.")) {
+                await fetch(`/duels/${id}/dispute`, { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
+                checkActiveMatch();
+            }
+        }
+
+        function closeMatch() {
+            if (matchModalInstance) { matchModalInstance.hide(); matchModalInstance = null; }
+            loadData(); 
+        }
+
+        async function toggleSearch() {
+            const btn = document.getElementById('searchBtn');
             const resDiv = document.getElementById('matchmakingResult');
             const list = document.getElementById('matchmakingList');
             
-            // Если уже ищем - останавливаем
             if (matchmakingInterval) {
-                clearInterval(matchmakingInterval);
-                matchmakingInterval = null;
-                btn.innerText = "🔍 Найти соперника";
-                btn.classList.remove('btn-danger');
-                btn.classList.add('btn-outline-warning');
+                clearInterval(matchmakingInterval); matchmakingInterval = null;
+                btn.innerHTML = "🔍 НАЧАТЬ ПОИСК"; btn.classList.remove('btn-danger'); btn.classList.add('btn-custom'); 
                 resDiv.style.display = 'none';
                 await fetch('/matchmaking/toggle', { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
                 return;
             }
 
-            // Начинаем поиск
-            btn.innerText = "⏹ Отменить поиск";
-            btn.classList.remove('btn-outline-warning');
-            btn.classList.add('btn-danger');
+            if (!isRankedMode && !document.getElementById('mapUnranked').value.trim()) {
+                return alert("Сначала выберите карту!");
+            }
+
+            btn.innerHTML = "⏹ ОТМЕНИТЬ ПОИСК"; btn.classList.remove('btn-custom'); btn.classList.add('btn-danger'); 
             resDiv.style.display = 'block';
-            list.innerHTML = '<li class="list-group-item bg-transparent text-warning" style="border-color: var(--border-color);">⏳ Ищем соперников в очереди...</li>';
+            list.innerHTML = '<li class="list-group-item bg-transparent text-warning text-center" style="border-color: var(--border-color);">⏳ Ищем соперников...</li>';
             
-            // Включаем статус поиска на сервере
             await fetch('/matchmaking/toggle', { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
 
-            // Запускаем цикл опроса каждые 3 секунды
             matchmakingInterval = setInterval(async () => {
-                try {
-                    const res = await fetch(`/matchmaking/status/${currentUser}`);
-                    const data = await res.json();
-                    
-                    if (!data.is_searching) {
-                        clearInterval(matchmakingInterval);
-                        matchmakingInterval = null;
-                        btn.innerText = "🔍 Найти соперника";
-                        btn.classList.remove('btn-danger');
-                        btn.classList.add('btn-outline-warning');
-                        resDiv.style.display = 'none';
-                        return;
-                    }
-
-                    list.innerHTML = '';
-                    if (data.matches.length === 0) {
-                        list.innerHTML = '<li class="list-group-item bg-transparent text-muted" style="border-color: var(--border-color);">В очереди пока никого нет. Ждем...</li>';
-                    } else {
-                        data.matches.forEach(p => {
-                            const avatarSrc = p.avatar_url ? p.avatar_url : `https://ui-avatars.com/api/?name=${p.nickname}&background=151312&color=cd7f32&rounded=true`;
-                            list.innerHTML += `
-                            <li class="list-group-item bg-transparent d-flex justify-content-between align-items-center" style="border-color: var(--border-color); color: var(--parchment);">
-                                <div class="d-flex align-items-center">
-                                    <img src="${avatarSrc}" style="width:30px; height:30px; border-radius:50%; border:1px solid var(--bronze); margin-right:10px;">
-                                    <div>
-                                        <div class="fw-bold" style="color: var(--bronze-light);">${p.nickname}</div>
-                                        <div class="small text-gray">Рейтинг: ${p.rating} (Разница: ${p.diff})</div>
-                                    </div>
-                                </div>
-                                <button class="btn btn-sm btn-outline-warning" style="border-radius:0;" onclick="selectOpponent('${p.nickname}')">Выбрать</button>
-                            </li>`;
-                        });
-                    }
-                } catch(e) { console.error(e); }
+                const res = await fetch(`/matchmaking/status/${currentUser}`); const data = await res.json();
+                list.innerHTML = data.matches.length === 0 ? '<li class="list-group-item bg-transparent text-muted text-center" style="border-color: var(--border-color);">В очереди пока никого нет...</li>' : '';
+                data.matches.forEach(p => {
+                    list.innerHTML += `<li class="list-group-item bg-transparent d-flex justify-content-between align-items-center matchmaking-list-item" style="border-color: var(--border-color);"><div><b class="text-warning">${p.nickname}</b> (${p.rating})</div><button class="btn btn-sm btn-outline-warning" onclick="challengeFromSearch('${p.nickname}')">Вызвать</button></li>`;
+                });
             }, 3000);
         }
 
-        async function selectOpponent(nickname) {
-            document.getElementById('loser').value = nickname;
-            checkForm();
-            document.getElementById('matchmakingResult').style.display = 'none';
-            document.getElementById('duelForm').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        async function challengeFromSearch(nickname) {
+            const mapName = isRankedMode ? null : document.getElementById('mapUnranked').value.trim();
             
-            // Останавливаем поиск при выборе
-            if (matchmakingInterval) {
-                clearInterval(matchmakingInterval);
-                matchmakingInterval = null;
-                const btn = document.getElementById('findMatchBtn');
-                btn.innerText = "🔍 Найти соперника";
-                btn.classList.remove('btn-danger');
-                btn.classList.add('btn-outline-warning');
-                await fetch('/matchmaking/toggle', { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
-            }
+            try {
+                const res = await fetch('/duels/create', {
+                    method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
+                    body: JSON.stringify({ opponent_nickname: nickname, is_ranked: isRankedMode, map_name: mapName })
+                });
+                if (!res.ok) throw new Error("Ошибка");
+                checkActiveMatch();
+                if (matchmakingInterval) { toggleSearch(); }
+            } catch (e) { alert(e.message); }
         }
 
-        function checkForm() {
-            const winner = document.getElementById('winner').value.trim(); 
-            const loser = document.getElementById('loser').value.trim(); 
-            const score = document.getElementById('score').value.trim(); 
-            
-            let mapValid = false;
-            if (isRankedMode) {
-                mapValid = true;
-            } else {
-                mapValid = document.getElementById('mapUnranked').value.trim() !== '';
-            }
-
-            document.getElementById('submitBtn').disabled = !(winner && loser && score && mapValid);
+        async function loadChat() {
+            const res = await fetch('/chat/'); const messages = await res.json();
+            const chatBox = document.getElementById('chatMessages'); const isBottom = chatBox.scrollHeight - chatBox.clientHeight <= chatBox.scrollTop + 50;
+            chatBox.innerHTML = messages.length === 0 ? '<div class="text-center text-muted small mt-3">Тишина в эфире...</div>' : '';
+            messages.forEach(m => {
+                chatBox.innerHTML += `<div class="chat-message"><span class="chat-author" style="${currentUser && m.author.toLowerCase()===currentUser.toLowerCase()?'color:#00ff88;':''}" onclick="showProfile('${m.author}')">${m.author}</span> <span class="chat-rating">[${m.rating}]</span> <span class="chat-time">${m.time}</span><div class="text-light mt-1">${m.text}</div></div>`;
+            });
+            if (isBottom) chatBox.scrollTop = chatBox.scrollHeight;
         }
+
+        async function sendChatMessage() {
+            const input = document.getElementById('chatInput'); const text = input.value.trim(); if (!text) return;
+            await fetch('/chat/', { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify({ text }) });
+            input.value = ''; loadChat();
+        }
+        function handleChatEnter(e) { if (e.key === 'Enter') sendChatMessage(); }
 
         async function loadData() {
             try {
-                const resL = await fetch('/leaderboard/'); const dataL = await resL.json();
-                const tbodyL = document.getElementById('leaderboardBody');
+                const resL = await fetch('/leaderboard/'); 
+                if(!resL.ok) throw new Error("Сервер не отвечает");
+                const dataL = await resL.json();
+                const tbodyL = document.getElementById('leaderboardBody'); 
                 tbodyL.innerHTML = dataL.length === 0 ? '<tr><td colspan="5">Пока нет воинов</td></tr>' : '';
+                
                 dataL.forEach((p, i) => { 
-                    const avatarSrc = p.avatar_url ? p.avatar_url : `https://ui-avatars.com/api/?name=${p.nickname}&background=151312&color=cd7f32&rounded=true&bold=true`;
-                    let crown = ""; let crownClass = "";
-                    if (i === 0) { crown = "👑"; crownClass = "crown-gold"; } else if (i === 1) { crown = "👑"; crownClass = "crown-silver"; } else if (i === 2) { crown = "👑"; crownClass = "crown-bronze"; }
-                    let medalsHtml = ""; if (p.medals && p.medals.length > 0) { medalsHtml = p.medals.map(m => `<span title="Турнирная награда" style="font-size:1.1em; margin-left: 3px; filter: drop-shadow(0 0 3px gold);">${m}</span>`).join(''); }
-                    const isMe = currentUser && p.nickname.toLowerCase() === currentUser.toLowerCase();
-                    const rowClass = isMe ? 'my-row' : '';
-                    tbodyL.innerHTML += `<tr class="${rowClass}"><td><strong>${i + 1}</strong></td><td><span class="${crownClass}">${crown}</span></td><td><img src="${avatarSrc}" class="table-avatar" alt="avatar"></td><td><span class="player-link" onclick="showProfile('${p.nickname}', ${i+1})">${p.nickname}</span>${medalsHtml}</td><td class="rating">${p.rating}</td></tr>`; 
+                    const avatar = p.avatar_url || `https://ui-avatars.com/api/?name=${p.nickname}&background=151312&color=cd7f32&rounded=true`;
+                    let crown = i===0?'👑':i===1?'👑':i===2?'👑':''; let cClass = i===0?'crown-gold':i===1?'crown-silver':i===2?'crown-bronze':'';
+                    const medals = p.medals ? p.medals.map(m => `<span style="font-size:1.1em;margin-left:3px;filter:drop-shadow(0 0 3px gold);">${m}</span>`).join('') : '';
+                    tbodyL.innerHTML += `<tr class="${currentUser && p.nickname.toLowerCase()===currentUser.toLowerCase()?'my-row':''}"><td><b>${i+1}</b></td><td><span class="${cClass}">${crown}</span></td><td><img src="${avatar}" class="table-avatar"></td><td><span class="player-link" onclick="showProfile('${p.nickname}')">${p.nickname}</span> ${medals}</td><td class="rating">${p.rating}</td></tr>`;
                 });
-            } catch (e) { console.error(e); }
-
-            try {
-                const resH = await fetch('/history/'); const dataH = await resH.json();
-                const tbodyH = document.getElementById('historyBody');
-                tbodyH.innerHTML = dataH.length === 0 ? '<tr><td colspan="2">Битв пока не было</td></tr>' : '';
-                dataH.forEach(m => {
-                    const mapText = m.map_name ? ` • ${m.map_name}` : ''; const isPending = m.status === 'pending';
-                    const statusText = isPending ? `<br><span class="text-pending">⏳ Ждет подтверждения</span>` : '';
-                    
-                    let deltaW = m.rating_change_winner ? `<span class="delta-plus">+${m.rating_change_winner}</span>` : '';
-                    let deltaL = m.rating_change_loser ? `<span class="delta-minus">${m.rating_change_loser}</span>` : '';
-                    const modeIcon = m.is_ranked ? '🏆' : '🎮';
-
-                    tbodyH.innerHTML += `<tr style="${isPending ? 'opacity: 0.7;' : ''}"><td class="text-gray">${m.time}</td><td style="font-size: 0.9em;">${modeIcon} <span class="text-win">${m.winner}</span> ${deltaW} одолел <span class="text-lose">${m.loser}</span> ${deltaL}<br><span class="text-gray">Счет: ${m.score}${mapText}</span>${statusText}</td></tr>`;
-                });
-            } catch (e) { console.error(e); }
-        }
-
-        document.getElementById('duelForm').addEventListener('submit', (e) => {
-            e.preventDefault(); if (!token) { document.getElementById('message').innerHTML = '<div class="alert alert-danger py-2" style="border-radius:0;">Вы должны войти в аккаунт!</div>'; return; }
-            if (!confirmModalInstance) confirmModalInstance = new bootstrap.Modal(document.getElementById('confirmModal')); confirmModalInstance.show();
-        });
-
-        document.getElementById('confirmSubmitBtn').addEventListener('click', async () => {
-            confirmModalInstance.hide();
-            
-            let mapName = null;
-            if (!isRankedMode) {
-                mapName = document.getElementById('mapUnranked').value.trim();
+            } catch(e) { 
+                document.getElementById('leaderboardBody').innerHTML = '<tr><td colspan="5" class="text-danger">Сервер недоступен</td></tr>';
+                console.error(e); 
             }
 
-            const duelData = { 
-                loser_nickname: document.getElementById('loser').value, 
-                score: document.getElementById('score').value, 
-                map_name: mapName,
-                is_ranked: isRankedMode
-            };
-
             try {
-                const response = await fetch('/duels/', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` }, body: JSON.stringify(duelData) });
-                if (response.status === 401) { document.getElementById('message').innerHTML = '<div class="alert alert-danger py-2" style="border-radius:0;">Сессия истекла. Войдите заново!</div>'; logout(); return; }
-                if (response.ok) {
-                    const result = await response.json(); const confirmUrl = `${window.location.origin}/confirm/${result.duel_id}`;
-                    document.getElementById('message').innerHTML = `<div class="alert py-2" style="border-radius:0; border: 1px solid var(--bronze); background-color: rgba(138,3,3,0.2); color: var(--bronze-light);"><strong>Заявка создана!</strong> Ссылка для соперника:<br><input type="text" class="form-control mt-2" value="${confirmUrl}" readonly onclick="this.select()"></div>`;
-                    document.getElementById('duelForm').reset(); updateAuthUI(); document.getElementById('imagePreview').style.display = 'none'; loadData();
-                    
-                    // Если поиск был активен, выключаем его после отправки
-                    if (matchmakingInterval) {
-                        clearInterval(matchmakingInterval);
-                        matchmakingInterval = null;
-                        document.getElementById('findMatchBtn').innerText = "🔍 Найти соперника";
-                        document.getElementById('findMatchBtn').classList.remove('btn-danger');
-                        document.getElementById('findMatchBtn').classList.add('btn-outline-warning');
-                        document.getElementById('matchmakingResult').style.display = 'none';
-                    }
-                }
-            } catch (error) { console.error(error); }
-        });
+                const resH = await fetch('/duels/history'); 
+                if(!resH.ok) throw new Error("Сервер не отвечает");
+                const dataH = await resH.json();
+                const tbodyH = document.getElementById('historyBody'); 
+                tbodyH.innerHTML = dataH.length === 0 ? '<tr><td colspan="2">Битв пока не было</td></tr>' : '';
+                dataH.forEach(m => {
+                    const mapText = m.map_name ? ` • ${m.map_name}` : ''; 
+                    let dW = m.rating_change_winner ? `<span class="delta-plus">+${m.rating_change_winner}</span>` : ''; let dL = m.rating_change_loser ? `<span class="delta-minus">${m.rating_change_loser}</span>` : '';
+                    tbodyH.innerHTML += `<tr><td class="text-gray">${m.time}</td><td style="font-size:0.9em;">${m.is_ranked?'🏆':'🎮'} <span class="text-win">${m.winner}</span> ${dW} одолел <span class="text-lose">${m.loser}</span> ${dL}<br><span class="text-gray">Счет: ${m.score}${mapText}</span></td></tr>`;
+                });
+            } catch (e) { 
+                document.getElementById('historyBody').innerHTML = '<tr><td colspan="2" class="text-danger">Сервер недоступен</td></tr>';
+                console.error(e); 
+            }
+        }
 
-        document.getElementById('screenshotUpload').addEventListener('change', async (event) => {
-            const file = event.target.files[0]; if (!file) return;
-            document.getElementById('score').value = ''; document.getElementById('loser').value = ''; 
-            if (!isRankedMode) document.getElementById('mapUnranked').value = '';
+        async function showProfile(nickname) {
+            const res = await fetch(`/player/${nickname}`); const data = await res.json();
+            document.getElementById('profileName').innerText = data.nickname;
+            document.getElementById('profileRating').innerText = data.rating; document.getElementById('profileWins').innerText = data.wins; document.getElementById('profileLosses').innerText = data.losses; document.getElementById('profileWinrate').innerText = data.winrate;
+            const socials = document.getElementById('profileSocials'); socials.innerHTML = '';
+            if (data.discord) socials.innerHTML += `<a href="${data.discord}" target="_blank">🎮</a>`;
+            if (data.telegram) socials.innerHTML += `<a href="${data.telegram}" target="_blank">✈️</a>`;
+            if (data.twitch) socials.innerHTML += `<a href="${data.twitch}" target="_blank">📺</a>`;
+            if (data.youtube) socials.innerHTML += `<a href="${data.youtube}" target="_blank">▶️</a>`;
             
-            const preview = document.getElementById('imagePreview'); preview.src = URL.createObjectURL(file); preview.style.display = 'block';
-            const formData = new FormData(); formData.append('file', file);
-            const statusDiv = document.getElementById('ocrStatus'); statusDiv.innerText = '⏳ Читаем руны...';
-            try {
-                const response = await fetch('/ocr/', { method: 'POST', body: formData });
-                const data = await response.json(); const text = data.recognized_text;
-                const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-                let possibleNames = []; let possibleScores = [];
-                for (let line of lines) {
-                    let cleanLine = line.replace(/[OoОо]/g, '0');
-                    let words = cleanLine.match(/[a-zA-Zа-яА-Я_]{3,20}/g) || []; let numbers = cleanLine.match(/\d+/g) || [];
-                    for (let w of words) { let lower = w.toLowerCase(); if (!lower.includes('fps') && !lower.includes('ping') && !lower.includes('server') && !lower.includes('freie') && !lower.includes('связь') && !lower.includes('потеряна')) possibleNames.push(w); }
-                    for (let n of numbers) possibleScores.push(parseInt(n));
-                }
-                possibleNames = [...new Set(possibleNames)];
-                if (possibleNames.length >= 2) {
-                    const p1 = possibleNames[possibleNames.length - 2]; const p2 = possibleNames[possibleNames.length - 1];
-                    
-                    if (!isRankedMode) {
-                        let mapName = ""; for (let name of possibleNames) if (name !== p1 && name !== p2) { mapName = name; break; }
-                        if (mapName) document.getElementById('mapUnranked').value = mapName;
-                    }
+            const banner = document.getElementById('viewBanner'); const avatar = document.getElementById('viewAvatar');
+            banner.style.backgroundImage = data.banner_url ? `url('${data.banner_url}')` : 'none';
+            avatar.style.backgroundImage = data.avatar_url ? `url('${data.avatar_url}')` : 'none';
+            document.getElementById('viewBio').innerHTML = `<span class="fst-italic text-muted">${data.bio || 'Молчание...'}</span><br><br><strong class="text-warning">"${data.quote || spartanQuotes[0]}"</strong>`;
+            
+            const ml = document.getElementById('profileMatches'); ml.innerHTML = '';
+            data.recent_matches.forEach(m => {
+                ml.innerHTML += `<li class="mb-2"><span class="${m.is_win?'text-win':'text-lose'}">${m.is_win?'Победа':'Поражение'}</span> против ${m.is_win?m.loser:m.winner} ${m.is_ranked?'':'<span class="text-muted">(Без рейтинга)</span>'}<br><span class="text-gray">Счет: ${m.score} (${m.time})</span></li>`;
+            });
+            loadComments(nickname);
+            showModal('profileModal');
+        }
 
-                    let s1 = possibleScores.length >= 2 ? possibleScores[possibleScores.length - 2] : 0; let s2 = possibleScores.length >= 2 ? possibleScores[possibleScores.length - 1] : 0;
-                    let finalScore = s1 > s2 ? `${s1}:${s2}` : `${s2}:${s1}`;
-                    if (currentUser) { document.getElementById('winner').value = currentUser; document.getElementById('loser').value = (p1.toLowerCase() === currentUser.toLowerCase()) ? p2 : p1; } 
-                    else { document.getElementById('winner').value = s1 > s2 ? p1 : p2; document.getElementById('loser').value = s1 > s2 ? p2 : p1; }
-                    document.getElementById('score').value = finalScore; 
-                    statusDiv.innerText = '✅ Распознано!'; statusDiv.style.color = 'var(--bronze-light)';
-                }
-                checkForm();
-            } catch (error) { statusDiv.innerText = '❌ Ошибка.'; }
-        });
+        async function openEditProfile() {
+            const res = await fetch(`/player/${currentUser}`); const data = await res.json();
+            document.getElementById('editBanner').value = data.banner_url || ''; document.getElementById('editAvatar').value = data.avatar_url || ''; document.getElementById('editBio').value = data.bio || '';
+            document.getElementById('editDiscord').value = data.discord || ''; document.getElementById('editTelegram').value = data.telegram || ''; document.getElementById('editTwitch').value = data.twitch || ''; document.getElementById('editYoutube').value = data.youtube || '';
+            if (data.quote) { document.getElementById('editQuoteCategory').value = spartanQuotes.includes(data.quote) ? 'spartan' : 'great'; }
+            updateQuoteList(); document.getElementById('editQuote').value = data.quote || '';
+            showModal('editProfileModal');
+        }
+
+        async function saveProfile() {
+            const data = {
+                banner_url: document.getElementById('editBanner').value.trim() || null, avatar_url: document.getElementById('editAvatar').value.trim() || null, bio: document.getElementById('editBio').value.trim() || null,
+                quote: document.getElementById('editQuote').value || null, discord: document.getElementById('editDiscord').value.trim() || null, telegram: document.getElementById('editTelegram').value.trim() || null,
+                twitch: document.getElementById('editTwitch').value.trim() || null, youtube: document.getElementById('editYoutube').value.trim() || null
+            };
+            await fetch('/player/me/update', { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify(data) });
+            bootstrap.Modal.getInstance(document.getElementById('editProfileModal')).hide(); loadData();
+        }
+
+        async function loadComments(nick) {
+            const res = await fetch(`/player/${nick}/comments`); const comments = await res.json();
+            const box = document.getElementById('commentsSection'); box.innerHTML = '';
+            comments.forEach(c => box.innerHTML += `<div class="comment-box"><span class="comment-author">${c.author}</span><span class="comment-time">${c.time}</span><div class="text-light mt-1" style="font-size:0.9em;">${c.text}</div></div>`);
+            document.getElementById('commentInputBlock').style.display = token ? 'block' : 'none';
+        }
+
+        async function postComment() {
+            const text = document.getElementById('newCommentText').value.trim(); if (!text) return;
+            await fetch(`/player/${document.getElementById('profileName').innerText}/comments`, { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify({ text }) });
+            document.getElementById('newCommentText').value = ''; loadComments(document.getElementById('profileName').innerText);
+        }
 
         updateAuthUI(); loadData(); loadChat();
         if(chatInterval) clearInterval(chatInterval);
