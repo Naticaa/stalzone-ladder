@@ -12,7 +12,13 @@
         body { background-color: var(--bg-dark); color: var(--parchment); font-family: 'Philosopher', serif; background-image: url('data:image/svg+xml;utf8,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><path d="M0 10h10v20h20V10h10v10H20v10H0V10z" fill="%23cd7f32" fill-opacity="0.03"/></svg>'); background-repeat: repeat; background-attachment: fixed; }
         .tribon-banner { position: absolute; top: 0; left: 0; width: 100%; height: 80px; background: linear-gradient(to bottom, #a30000 0%, var(--blood) 50%, #4a0000 100%); box-shadow: 0 5px 15px rgba(0,0,0,0.9), inset 0 -5px 15px rgba(0,0,0,0.8); border-bottom: 2px solid var(--bronze); z-index: -1; }
         .main-container { max-width: 1400px; margin-top: 20px; margin-bottom: 50px; position: relative; z-index: 1; }
-        .top-bar { display: flex; justify-content: flex-end; padding: 10px 0; gap: 15px; align-items: center; }
+        
+        .top-bar { display: flex; justify-content: flex-end; padding: 15px 0; align-items: center; border-bottom: 1px solid rgba(255, 255, 255, 0.05); margin-bottom: 30px; }
+        .btn-ghost { background: transparent; color: #a0a0a0; border: none; font-size: 0.85rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.2s; }
+        .btn-ghost:hover { color: var(--bronze-light); }
+        .btn-primary-custom { background: linear-gradient(to bottom, var(--bronze) 0%, var(--bronze-dark) 100%); color: #000 !important; border: none; border-radius: 2px; padding: 8px 24px; font-weight: 800; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s ease; box-shadow: 0 2px 10px rgba(205, 127, 50, 0.2); }
+        .btn-primary-custom:hover { background: linear-gradient(to bottom, var(--bronze-light) 0%, var(--bronze) 100%); transform: translateY(-1px); box-shadow: 0 4px 15px rgba(205, 127, 50, 0.4); }
+
         h1 { font-family: 'Ruslan Display', serif; color: var(--bronze-light); text-align: center; text-transform: uppercase; letter-spacing: 4px; text-shadow: 2px 2px 0px #000, 0 0 30px rgba(138, 3, 3, 0.6); margin-bottom: 30px; font-size: 3rem; }
         
         .card { background-color: var(--bg-card); border: 2px solid var(--border-color); border-radius: 0; box-shadow: 0 8px 25px rgba(0,0,0,0.9); margin-bottom: 25px; }
@@ -71,7 +77,7 @@
         .mode-btn.active { background: rgba(205, 127, 50, 0.15); color: var(--bronze-light); box-shadow: inset 0 0 15px rgba(205,127,50,0.2); }
         
         .arena-panel { background: #0a0908; border: 2px solid var(--border-color); padding: 15px; }
-        .search-btn-main { font-size: 1rem; padding: 10px; letter-spacing: 1px; }
+        .search-btn-main { font-size: 1.3rem; padding: 15px; letter-spacing: 2px; font-weight: 900; border-radius: 4px; box-shadow: 0 4px 15px rgba(205,127,50,0.3); }
         
         .matchmaking-box { background: #1f1a17; border: 1px solid var(--bronze-dark); padding: 10px; margin-top: 10px; max-height: 200px; overflow-y: auto; }
         .matchmaking-list-item { background: transparent !important; border-color: var(--border-color) !important; padding: 6px 10px; }
@@ -79,6 +85,35 @@
         .help-btn:hover { background: var(--bronze-dark); color: #fff; }
         
         .admin-dispute-card { background: #1f1a17; border: 1px solid var(--blood); padding: 15px; margin-bottom: 15px; }
+        
+        .online-dot { color: #00ff88; font-size: 0.7em; vertical-align: middle; margin-right: 4px; text-shadow: 0 0 5px #00ff88; }
+        .achievement-badge { display: inline-block; background: linear-gradient(135deg, #2a2a2a, #111); border: 1px solid var(--bronze); color: var(--bronze-light); padding: 4px 10px; font-size: 0.85rem; font-weight: bold; margin-right: 5px; margin-bottom: 5px; box-shadow: 0 0 10px rgba(205,127,50,0.2); }
+
+        .vs-container { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; position: relative; }
+        .vs-player { text-align: center; width: 35%; }
+        .vs-avatar { width: 80px; height: 80px; border-radius: 50%; border: 3px solid var(--bronze); background-color: #0a0908; box-shadow: 0 0 20px rgba(205, 127, 50, 0.4); margin-bottom: 10px; object-fit: cover; }
+        .vs-name { font-weight: 900; font-size: 1.1rem; color: var(--bronze-light); text-shadow: 1px 1px 2px #000; word-break: break-all; }
+        .vs-divider { width: 30%; text-align: center; position: relative; }
+        .vs-text { font-family: 'Ruslan Display', serif; font-size: 2.5rem; color: var(--blood); text-shadow: 0 0 15px #ff0000, 2px 2px 0px #000; line-height: 1; }
+        .vs-map { background: rgba(0,0,0,0.5); border: 1px solid var(--border-color); padding: 4px 10px; border-radius: 4px; margin-top: 10px; display: inline-block; font-size: 0.9rem; color: var(--parchment); }
+
+        .map-ban-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin: 20px 0; }
+        .map-ban-btn { width: 45%; padding: 15px 0; font-weight: bold; font-size: 1.1rem; border-width: 2px; transition: all 0.2s; }
+        .map-ban-btn:hover:not(:disabled) { transform: scale(1.05); background-color: rgba(205,127,50,0.2); color: #fff; }
+        .map-banned { opacity: 0.3; text-decoration: line-through; pointer-events: none; }
+
+        /* СТИЛИ ДЛЯ УРОВНЕЙ FACEIT */
+        .faceit-level { width: 24px; height: 24px; display: inline-flex; align-items: center; justify-content: center; font-weight: 900; font-size: 0.8rem; color: #000; clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); }
+        .lvl-1 { background: #EEEEEE; }
+        .lvl-2, .lvl-3 { background: #1CE400; }
+        .lvl-4, .lvl-5 { background: #FFC800; }
+        .lvl-6, .lvl-7 { background: #FF6309; }
+        .lvl-8, .lvl-9, .lvl-10 { background: #FF0000; color: #fff; }
+
+        /* ИСТОРИЯ МАТЧЕЙ */
+        .history-badge { padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; text-transform: uppercase; }
+        .bg-win { background: rgba(28, 228, 0, 0.2); color: #1CE400; border: 1px solid #1CE400; }
+        .bg-lose { background: rgba(255, 68, 68, 0.2); color: #ff4444; border: 1px solid #ff4444; }
 
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #0a0908; border-left: 1px solid #3a2e26; }
@@ -92,17 +127,21 @@
     
     <div class="container main-container">
         <div class="top-bar">
+            <button class="btn btn-ghost me-3" onclick="showModal('adminContactModal')">💬 Поддержка</button>
+
             <div id="userInfo" style="display:none; color: var(--bronze-light); font-weight: bold; font-size: 0.9rem;">
                 <div class="d-flex align-items-center">
-                    Воитель: <span id="currentUserNickname" class="ms-1"></span>
-                    <button class="btn btn-sm btn-outline-info ms-2" style="border-radius: 0; padding: 2px 10px; display:none;" id="adminPanelBtn" onclick="openAdminPanel()">🛡️ Админ</button>
-                    <button class="btn btn-sm btn-outline-warning ms-2" style="border-radius: 0; padding: 2px 10px;" onclick="openEditProfile()">Профиль</button>
-                    <button class="btn btn-sm btn-outline-danger ms-1" style="border-radius: 0; padding: 2px 10px;" onclick="logout()">Выйти</button>
+                    <span class="text-muted me-2" style="font-size: 0.8rem; text-transform: uppercase;">Воитель:</span>
+                    <span id="currentUserNickname" class="me-3" style="color: #fff;"></span>
+                    <button class="btn btn-ghost btn-sm" style="display:none;" id="adminPanelBtn" onclick="openAdminPanel()">🛡️ Админ</button>
+                    <button class="btn btn-outline-warning btn-sm ms-1" style="border-radius: 2px; font-weight:bold; border-width: 2px;" onclick="openEditProfile()">Профиль</button>
+                    <button class="btn btn-outline-danger btn-sm ms-1" style="border-radius: 2px; border-width: 2px;" onclick="logout()">Выйти</button>
                 </div>
             </div>
+            
             <div id="authButtons">
-                <button class="btn btn-sm btn-outline-light" style="border-radius: 0; padding: 2px 10px;" onclick="showModal('loginModal')">Войти</button>
-                <button class="btn btn-sm btn-custom" style="padding: 4px 10px;" onclick="showModal('registerModal')">Регистрация</button>
+                <button class="btn btn-primary-custom" onclick="showModal('loginModal')">Войти</button>
+                <button class="btn btn-custom ms-2" style="padding: 8px 16px; font-size: 0.85rem;" onclick="showModal('registerModal')">Регистрация</button>
             </div>
         </div>
 
@@ -135,7 +174,7 @@
                             <span>Арена</span>
                             <button class="help-btn" data-bs-toggle="modal" data-bs-target="#helpModal" title="Как играть?">?</button>
                         </div>
-                        <button class="btn btn-sm btn-outline-light" style="border-radius: 0; font-size: 0.75rem; padding: 2px 8px;" data-bs-toggle="modal" data-bs-target="#directChallengeModal">Вызвать по нику</button>
+                        <button class="btn btn-sm btn-custom" style="font-size: 0.75rem; padding: 2px 8px;" data-bs-toggle="modal" data-bs-target="#directChallengeModal">Вызвать по нику</button>
                     </div>
                     <div class="card-body p-0">
                         <div class="arena-panel">
@@ -155,7 +194,7 @@
                                 </datalist>
                             </div>
 
-                            <button class="btn btn-custom w-100 search-btn-main" id="searchBtn" onclick="toggleSearch()">🔍 НАЧАТЬ ПОИСК</button>
+                            <button class="btn btn-primary-custom w-100 search-btn-main" id="searchBtn" onclick="toggleSearch()">🔍 НАЧАТЬ ПОИСК</button>
 
                             <div id="matchmakingResult" class="matchmaking-box" style="display:none;">
                                 <ul id="matchmakingList" class="list-group list-group-flush mb-0"></ul>
@@ -178,7 +217,7 @@
                                     <thead>
                                         <tr>
                                             <th width="10%">#</th>
-                                            <th width="10%"></th>
+                                            <th width="10%">Ур.</th>
                                             <th width="15%">Аватар</th>
                                             <th width="40%">Воин</th>
                                             <th width="25%">Рейтинг</th>
@@ -205,86 +244,51 @@
         </div>
     </div>
 
-    <!-- МОДАЛКА АДМИНА -->
-    <div class="modal fade" id="adminModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header" style="border-bottom: 2px solid var(--blood);">
-                    <h5 class="modal-title" style="color: var(--blood);">🛡️ Админ-панель: Споры</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+    <!-- МОДАЛКА ОНБОРДИНГА -->
+    <div class="modal fade" id="onboardingModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content text-center">
+                <div class="modal-header border-0 pb-0 justify-content-center">
+                    <h5 class="modal-title" style="color: var(--bronze); font-family: 'Ruslan Display', serif; font-size: 2rem;">Добро пожаловать на Арену!</h5>
                 </div>
-                <div class="modal-body">
-                    <!-- Кнопка очистки чата -->
-                    <button class="btn btn-outline-danger w-100 mb-3" onclick="adminClearChat()">🗑️ Очистить чат полностью</button>
-                    
-                    <div id="adminDisputesList">
-                        Загрузка споров...
+                <div class="modal-body px-4">
+                    <p class="mb-4" style="font-size: 1.1rem;">Здесь ты можешь доказать, кто в STALZONE лучший, и забрать свой рейтинг.</p>
+                    <div class="d-flex align-items-center mb-3 p-2" style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--bronze);">
+                        <span style="font-size:1.8rem; margin-right:15px;">🔍</span>
+                        <span style="text-align:left;"><b>Найди врага:</b> Жми «Начать поиск» и выбери соперника из очереди.</span>
+                    </div>
+                    <div class="d-flex align-items-center mb-3 p-2" style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--bronze);">
+                        <span style="font-size:1.8rem; margin-right:15px;">⚔️</span>
+                        <span style="text-align:left;"><b>Сразись:</b> Запускай STALZONE, добавляй соперника в группу и вступай в дуэль.</span>
+                    </div>
+                    <div class="d-flex align-items-center mb-4 p-2" style="background: rgba(0,0,0,0.3); border-left: 3px solid var(--bronze);">
+                        <span style="font-size:1.8rem; margin-right:15px;">🏆</span>
+                        <span style="text-align:left;"><b>Подтверди счет:</b> Введи результат. Если он совпадет с соперником — рейтинг твой!</span>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- МОДАЛКА ПОМОЩИ -->
-    <div class="modal fade" id="helpModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" style="color: var(--bronze);">Как играть?</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                <div class="modal-footer border-0 justify-content-center pb-4">
+                    <button type="button" class="btn btn-custom px-5 py-2" data-bs-dismiss="modal" style="font-size: 1.1rem;">К оружию!</button>
                 </div>
-                <div class="modal-body" style="font-size: 0.95rem;">
-                    <ol class="ps-3 mb-0" style="line-height: 1.6;">
-                        <li class="mb-2">Выберите режим: <b>Рейтинг</b> (карта рандом) или <b>Без рейтинга</b> (выберите карту).</li>
-                        <li class="mb-2">Нажмите <b>«НАЧАТЬ ПОИСК»</b>. Появится список игроков в очереди.</li>
-                        <li class="mb-2">Нажмите <b>«Вызвать»</b> напротив нужного игрока.</li>
-                        <li class="mb-2">Дождитесь, пока он <b>примет</b> вызов (у него выскочит окно).</li>
-                        <li class="mb-2">Запустите игру в STALZONE и сразитесь.</li>
-                        <li class="mb-2">После боя введите счет (например, <b>3:1</b>). Если выиграли — 3:1, проиграли — 1:3.</li>
-                        <li class="mb-2">Когда оба введут счет, матч подтвердится (если счета зеркальны), и рейтинг изменится.</li>
-                        <li class="mb-0">Если соперник ввел неверный счет или завис, нажмите <b>«Оспорить»</b>. Матч отправится на проверку админу.</li>
-                    </ol>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-custom w-100" data-bs-dismiss="modal">Понятно</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- МОДАЛКА ПРЯМОГО ВЫЗОВА -->
-    <div class="modal fade" id="directChallengeModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Вызов по нику</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div>
-                <div class="modal-body">
-                    <label class="form-label text-light">Ник соперника:</label>
-                    <input type="text" class="form-control mb-3" id="directOpponent" placeholder="Впиши ник..." autocomplete="off" pattern="^[a-zA-Zа-яА-Я_]+$" title="Только буквы и _">
-                    <button class="btn btn-custom w-100" onclick="createDirectDuel()">Отправить вызов</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- МОДАЛКА АКТИВНОГО МАТЧА -->
-    <div class="modal fade" id="matchModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header"><h5 class="modal-title" style="color: var(--bronze); font-family: 'Ruslan Display', serif;" id="matchModalTitle">Матч</h5></div>
-                <div class="modal-body" id="matchModalBody"></div>
             </div>
         </div>
     </div>
 
     <!-- ОСТАЛЬНЫЕ МОДАЛКИ -->
+    <div class="modal fade" id="adminContactModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Связь с администрацией</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body text-center"><p>По всем вопросам (турниры, споры, баги, предложения):</p><h4 style="color: var(--bronze-light);">Discord: <b>calsk</b></h4></div></div></div></div>
+    
+    <div class="modal fade" id="adminModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header" style="border-bottom: 2px solid var(--blood);"><h5 class="modal-title" style="color: var(--blood);">🛡️ Админ-панель</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><button class="btn btn-outline-danger w-100 mb-3" onclick="adminClearChat()">🗑️ Очистить чат полностью</button><div id="adminDisputesList">Загрузка споров...</div></div></div></div></div>
+    
+    <div class="modal fade" id="helpModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Как играть?</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body" style="font-size: 0.95rem;"><ol class="ps-3 mb-0" style="line-height: 1.6;"><li class="mb-2">Выберите режим: <b>Рейтинг</b> (карта рандом) или <b>Без рейтинга</b> (выберите карту).</li><li class="mb-2">Нажмите <b>«НАЧАТЬ ПОИСК»</b>. Появится список игроков в очереди.</li><li class="mb-2">Нажмите <b>«Вызвать»</b> напротив нужного игрока.</li><li class="mb-2">Дождитесь, пока он <b>примет</b> вызов (у него выскочит окно).</li><li class="mb-2">Запустите игру в STALZONE и сразитесь.</li><li class="mb-2">После боя введите счет (например, <b>3:1</b>). Если выиграли — 3:1, проиграли — 1:3.</li><li class="mb-2">Когда оба введут счет, матч подтвердится (если счета зеркальны), и рейтинг изменится.</li><li class="mb-0">Если соперник ввел неверный счет или завис, нажмите <b>«Оспорить»</b>. Матч отправится на проверку админу.</li></ol></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" data-bs-dismiss="modal">Понятно</button></div></div></div></div>
+
+    <div class="modal fade" id="directChallengeModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Вызов по нику</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><label class="form-label text-light">Ник соперника:</label><input type="text" class="form-control mb-3" id="directOpponent" placeholder="Впиши ник..." autocomplete="off" pattern="^[a-zA-Zа-яА-Я_]+$" title="Только буквы и _"><button class="btn btn-custom w-100" onclick="createDirectDuel()">Отправить вызов</button></div></div></div></div>
+
+    <div class="modal fade" id="matchModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze); font-family: 'Ruslan Display', serif;" id="matchModalTitle">Матч</h5></div><div class="modal-body" id="matchModalBody"></div></div></div></div>
+
     <div class="modal fade" id="loginModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Вход</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><input type="text" class="form-control mb-3" id="loginNickname" placeholder="Ник из STALZONE" autocomplete="username" pattern="^[a-zA-Zа-яА-Я_]+$"><input type="password" class="form-control mb-3" id="loginPassword" placeholder="Пароль" autocomplete="current-password"><div id="loginError" class="text-danger" style="font-size: 0.9em;"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="doLogin()">Войти</button></div></div></div></div>
     
-    <div class="modal fade" id="registerModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Регистрация</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body">
-        <input type="text" class="form-control mb-3" id="regNickname" placeholder="Ник из STALZONE (только буквы и _)" autocomplete="off" pattern="^[a-zA-Zа-яА-Я_]+$" title="Только русские/английские буквы и нижнее подчеркивание">
-        <input type="password" class="form-control mb-3" id="regPassword" placeholder="Пароль" autocomplete="new-password">
-        <div id="regError" class="text-danger" style="font-size: 0.9em;"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="doRegister()">Зарегистрироваться</button></div></div></div></div>
+    <div class="modal fade" id="registerModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Регистрация</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body"><input type="text" class="form-control mb-3" id="regNickname" placeholder="Ник из STALZONE (только буквы и _)" autocomplete="off" pattern="^[a-zA-Zа-яА-Я_]+$"><input type="password" class="form-control mb-3" id="regPassword" placeholder="Пароль" autocomplete="new-password"><div id="regError" class="text-danger" style="font-size: 0.9em;"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="doRegister()">Зарегистрироваться</button></div></div></div></div>
     
-    <div class="modal fade" id="profileModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="profile-banner" id="viewBanner"></div><div class="profile-avatar" id="viewAvatar"></div><div class="modal-header border-0 pt-2"><h5 class="modal-title" id="profileName" style="color: var(--bronze); font-family: 'Ruslan Display', serif;">Профиль</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body pt-0 row"><div class="col-md-6 border-end" style="border-color: var(--border-color) !important;"><div class="social-links mb-3" id="profileSocials"></div><p class="fst-italic text-muted mb-3" id="viewBio">Био отсутствует</p><p>Рейтинг: <span id="profileRating" class="rating"></span></p><p>Статистика: <span id="profileWins" class="text-win"></span> побед / <span id="profileLosses" class="text-lose"></span> поражений (<span id="profileWinrate"></span>% побед)</p><hr style="border-color: var(--border-color);"><h6 style="color: var(--bronze-light);">Последние 5 битв:</h6><ul id="profileMatches" class="list-unstyled mt-2" style="font-size: 0.9em;"></ul></div><div class="col-md-6"><h6 style="color: var(--bronze-light);">Стена славы:</h6><div id="commentsSection" class="mt-2" style="max-height: 250px; overflow-y: auto;"></div><div class="mt-3" id="commentInputBlock" style="display:none;"><textarea id="newCommentText" class="form-control mb-2" rows="2" placeholder="Оставь след..." autocomplete="off"></textarea><button class="btn btn-custom btn-sm w-100" onclick="postComment()">Отправить</button></div></div></div></div></div></div>
+    <div class="modal fade" id="profileModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="profile-banner" id="viewBanner"></div><div class="profile-avatar" id="viewAvatar"></div><div class="modal-header border-0 pt-2"><h5 class="modal-title" id="profileName" style="color: var(--bronze); font-family: 'Ruslan Display', serif;">Профиль</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body pt-0 row"><div class="col-md-6 border-end" style="border-color: var(--border-color) !important;"><div class="social-links mb-3" id="profileSocials"></div><p class="fst-italic text-muted mb-3" id="viewBio">Био отсутствует</p><p>Рейтинг: <span id="profileRating" class="rating"></span> <span id="profileLevel" class="faceit-level ms-1" style="vertical-align: middle;"></span></p><p>Статистика: <span id="profileWins" class="text-win"></span> побед / <span id="profileLosses" class="text-lose"></span> поражений (<span id="profileWinrate"></span>% побед)</p><p>Матчей: <b id="profileTotal"></b> | Серия побед: <b id="profileStreak" class="text-win"></b></p><hr style="border-color: var(--border-color);"><h6 style="color: var(--bronze-light);">Достижения:</h6><div id="profileAchievements" class="mb-3"></div><h6 style="color: var(--bronze-light);">Последние 5 битв:</h6><ul id="profileMatches" class="list-unstyled mt-2" style="font-size: 0.9em;"></ul></div><div class="col-md-6"><h6 style="color: var(--bronze-light);">Стена славы:</h6><div id="commentsSection" class="mt-2" style="max-height: 250px; overflow-y: auto;"></div><div class="mt-3" id="commentInputBlock" style="display:none;"><textarea id="newCommentText" class="form-control mb-2" rows="2" placeholder="Оставь след..." autocomplete="off"></textarea><button class="btn btn-custom btn-sm w-100" onclick="postComment()">Отправить</button></div></div></div></div></div></div>
     
     <div class="modal fade" id="editProfileModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered modal-lg"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" style="color: var(--bronze);">Настройки профиля</h5><button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button></div><div class="modal-body row"><div class="col-md-6"><label class="form-label text-light">Баннер (URL):</label><input type="text" class="form-control mb-3" id="editBanner" autocomplete="off"><label class="form-label text-light">Аватар (URL):</label><input type="text" class="form-control mb-3" id="editAvatar" autocomplete="off"><label class="form-label text-light">Био:</label><textarea class="form-control mb-3" id="editBio" rows="2" autocomplete="off"></textarea><label class="form-label text-light">Цитата:</label><select class="form-control mb-3" id="editQuoteCategory" onchange="updateQuoteList()"><option value="spartan">Спартанские</option><option value="great">Великие люди</option></select><select class="form-control mb-3" id="editQuote"><option value="">-- Без цитаты --</option></select></div><div class="col-md-6 border-start" style="border-color: var(--border-color) !important;"><h6 style="color: var(--bronze-light);">Интеграции:</h6><label class="form-label text-light">Discord:</label><input type="text" class="form-control mb-2" id="editDiscord" autocomplete="off"><label class="form-label text-light">Telegram:</label><input type="text" class="form-control mb-2" id="editTelegram" autocomplete="off"><label class="form-label text-light">Twitch:</label><input type="text" class="form-control mb-2" id="editTwitch" autocomplete="off"><label class="form-label text-light">YouTube:</label><input type="text" class="form-control mb-2" id="editYoutube" autocomplete="off"></div></div><div class="modal-footer"><button type="button" class="btn btn-custom w-100" onclick="saveProfile()">Сохранить</button></div></div></div></div>
 
@@ -298,9 +302,22 @@
         let matchPollInterval = null;
         let matchModalInstance = null;
         let isRankedMode = true;
+        let lastMatchStatus = null; 
+        let readyCheckInterval = null;
 
         const spartanQuotes = ["Со щитом или на щите!", "Это Спарта!", "Спартанцы не спрашивают, сколько врагов, они спрашивают, где они.", "Наши стрелы закроют солнце. — Тем лучше, будем сражаться в тени.", "Молчание — признак согласия.", "Спарта не будет разрушена, пока у нее есть такие воины.", "Лучше умереть стоя, чем жить на коленях.", "Сражайся за то, что любишь, и пусть боги решают исход.", "Смерть на поле боя — высшая честь для воина.", "Закон превыше всего."];
         const greatQuotes = ["Veni, vidi, vici. — Юлий Цезарь", "Знание — сила. — Фрэнсис Бэкон", "Я мыслю, следовательно, существую. — Рене Декарт", "Цель оправдывает средства. — Никколо Макиавелли", "Война — это продолжение политики другими средствами. — Карл фон Клаузевиц", "Нет ничего постоянного, кроме перемен. — Гераклит", "Познай самого себя. — Сократ", "Государство — это я. — Людовик XIV", "Победителей не судят. — Екатерина II", "Тяжело в учении — легко в бою. — Александр Суворов"];
+
+        function playNotificationSound() {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator(); const gain = ctx.createGain();
+                osc.type = 'square'; osc.frequency.setValueAtTime(880, ctx.currentTime); osc.frequency.exponentialRampToValueAtTime(220, ctx.currentTime + 0.15); 
+                gain.gain.setValueAtTime(0.3, ctx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.2);
+                osc.connect(gain); gain.connect(ctx.destination);
+                osc.start(); osc.stop(ctx.currentTime + 0.2);
+            } catch (e) { console.log("Звук заблокирован браузером."); }
+        }
 
         function updateQuoteList() {
             const list = document.getElementById('editQuoteCategory').value === 'spartan' ? spartanQuotes : greatQuotes;
@@ -324,10 +341,7 @@
                 document.getElementById('chatInputBlock').style.display = 'block';
                 document.getElementById('chatLoginPrompt').style.display = 'none';
                 if (!matchPollInterval) matchPollInterval = setInterval(checkActiveMatch, 3000);
-                
-                if (isAdmin) document.getElementById('adminPanelBtn').style.display = 'inline-block';
-                else document.getElementById('adminPanelBtn').style.display = 'none';
-                
+                if (isAdmin) document.getElementById('adminPanelBtn').style.display = 'inline-block'; else document.getElementById('adminPanelBtn').style.display = 'none';
             } else {
                 document.getElementById('authButtons').style.display = 'block';
                 document.getElementById('userInfo').style.display = 'none';
@@ -341,42 +355,26 @@
         function showModal(id) { const modal = new bootstrap.Modal(document.getElementById(id)); modal.show(); }
 
         async function doLogin() {
-            const nick = document.getElementById('loginNickname').value.trim();
-            const pass = document.getElementById('loginPassword').value;
-            document.getElementById('loginError').innerText = '';
-            
-            if (!/^[a-zA-Zа-яА-Я_]+$/.test(nick)) {
-                document.getElementById('loginError').innerText = "Ник может содержать только буквы и _";
-                return;
-            }
-
+            const nick = document.getElementById('loginNickname').value.trim(); const pass = document.getElementById('loginPassword').value; document.getElementById('loginError').innerText = '';
+            if (!/^[a-zA-Zа-яА-Я_]+$/.test(nick)) { document.getElementById('loginError').innerText = "Ник может содержать только буквы и _"; return; }
             try {
                 const res = await fetch('/login', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nickname: nick, password: pass}) });
                 const data = await res.json(); if (!res.ok) throw new Error(data.detail);
                 localStorage.setItem('token', data.access_token); localStorage.setItem('nickname', data.nickname); localStorage.setItem('is_admin', data.is_admin);
                 token = data.access_token; currentUser = data.nickname; isAdmin = data.is_admin;
-                updateAuthUI(); bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
-                loadData(); loadChat();
+                updateAuthUI(); bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide(); loadData(); loadChat();
             } catch (e) { document.getElementById('loginError').innerText = e.message; }
         }
 
         async function doRegister() {
-            const nick = document.getElementById('regNickname').value.trim();
-            const pass = document.getElementById('regPassword').value;
-            document.getElementById('regError').innerText = '';
-
-            if (!/^[a-zA-Zа-яА-Я_]+$/.test(nick)) {
-                document.getElementById('regError').innerText = "Ник может содержать только буквы (рус/англ) и нижнее подчеркивание (_)";
-                return;
-            }
-
+            const nick = document.getElementById('regNickname').value.trim(); const pass = document.getElementById('regPassword').value; document.getElementById('regError').innerText = '';
+            if (!/^[a-zA-Zа-яА-Я_]+$/.test(nick)) { document.getElementById('regError').innerText = "Ник может содержать только буквы (рус/англ) и нижнее подчеркивание (_)"; return; }
             try {
                 const res = await fetch('/register', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({nickname: nick, password: pass}) });
                 const data = await res.json(); if (!res.ok) throw new Error(data.detail);
                 localStorage.setItem('token', data.access_token); localStorage.setItem('nickname', data.nickname); localStorage.setItem('is_admin', data.is_admin);
                 token = data.access_token; currentUser = data.nickname; isAdmin = data.is_admin;
-                updateAuthUI(); bootstrap.Modal.getInstance(document.getElementById('registerModal')).hide();
-                loadData(); loadChat();
+                updateAuthUI(); bootstrap.Modal.getInstance(document.getElementById('registerModal')).hide(); loadData(); loadChat();
             } catch (e) { document.getElementById('regError').innerText = e.message; }
         }
 
@@ -390,66 +388,31 @@
 
         async function openAdminPanel() {
             showModal('adminModal');
-            const list = document.getElementById('adminDisputesList');
-            list.innerHTML = '<div class="text-center text-warning">Загрузка...</div>';
+            const list = document.getElementById('adminDisputesList'); list.innerHTML = '<div class="text-center text-warning">Загрузка...</div>';
             try {
-                const res = await fetch('/admin/disputes', { headers: {'Authorization': `Bearer ${token}`} });
-                if (!res.ok) throw new Error("Ошибка доступа");
+                const res = await fetch('/admin/disputes', { headers: {'Authorization': `Bearer ${token}`} }); if (!res.ok) throw new Error("Ошибка доступа");
                 const disputes = await res.json();
-                
-                if (disputes.length === 0) {
-                    list.innerHTML = '<div class="text-center text-muted">Нет активных споров. Все спокойно!</div>';
-                    return;
-                }
-                
+                if (disputes.length === 0) { list.innerHTML = '<div class="text-center text-muted">Нет активных споров. Все спокойно!</div>'; return; }
                 list.innerHTML = '';
                 disputes.forEach(d => {
-                    list.innerHTML += `
-                    <div class="admin-dispute-card">
-                        <div class="d-flex justify-content-between mb-2">
-                            <span class="text-gray" style="font-size:0.8em;">${d.time}</span>
-                            <span class="text-gray" style="font-size:0.8em;">${d.is_ranked ? '🏆 Рейтинг' : '🎮 Без рейтинга'} • Карта: ${d.map_name || 'Не указана'}</span>
-                        </div>
-                        <div class="row text-center mb-3">
-                            <div class="col-6 border-end" style="border-color: var(--border-color) !important;">
-                                <div class="fw-bold text-warning">${d.challenger}</div>
-                                <div class="fs-5 text-light">${d.score_challenger || '—'}</div>
-                            </div>
-                            <div class="col-6">
-                                <div class="fw-bold text-warning">${d.opponent}</div>
-                                <div class="fs-5 text-light">${d.score_opponent || '—'}</div>
-                            </div>
-                        </div>
-                        <div class="d-flex gap-2">
-                            <button class="btn btn-sm btn-outline-success flex-fill" onclick="resolveDispute(${d.id}, 'win_challenger')">Победа ${d.challenger}</button>
-                            <button class="btn btn-sm btn-outline-success flex-fill" onclick="resolveDispute(${d.id}, 'win_opponent')">Победа ${d.opponent}</button>
-                            <button class="btn btn-sm btn-outline-danger" onclick="resolveDispute(${d.id}, 'cancel')">Отмена</button>
-                        </div>
-                    </div>`;
+                    list.innerHTML += `<div class="admin-dispute-card"><div class="d-flex justify-content-between mb-2"><span class="text-gray" style="font-size:0.8em;">${d.time}</span><span class="text-gray" style="font-size:0.8em;">${d.is_ranked ? '🏆 Рейтинг' : '🎮 Без рейтинга'} • Карта: ${d.map_name || 'Не указана'}</span></div><div class="row text-center mb-3"><div class="col-6 border-end" style="border-color: var(--border-color) !important;"><div class="fw-bold text-warning">${d.challenger}</div><div class="fs-5 text-light">${d.score_challenger || '—'}</div></div><div class="col-6"><div class="fw-bold text-warning">${d.opponent}</div><div class="fs-5 text-light">${d.score_opponent || '—'}</div></div></div><div class="d-flex gap-2"><button class="btn btn-sm btn-outline-success flex-fill" onclick="resolveDispute(${d.id}, 'win_challenger')">Победа ${d.challenger}</button><button class="btn btn-sm btn-outline-success flex-fill" onclick="resolveDispute(${d.id}, 'win_opponent')">Победа ${d.opponent}</button><button class="btn btn-sm btn-outline-danger" onclick="resolveDispute(${d.id}, 'cancel')">Отмена</button></div></div>`;
                 });
             } catch (e) { list.innerHTML = `<div class="text-danger">${e.message}</div>`; }
         }
 
         async function resolveDispute(duelId, action) {
-            if (!confirm("Вы уверены? Это действие изменит рейтинги (если матч рейтинговый) и закроет спор.")) return;
+            if (!confirm("Вы уверены?")) return;
             try {
-                const res = await fetch(`/admin/resolve/${duelId}`, {
-                    method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
-                    body: JSON.stringify({ action: action })
-                });
-                if (!res.ok) throw new Error("Ошибка");
-                openAdminPanel();
-                loadData();
+                const res = await fetch(`/admin/resolve/${duelId}`, { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify({ action: action }) });
+                if (!res.ok) throw new Error("Ошибка"); openAdminPanel(); loadData();
             } catch (e) { alert(e.message); }
         }
 
         async function adminClearChat() {
-            if(!confirm("Вы уверены, что хотите полностью очистить чат?")) return;
+            if(!confirm("Вы уверены?")) return;
             try {
                 const res = await fetch('/admin/clear_chat', { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
-                if(!res.ok) throw new Error("Ошибка");
-                loadChat();
-                alert("Чат очищен!");
+                if(!res.ok) throw new Error("Ошибка"); loadChat(); alert("Чат очищен!");
             } catch(e) { alert(e.message); }
         }
 
@@ -460,172 +423,188 @@
                 if (res.status === 401) { logout(); return; }
                 const duel = await res.json();
                 
-                if (!duel) {
-                    if (matchModalInstance) { matchModalInstance.hide(); matchModalInstance = null; }
-                    return;
-                }
+                if (readyCheckInterval) { clearInterval(readyCheckInterval); readyCheckInterval = null; }
 
+                const currentStatus = duel ? duel.status : null;
+                if (currentStatus === 'pending_accept' && lastMatchStatus !== 'pending_accept') { playNotificationSound(); }
+                lastMatchStatus = currentStatus;
+                if (!duel) { if (matchModalInstance) { matchModalInstance.hide(); matchModalInstance = null; } return; }
                 if (!matchModalInstance) matchModalInstance = new bootstrap.Modal(document.getElementById('matchModal'), { backdrop: 'static', keyboard: false });
-
-                const title = document.getElementById('matchModalTitle');
+                
+                const title = document.getElementById('matchModalTitle'); 
                 const body = document.getElementById('matchModalBody');
-
+                
+                const myNick = currentUser;
+                const oppNick = duel.my_role === 'challenger' ? duel.opponent : duel.challenger;
+                
                 if (duel.status === 'pending_accept') {
                     title.innerText = "Вызов на дуэль";
+                    
+                    const startTimer = (elementId) => {
+                        const startTime = new Date(duel.created_at + "Z").getTime();
+                        const updateTimer = () => {
+                            const now = new Date().getTime();
+                            const remaining = Math.max(0, 30 - Math.floor((now - startTime) / 1000));
+                            const timerEl = document.getElementById(elementId);
+                            if (timerEl) timerEl.innerText = remaining;
+                        };
+                        updateTimer();
+                        readyCheckInterval = setInterval(updateTimer, 1000);
+                    };
+
                     if (duel.my_role === 'opponent') {
                         body.innerHTML = `
                             <p>Игрок <b class="text-warning">${duel.challenger}</b> вызывает вас на дуэль!</p>
                             <p>Режим: ${duel.is_ranked ? '🏆 Рейтинг' : '🎮 Без рейтинга'}</p>
+                            <div class="text-center my-3">
+                                <span class="badge bg-danger fs-6 rounded-pill">Ответьте через <span id="readyTimer">30</span> сек.</span>
+                            </div>
                             <div class="d-flex gap-2 mt-4">
                                 <button class="btn btn-custom flex-fill" onclick="acceptDuel(${duel.id})">Принять</button>
                                 <button class="btn btn-outline-danger flex-fill" onclick="declineDuel(${duel.id})">Отклонить</button>
                             </div>`;
+                        startTimer('readyTimer');
                     } else {
-                        // ДОБАВЛЕНА КНОПКА ОТМЕНЫ ДЛЯ ТОГО, КТО ВЫЗВАЛ
                         body.innerHTML = `
                             <p>Вы вызвали <b class="text-warning">${duel.opponent}</b> на дуэль.</p>
-                            <p>Ожидаем подтверждения соперника...</p>
-                            <div class="text-center my-3"><div class="spinner-border text-warning"></div></div>
-                            <button class="btn btn-outline-danger w-100 mt-2" onclick="declineDuel(${duel.id})">Отменить вызов</button>
-                        `;
+                            <p>Ожидаем подтверждения...</p>
+                            <div class="text-center my-3">
+                                <div class="spinner-border text-warning mb-2"></div>
+                                <br><span class="badge bg-secondary rounded-pill">Автоотмена через <span id="readyTimer">30</span> сек.</span>
+                            </div>
+                            <button class="btn btn-outline-danger w-100 mt-2" onclick="declineDuel(${duel.id})">Отменить вызов</button>`;
+                        startTimer('readyTimer');
                     }
                     matchModalInstance.show();
                 } 
+                else if (duel.status === 'map_veto') {
+                    title.innerText = "Баны карт";
+                    
+                    let mapButtons = "";
+                    const maps = ["Склад", "Спуск", "Ангар", "Госпиталь", "Депо"];
+                    maps.forEach(m => {
+                        const isBanned = duel.banned_maps.includes(m);
+                        const disabled = isBanned || !duel.is_my_turn ? "disabled" : "";
+                        const btnClass = isBanned ? "btn-outline-danger map-banned" : "btn-outline-warning";
+                        mapButtons += `<button class="btn ${btnClass} map-ban-btn" onclick="banMap(${duel.id}, '${m}')" ${disabled}>${m}</button>`;
+                    });
+
+                    body.innerHTML = `
+                        <div class="text-center mb-3">
+                            <p class="mb-1 text-muted">Баньте карты по очереди. Останется одна.</p>
+                            <h5 class="${duel.is_my_turn ? 'text-success' : 'text-danger'} fw-bold text-uppercase" style="letter-spacing: 1px;">
+                                ${duel.is_my_turn ? 'ВАШ ХОД' : 'ХОД СОПЕРНИКА...'}
+                            </h5>
+                        </div>
+                        <div class="map-ban-grid">
+                            ${mapButtons}
+                        </div>
+                        <button class="btn btn-outline-danger w-100 mt-2" onclick="closeMatch()">Покинуть лобби</button>
+                    `;
+                    matchModalInstance.show();
+                }
                 else if (duel.status === 'accepted') {
                     title.innerText = "Матч начался!";
+                    
+                    const myAvatar = `https://ui-avatars.com/api/?name=${myNick}&background=151312&color=cd7f32&rounded=true`;
+                    const oppAvatar = `https://ui-avatars.com/api/?name=${oppNick}&background=151312&color=8a0303&rounded=true`;
+
                     body.innerHTML = `
-                        <p>Соперник: <b class="text-warning">${duel.my_role === 'challenger' ? duel.opponent : duel.challenger}</b></p>
-                        <p>Карта: <b class="text-warning" style="font-size:1.2em;">${duel.map_name}</b></p>
-                        <hr>
-                        <p>После окончания игры введите счет (например, 3:1, где первая цифра - ваши раунды).</p>
-                        <input type="text" class="form-control mb-3" id="myScoreInput" placeholder="Ваш счет (3:1)">
+                        <div class="vs-container">
+                            <div class="vs-player">
+                                <img src="${myAvatar}" class="vs-avatar">
+                                <div class="vs-name">${myNick} (Вы)</div>
+                            </div>
+                            <div class="vs-divider">
+                                <div class="vs-text">VS</div>
+                                <div class="vs-map">Карта: <b class="text-white">${duel.map_name}</b></div>
+                            </div>
+                            <div class="vs-player">
+                                <img src="${oppAvatar}" class="vs-avatar">
+                                <div class="vs-name">${oppNick}</div>
+                            </div>
+                        </div>
+                        
+                        <hr style="border-color: var(--border-color); margin: 15px 0;">
+                        
+                        <p class="text-center text-muted mb-2" style="font-size: 0.9rem;">Введите результат матча после игры (например, 3:1):</p>
+                        <input type="text" class="form-control mb-3 text-center" id="myScoreInput" placeholder="Ваш счет (3:1)" style="font-size: 1.2rem; font-weight: bold;">
+                        
                         <div class="d-flex gap-2">
-                            <button class="btn btn-custom flex-fill" onclick="submitScore(${duel.id})">Завершить игру</button>
+                            <button class="btn btn-custom flex-fill" onclick="submitScore(${duel.id})" style="font-size: 1.1rem;">Завершить матч</button>
                             <button class="btn btn-outline-danger" onclick="disputeDuel(${duel.id})">Оспорить</button>
                         </div>
                     `;
                     matchModalInstance.show();
-                }
+                } 
                 else if (duel.status === 'waiting_results') {
                     title.innerText = "Ожидание счета";
                     const myScore = duel.my_role === 'challenger' ? duel.score_challenger : duel.score_opponent;
                     if (myScore) {
-                        body.innerHTML = `<p>Вы ввели счет: <b class="text-warning">${myScore}</b></p><p>Ожидаем подтверждения от соперника...</p><div class="spinner-border text-warning mt-3"></div><button class="btn btn-outline-danger w-100 mt-4" onclick="disputeDuel(${duel.id})">Оспорить</button>`;
+                        body.innerHTML = `<p>Вы ввели счет: <b class="text-warning">${myScore}</b></p><p>Ожидаем...</p><div class="spinner-border text-warning mt-3"></div><button class="btn btn-outline-danger w-100 mt-4" onclick="disputeDuel(${duel.id})">Оспорить</button>`;
                     } else {
-                        body.innerHTML = `
-                            <p>Соперник уже ввел свой счет. Введите ваш результат:</p>
-                            <input type="text" class="form-control mb-3" id="myScoreInput" placeholder="Ваш счет (например, 1:3)">
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-custom flex-fill" onclick="submitScore(${duel.id})">Подтвердить</button>
-                                <button class="btn btn-outline-danger" onclick="disputeDuel(${duel.id})">Оспорить</button>
-                            </div>`;
+                        body.innerHTML = `<p>Соперник уже ввел счет. Введите ваш результат:</p><input type="text" class="form-control mb-3 text-center" id="myScoreInput" placeholder="Ваш счет (например, 1:3)" style="font-size: 1.2rem; font-weight: bold;"><div class="d-flex gap-2"><button class="btn btn-custom flex-fill" onclick="submitScore(${duel.id})">Подтвердить</button><button class="btn btn-outline-danger" onclick="disputeDuel(${duel.id})">Оспорить</button></div>`;
                     }
                     matchModalInstance.show();
-                }
+                } 
                 else if (duel.status === 'disputed') {
                     title.innerText = "Матч оспорен!";
-                    body.innerHTML = `<p class="text-danger">Один из игроков оспорил результат. Ожидайте решения администратора.</p><button class="btn btn-custom w-100 mt-3" onclick="closeMatch()">Закрыть</button>`;
+                    body.innerHTML = `<p class="text-danger">Ожидайте решения администратора.</p><button class="btn btn-custom w-100 mt-3" onclick="closeMatch()">Закрыть</button>`;
                     matchModalInstance.show();
                 }
             } catch (e) { console.error(e); }
         }
 
-        async function createDirectDuel() {
-            const opponent = document.getElementById('directOpponent').value.trim();
-            const mapName = isRankedMode ? null : (document.getElementById('mapUnranked').value.trim() || "Склад");
-            
-            if (!/^[a-zA-Zа-яА-Я_]+$/.test(opponent)) {
-                return alert("Ник может содержать только буквы и _");
-            }
-
+        async function banMap(duelId, mapName) {
             try {
-                const res = await fetch('/duels/create', {
-                    method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
-                    body: JSON.stringify({ opponent_nickname: opponent, is_ranked: isRankedMode, map_name: mapName })
-                });
-                const data = await res.json();
-                if (!res.ok) throw new Error(data.detail || "Ошибка");
-                
-                bootstrap.Modal.getInstance(document.getElementById('directChallengeModal')).hide();
+                const res = await fetch(`/duels/${duelId}/ban`, { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify({ map_name: mapName }) });
+                if (!res.ok) {
+                    const err = await res.json();
+                    alert(err.detail || "Ошибка при бане карты");
+                }
                 checkActiveMatch();
+            } catch (e) { alert("Ошибка сети"); }
+        }
+
+        async function createDirectDuel() {
+            const opponent = document.getElementById('directOpponent').value.trim(); const mapName = isRankedMode ? null : (document.getElementById('mapUnranked').value.trim() || "Склад");
+            if (!/^[a-zA-Zа-яА-Я_]+$/.test(opponent)) return alert("Ник может содержать только буквы и _");
+            try {
+                const res = await fetch('/duels/create', { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify({ opponent_nickname: opponent, is_ranked: isRankedMode, map_name: mapName }) });
+                const data = await res.json(); if (!res.ok) throw new Error(data.detail || "Ошибка");
+                bootstrap.Modal.getInstance(document.getElementById('directChallengeModal')).hide(); checkActiveMatch();
             } catch (e) { alert(e.message); }
         }
 
-        async function acceptDuel(id) {
-            await fetch(`/duels/${id}/accept`, { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
-            checkActiveMatch();
-        }
-
-        async function declineDuel(id) {
-            await fetch(`/duels/${id}/decline`, { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
-            closeMatch();
-        }
-
-        async function submitScore(id) {
-            const score = document.getElementById('myScoreInput').value.trim();
-            if (!score) return alert("Введите счет!");
-            await fetch(`/duels/${id}/submit`, {
-                method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
-                body: JSON.stringify({ score: score })
-            });
-            checkActiveMatch();
-        }
-
-        async function disputeDuel(id) {
-            if (confirm("Вы уверены, что хотите оспорить матч? Рейтинг не будет начислен до решения админа.")) {
-                await fetch(`/duels/${id}/dispute`, { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
-                checkActiveMatch();
-            }
-        }
-
-        function closeMatch() {
-            if (matchModalInstance) { matchModalInstance.hide(); matchModalInstance = null; }
-            loadData(); 
-        }
+        async function acceptDuel(id) { await fetch(`/duels/${id}/accept`, { method: 'POST', headers: {'Authorization': `Bearer ${token}`} }); checkActiveMatch(); }
+        async function declineDuel(id) { await fetch(`/duels/${id}/decline`, { method: 'POST', headers: {'Authorization': `Bearer ${token}`} }); closeMatch(); }
+        async function submitScore(id) { const score = document.getElementById('myScoreInput').value.trim(); if (!score) return alert("Введите счет!"); await fetch(`/duels/${id}/submit`, { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify({ score: score }) }); checkActiveMatch(); }
+        async function disputeDuel(id) { if (confirm("Оспорить матч?")) { await fetch(`/duels/${id}/dispute`, { method: 'POST', headers: {'Authorization': `Bearer ${token}`} }); checkActiveMatch(); } }
+        function closeMatch() { if (readyCheckInterval) { clearInterval(readyCheckInterval); readyCheckInterval = null; } if (matchModalInstance) { matchModalInstance.hide(); matchModalInstance = null; } loadData(); }
 
         async function toggleSearch() {
-            const btn = document.getElementById('searchBtn');
-            const resDiv = document.getElementById('matchmakingResult');
-            const list = document.getElementById('matchmakingList');
-            
+            const btn = document.getElementById('searchBtn'); const resDiv = document.getElementById('matchmakingResult'); const list = document.getElementById('matchmakingList');
             if (matchmakingInterval) {
                 clearInterval(matchmakingInterval); matchmakingInterval = null;
-                btn.innerHTML = "🔍 НАЧАТЬ ПОИСК"; btn.classList.remove('btn-danger'); btn.classList.add('btn-custom'); 
-                resDiv.style.display = 'none';
-                await fetch('/matchmaking/toggle', { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
-                return;
+                btn.innerHTML = "🔍 НАЧАТЬ ПОИСК"; btn.classList.remove('btn-danger'); btn.classList.add('btn-primary-custom'); resDiv.style.display = 'none';
+                await fetch('/matchmaking/toggle', { method: 'POST', headers: {'Authorization': `Bearer ${token}`} }); return;
             }
-
-            if (!isRankedMode && !document.getElementById('mapUnranked').value.trim()) {
-                return alert("Сначала выберите карту!");
-            }
-
-            btn.innerHTML = "⏹ ОТМЕНИТЬ ПОИСК"; btn.classList.remove('btn-custom'); btn.classList.add('btn-danger'); 
-            resDiv.style.display = 'block';
+            if (!isRankedMode && !document.getElementById('mapUnranked').value.trim()) return alert("Сначала выберите карту!");
+            btn.innerHTML = "⏹ ОТМЕНИТЬ ПОИСК"; btn.classList.remove('btn-primary-custom'); btn.classList.add('btn-danger'); resDiv.style.display = 'block';
             list.innerHTML = '<li class="list-group-item bg-transparent text-warning text-center" style="border-color: var(--border-color);">⏳ Ищем соперников...</li>';
-            
             await fetch('/matchmaking/toggle', { method: 'POST', headers: {'Authorization': `Bearer ${token}`} });
-
             matchmakingInterval = setInterval(async () => {
                 const res = await fetch(`/matchmaking/status/${currentUser}`); const data = await res.json();
                 list.innerHTML = data.matches.length === 0 ? '<li class="list-group-item bg-transparent text-muted text-center" style="border-color: var(--border-color);">В очереди пока никого нет...</li>' : '';
-                data.matches.forEach(p => {
-                    list.innerHTML += `<li class="list-group-item bg-transparent d-flex justify-content-between align-items-center matchmaking-list-item" style="border-color: var(--border-color);"><div><b class="text-warning">${p.nickname}</b> (${p.rating})</div><button class="btn btn-sm btn-outline-warning" onclick="challengeFromSearch('${p.nickname}')">Вызвать</button></li>`;
-                });
+                data.matches.forEach(p => { list.innerHTML += `<li class="list-group-item bg-transparent d-flex justify-content-between align-items-center matchmaking-list-item" style="border-color: var(--border-color);"><div><b class="text-warning">${p.nickname}</b> (${p.rating})</div><button class="btn btn-sm btn-outline-warning" onclick="challengeFromSearch('${p.nickname}')">Вызвать</button></li>`; });
             }, 3000);
         }
 
         async function challengeFromSearch(nickname) {
             const mapName = isRankedMode ? null : document.getElementById('mapUnranked').value.trim();
-            
             try {
-                const res = await fetch('/duels/create', {
-                    method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`},
-                    body: JSON.stringify({ opponent_nickname: nickname, is_ranked: isRankedMode, map_name: mapName })
-                });
-                if (!res.ok) throw new Error("Ошибка");
-                checkActiveMatch();
-                if (matchmakingInterval) { toggleSearch(); }
+                const res = await fetch('/duels/create', { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify({ opponent_nickname: nickname, is_ranked: isRankedMode, map_name: mapName }) });
+                if (!res.ok) throw new Error("Ошибка"); checkActiveMatch(); if (matchmakingInterval) { toggleSearch(); }
             } catch (e) { alert(e.message); }
         }
 
@@ -634,58 +613,56 @@
             const chatBox = document.getElementById('chatMessages'); const isBottom = chatBox.scrollHeight - chatBox.clientHeight <= chatBox.scrollTop + 50;
             chatBox.innerHTML = messages.length === 0 ? '<div class="text-center text-muted small mt-3">Тишина в эфире...</div>' : '';
             messages.forEach(m => {
-                chatBox.innerHTML += `<div class="chat-message"><span class="chat-author" style="${currentUser && m.author.toLowerCase()===currentUser.toLowerCase()?'color:#00ff88;':''}" onclick="showProfile('${m.author}')">${m.author}</span> <span class="chat-rating">[${m.rating}]</span> <span class="chat-time">${m.time}</span><div class="text-light mt-1">${m.text}</div></div>`;
+                const onlineDot = m.is_online ? '<span class="online-dot">●</span>' : '';
+                chatBox.innerHTML += `<div class="chat-message">${onlineDot}<span class="chat-author" style="${currentUser && m.author.toLowerCase()===currentUser.toLowerCase()?'color:#00ff88;':''}" onclick="showProfile('${m.author}')">${m.author}</span> <span class="chat-rating">[${m.rating}]</span> <span class="chat-time">${m.time}</span><div class="text-light mt-1">${m.text}</div></div>`;
             });
             if (isBottom) chatBox.scrollTop = chatBox.scrollHeight;
         }
 
-        async function sendChatMessage() {
-            const input = document.getElementById('chatInput'); const text = input.value.trim(); if (!text) return;
-            await fetch('/chat/', { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify({ text }) });
-            input.value = ''; loadChat();
-        }
+        async function sendChatMessage() { const input = document.getElementById('chatInput'); const text = input.value.trim(); if (!text) return; await fetch('/chat/', { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify({ text }) }); input.value = ''; loadChat(); }
         function handleChatEnter(e) { if (e.key === 'Enter') sendChatMessage(); }
 
         async function loadData() {
             try {
-                const resL = await fetch('/leaderboard/'); 
-                if(!resL.ok) throw new Error("Сервер не отвечает");
-                const dataL = await resL.json();
-                const tbodyL = document.getElementById('leaderboardBody'); 
+                const resL = await fetch('/leaderboard/'); if(!resL.ok) throw new Error("Сервер не отвечает");
+                const dataL = await resL.json(); const tbodyL = document.getElementById('leaderboardBody'); 
                 tbodyL.innerHTML = dataL.length === 0 ? '<tr><td colspan="5">Пока нет воинов</td></tr>' : '';
-                
                 dataL.forEach((p, i) => { 
                     const avatar = p.avatar_url || `https://ui-avatars.com/api/?name=${p.nickname}&background=151312&color=cd7f32&rounded=true`;
                     let crown = i===0?'👑':i===1?'👑':i===2?'👑':''; let cClass = i===0?'crown-gold':i===1?'crown-silver':i===2?'crown-bronze':'';
                     const medals = p.medals ? p.medals.map(m => `<span style="font-size:1.1em;margin-left:3px;filter:drop-shadow(0 0 3px gold);">${m}</span>`).join('') : '';
-                    tbodyL.innerHTML += `<tr class="${currentUser && p.nickname.toLowerCase()===currentUser.toLowerCase()?'my-row':''}"><td><b>${i+1}</b></td><td><span class="${cClass}">${crown}</span></td><td><img src="${avatar}" class="table-avatar"></td><td><span class="player-link" onclick="showProfile('${p.nickname}')">${p.nickname}</span> ${medals}</td><td class="rating">${p.rating}</td></tr>`;
+                    const onlineDot = p.is_online ? '<span class="online-dot">●</span>' : '';
+                    tbodyL.innerHTML += `<tr class="${currentUser && p.nickname.toLowerCase()===currentUser.toLowerCase()?'my-row':''}"><td><b>${i+1}</b></td><td><span class="faceit-level lvl-${p.level}">${p.level}</span></td><td><img src="${avatar}" class="table-avatar"></td><td>${onlineDot}<span class="player-link" onclick="showProfile('${p.nickname}')">${p.nickname}</span> ${medals}</td><td class="rating">${p.rating}</td></tr>`;
                 });
-            } catch(e) { 
-                document.getElementById('leaderboardBody').innerHTML = '<tr><td colspan="5" class="text-danger">Сервер недоступен</td></tr>';
-                console.error(e); 
-            }
-
+            } catch(e) { document.getElementById('leaderboardBody').innerHTML = '<tr><td colspan="5" class="text-danger">Сервер недоступен</td></tr>'; }
             try {
-                const resH = await fetch('/duels/history'); 
-                if(!resH.ok) throw new Error("Сервер не отвечает");
-                const dataH = await resH.json();
-                const tbodyH = document.getElementById('historyBody'); 
+                const resH = await fetch('/duels/history'); if(!resH.ok) throw new Error("Сервер не отвечает");
+                const dataH = await resH.json(); const tbodyH = document.getElementById('historyBody'); 
                 tbodyH.innerHTML = dataH.length === 0 ? '<tr><td colspan="2">Битв пока не было</td></tr>' : '';
                 dataH.forEach(m => {
                     const mapText = m.map_name ? ` • ${m.map_name}` : ''; 
-                    let dW = m.rating_change_winner ? `<span class="delta-plus">+${m.rating_change_winner}</span>` : ''; let dL = m.rating_change_loser ? `<span class="delta-minus">${m.rating_change_loser}</span>` : '';
+                    let dW = m.rating_change_winner ? `<span class="delta-plus" style="color:#1CE400; font-size:0.9em;">+${m.rating_change_winner}</span>` : ''; 
+                    let dL = m.rating_change_loser ? `<span class="delta-minus" style="color:#ff4444; font-size:0.9em;">${m.rating_change_loser}</span>` : '';
                     tbodyH.innerHTML += `<tr><td class="text-gray">${m.time}</td><td style="font-size:0.9em;">${m.is_ranked?'🏆':'🎮'} <span class="text-win">${m.winner}</span> ${dW} одолел <span class="text-lose">${m.loser}</span> ${dL}<br><span class="text-gray">Счет: ${m.score}${mapText}</span></td></tr>`;
                 });
-            } catch (e) { 
-                document.getElementById('historyBody').innerHTML = '<tr><td colspan="2" class="text-danger">Сервер недоступен</td></tr>';
-                console.error(e); 
-            }
+            } catch (e) { document.getElementById('historyBody').innerHTML = '<tr><td colspan="2" class="text-danger">Сервер недоступен</td></tr>'; }
         }
 
         async function showProfile(nickname) {
             const res = await fetch(`/player/${nickname}`); const data = await res.json();
             document.getElementById('profileName').innerText = data.nickname;
-            document.getElementById('profileRating').innerText = data.rating; document.getElementById('profileWins').innerText = data.wins; document.getElementById('profileLosses').innerText = data.losses; document.getElementById('profileWinrate').innerText = data.winrate;
+            document.getElementById('profileRating').innerText = data.rating; 
+            document.getElementById('profileWins').innerText = data.wins; 
+            document.getElementById('profileLosses').innerText = data.losses; 
+            document.getElementById('profileWinrate').innerText = data.winrate;
+            document.getElementById('profileTotal').innerText = data.total_matches;
+            document.getElementById('profileStreak').innerText = data.streak;
+            
+            // Faceit Level
+            const lvlEl = document.getElementById('profileLevel');
+            lvlEl.innerText = data.level;
+            lvlEl.className = `faceit-level lvl-${data.level} ms-1`;
+
             const socials = document.getElementById('profileSocials'); socials.innerHTML = '';
             if (data.discord) socials.innerHTML += `<a href="${data.discord}" target="_blank">🎮</a>`;
             if (data.telegram) socials.innerHTML += `<a href="${data.telegram}" target="_blank">✈️</a>`;
@@ -697,12 +674,21 @@
             avatar.style.backgroundImage = data.avatar_url ? `url('${data.avatar_url}')` : 'none';
             document.getElementById('viewBio').innerHTML = `<span class="fst-italic text-muted">${data.bio || 'Молчание...'}</span><br><br><strong class="text-warning">"${data.quote || spartanQuotes[0]}"</strong>`;
             
+            const achBox = document.getElementById('profileAchievements');
+            achBox.innerHTML = '';
+            if (data.achievements && data.achievements.length > 0) {
+                data.achievements.forEach(a => { achBox.innerHTML += `<span class="achievement-badge">${a}</span>`; });
+            } else {
+                achBox.innerHTML = '<span class="text-muted small">Пока нет достижений</span>';
+            }
+
             const ml = document.getElementById('profileMatches'); ml.innerHTML = '';
             data.recent_matches.forEach(m => {
-                ml.innerHTML += `<li class="mb-2"><span class="${m.is_win?'text-win':'text-lose'}">${m.is_win?'Победа':'Поражение'}</span> против ${m.is_win?m.loser:m.winner} ${m.is_ranked?'':'<span class="text-muted">(Без рейтинга)</span>'}<br><span class="text-gray">Счет: ${m.score} (${m.time})</span></li>`;
+                const badgeClass = m.is_win ? 'bg-win' : 'bg-lose';
+                const text = m.is_win ? 'W' : 'L';
+                ml.innerHTML += `<li class="mb-2 d-flex justify-content-between align-items-center border-bottom pb-2" style="border-color: var(--border-color) !important;"><div><span class="history-badge ${badgeClass} me-2">${text}</span> против <b>${m.is_win?m.loser:m.winner}</b> ${m.is_ranked?'':'<span class="text-muted">(Без рейтинга)</span>'}<br><span class="text-gray" style="font-size:0.85em;">Счет: ${m.score} • ${m.time}</span></div></li>`;
             });
-            loadComments(nickname);
-            showModal('profileModal');
+            loadComments(nickname); showModal('profileModal');
         }
 
         async function openEditProfile() {
@@ -710,16 +696,11 @@
             document.getElementById('editBanner').value = data.banner_url || ''; document.getElementById('editAvatar').value = data.avatar_url || ''; document.getElementById('editBio').value = data.bio || '';
             document.getElementById('editDiscord').value = data.discord || ''; document.getElementById('editTelegram').value = data.telegram || ''; document.getElementById('editTwitch').value = data.twitch || ''; document.getElementById('editYoutube').value = data.youtube || '';
             if (data.quote) { document.getElementById('editQuoteCategory').value = spartanQuotes.includes(data.quote) ? 'spartan' : 'great'; }
-            updateQuoteList(); document.getElementById('editQuote').value = data.quote || '';
-            showModal('editProfileModal');
+            updateQuoteList(); document.getElementById('editQuote').value = data.quote || ''; showModal('editProfileModal');
         }
 
         async function saveProfile() {
-            const data = {
-                banner_url: document.getElementById('editBanner').value.trim() || null, avatar_url: document.getElementById('editAvatar').value.trim() || null, bio: document.getElementById('editBio').value.trim() || null,
-                quote: document.getElementById('editQuote').value || null, discord: document.getElementById('editDiscord').value.trim() || null, telegram: document.getElementById('editTelegram').value.trim() || null,
-                twitch: document.getElementById('editTwitch').value.trim() || null, youtube: document.getElementById('editYoutube').value.trim() || null
-            };
+            const data = { banner_url: document.getElementById('editBanner').value.trim() || null, avatar_url: document.getElementById('editAvatar').value.trim() || null, bio: document.getElementById('editBio').value.trim() || null, quote: document.getElementById('editQuote').value || null, discord: document.getElementById('editDiscord').value.trim() || null, telegram: document.getElementById('editTelegram').value.trim() || null, twitch: document.getElementById('editTwitch').value.trim() || null, youtube: document.getElementById('editYoutube').value.trim() || null };
             await fetch('/player/me/update', { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify(data) });
             bootstrap.Modal.getInstance(document.getElementById('editProfileModal')).hide(); loadData();
         }
@@ -736,6 +717,14 @@
             await fetch(`/player/${document.getElementById('profileName').innerText}/comments`, { method: 'POST', headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${token}`}, body: JSON.stringify({ text }) });
             document.getElementById('newCommentText').value = ''; loadComments(document.getElementById('profileName').innerText);
         }
+
+        setTimeout(() => {
+            if (!localStorage.getItem('hasSeenOnboarding')) {
+                const onboardModal = new bootstrap.Modal(document.getElementById('onboardingModal'), { backdrop: 'static', keyboard: false });
+                onboardModal.show();
+                localStorage.setItem('hasSeenOnboarding', 'true');
+            }
+        }, 1000);
 
         updateAuthUI(); loadData(); loadChat();
         if(chatInterval) clearInterval(chatInterval);
