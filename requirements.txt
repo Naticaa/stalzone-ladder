@@ -4,6 +4,6 @@ sqlalchemy
 pydantic
 python-jose[cryptography]
 passlib
-glicko2
+glicko2-py
 python-multipart
 psycopg2-binary
